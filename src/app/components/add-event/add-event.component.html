@@ -1,0 +1,164 @@
+<div class="container">
+  <div class="content">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="eventInfoGroup">
+        <form [formGroup]="eventInfoGroup">
+          <ng-template matStepLabel>Event Info</ng-template>
+          <div class="content-info">
+            <label for="event-name">Event name: </label>
+            <input id="event-name" type="text" formControlName="nameEvent">
+
+            <label for="banner-image">Banner: </label>
+            <label class="btn-image">
+              <i class="fa fa-image"></i>Add Banner Image
+              <input id="banner-image" type="file" accept="image/*" style="display: none;"
+                     name="banner" formControlName="bannerImage" (change)="imagePreview($event, 'bannergroup')">
+              <div *ngIf="filePathBanner && filePathBanner !== ''">
+                <img class="banner-preview" [src]="filePathBanner" [alt]="eventInfoGroup.value.name">
+              </div>
+            </label>
+
+            <label for="thumb-image">Thumbnail: </label>
+            <label class="btn-image" for="thumb-image">
+              <i class="fa fa-image"></i>Add Thumbnail Image
+              <input id="thumb-image" type="file" accept="image/*" style="display: none;"
+                     name="thumbnail" formControlName="thumbImage" (change)="imagePreview($event, 'thumbgroup')">
+              <div *ngIf="filePathThumb && filePathThumb !== ''">
+                <img class="banner-preview" [src]="filePathThumb" [alt]="eventInfoGroup.value.name">
+              </div>
+            </label>
+
+            <label for="event-type">Event Type: </label>
+            <select id="event-type" [ngModel]="eventType" [ngModelOptions]="{standalone: true}">
+              <option value="" disabled selected>Event Type..</option>
+              <option *ngFor="let eventType of eventTypes" [value]="eventType">{{eventType}}</option>
+            </select>
+
+            <label for="full-description">Location: </label>
+            <select id="location" [ngModel]="location" [ngModelOptions]="{standalone: true}">
+              <option value="" disabled selected>Location..</option>
+              <option *ngFor="let location of locations"
+                      [value]="location.id">{{location.buildingName}} {{location.city}}</option>
+            </select>
+
+            <div class="or-text">OR</div>
+
+            <label class="btn-image">
+              <i class="fa fa-image"></i>Add New Location
+              <input id="new-location" (click)="openModalAddLocation(modalForm)" style="display: none;"
+                     name="locationsModal">
+            </label>
+          </div>
+          <div class="form-buttons">
+            <button class="button-next" mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="eventDescriptionGroup">
+        <form [formGroup]="eventDescriptionGroup">
+          <div class="content-info">
+            <ng-template matStepLabel>Description</ng-template>
+            <label for="short-description">Short description: </label>
+            <textarea rows="7" id="short-description" type="text" formControlName="shortDescription"></textarea>
+
+            <label for="full-description">Full description: </label>
+            <textarea rows="15" id="full-description" type="text" formControlName="fullDescription"></textarea>
+          </div>
+          <div class="form-buttons">
+            <button class="button-back" mat-button matStepperPrevious>Back</button>
+            <button class="button-next" mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="eventTicketGroup">
+        <form [formGroup]="eventTicketGroup">
+          <ng-template matStepLabel>Tickets</ng-template>
+          <div class="content-info">
+            <label for="total-tickets">Total # of Tickets: </label>
+            <input id="total-tickets" type="text" formControlName="amountOfTickets">
+
+            <label for="max-tickets">Max Order: </label>
+            <input id="max-tickets" type="text" formControlName="maxOrderTickets">
+
+            <label for="price-event">Price: </label>
+            <input id="price-event" type="number" formControlName="price">
+
+            <label for="date-event">Date Event: </label>
+            <input id="date-event" type="date" formControlName="date">
+
+            <label for="time-event">Time Event: </label>
+            <input id="time-event" type="time" formControlName="time">
+
+            <label class="optional">Optional</label>
+
+            <label for="early-bird-date-event">Early Bird Date: </label>
+            <input id="early-bird-date-event" type="date" formControlName="earlyBirdDate">
+
+            <label for="early-bird-price-event">Early Bird Price: </label>
+            <input id="early-bird-price-event" type="number" formControlName="earlyBirdPrice">
+          </div>
+          <div class="form-buttons">
+            <button class="button-back" mat-button matStepperPrevious>Back</button>
+            <button class="button-next" mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <mat-list>
+          <mat-list-item><strong>Event: </strong> {{ this.eventInfoGroup.value.nameEvent }}</mat-list-item>
+          <mat-list-item><strong>Event Type: </strong> {{ this.eventInfoGroup.value.eventType }}</mat-list-item>
+          <mat-list-item><strong>Banner Name: </strong> {{ this.eventInfoGroup.value.bannerImage }}</mat-list-item>
+          <mat-list-item><strong>Full Description: </strong> {{ this.eventDescriptionGroup.value.fullDescription }}
+          </mat-list-item>
+          <mat-list-item><strong>Short Description: </strong> {{ this.eventDescriptionGroup.value.shortDescription }}
+          </mat-list-item>
+        </mat-list>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button>Preview</button>
+          <button mat-button (click)="submit()">Submit</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+</div>
+
+
+<!--MODAL-->
+<ng-template #modalForm let-modal class="modal-form">
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-addModel-title">Add Location</h2>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="locationModalForm">
+      <div class="content-info">
+        <label for="building-name">Building: </label>
+        <input id="building-name" type="text" formControlName="buildingName">
+
+        <label for="location-street">Street and Number: </label>
+        <input id="location-street" type="text" formControlName="locationStreet">
+
+        <div class="small-input">
+          <label for="location-zip">ZIP code: </label>
+          <input id="location-zip" type="number" formControlName="locationZip">
+        </div>
+        <div class="city-input">
+          <label for="location-city">City: </label>
+          <input id="location-city" type="text" formControlName="locationCity">
+        </div>
+
+        <label for="location-country">Country: </label>
+        <input id="location-country" type="text" formControlName="locationCountry">
+      </div>
+      <div class="form-buttons">
+        <button class="button-back" (click)="modal.close('Save click')">Cancel</button>
+        <button class="button-next" (click)="addLocation()">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

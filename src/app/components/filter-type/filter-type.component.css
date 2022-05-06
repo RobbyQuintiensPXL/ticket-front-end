@@ -1,0 +1,39 @@
+.filterByType{
+  position: relative;
+}
+
+.filterByType li{
+  cursor: default;
+  user-select: none;
+}
+
+.filterByType ul li{
+  font-size: 17px;
+  display: inline-block;
+  float: left;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+.filterByType li:hover{
+  background-color: rgba(37, 11, 206, 0.7);
+  border-radius: 20px;
+  width: auto;
+  color: #fff;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+input{
+  display: none;
+}
+
+input:checked  test{
+  background-color: rgba(37, 11, 206, 0.7);
+  border-radius: 20px;
+  width: auto;
+  color: #fff;
+}
+

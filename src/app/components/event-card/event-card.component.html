@@ -1,0 +1,20 @@
+<div id="cardViews">
+  <mat-grid-list cols="4" rowHeight="1:1.2">
+    <mat-grid-tile *ngFor="let event of events" class="test">
+      <div class="cardContainer">
+        <mat-card class="example-card">
+          <img mat-card-image class="eventThumb" src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+               alt="Photo of a Shiba Inu" [routerLink]="['../events',event.id]">
+          <div class="tag">{{event.eventType}}</div>
+          <mat-card-content class="content">
+            <h2>{{event.eventName}}</h2>
+            <fa-icon [icon]="faSearchLocation"></fa-icon>
+            <p>{{event.location.buildingName}}</p>
+            <fa-icon [icon]="faCalenderAlt"></fa-icon>
+            <p>{{event.eventDate}}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

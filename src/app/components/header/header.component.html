@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <h1><a [routerLink]="['']">JEvents</a></h1>
+  <input type="text" placeholder="Search...">
+  <div class="user-links">
+    <h2><a href="#">Customer Service</a></h2>
+    <h2><a *ngIf="!isLoggedIn" (click)="login()">Login</a></h2>
+    <h2><a *ngIf="isLoggedIn" (click)="logout()">Logout</a></h2>
+
+    <h2><a [routerLink]="['/profile']">Account</a></h2>
+  </div>
+</mat-toolbar>
+<svg xmlns="http://www.w3.org/2000/svg">
+  <path fill="#ef991b" id="svg_1"
+        d="m0.33694,21.78266c189.33339,10.66667 302.51291,34.89322 502.13391,35.44673c199.621,0.55351 462.85477,-42.88445 1000.51889,-44.14883c537.66406,-1.26437 9.01086,-17.61203 9.01062,-17.1724c0.00024,-0.43963 -1513.9967,-3.07722 -1511.99426,-2.63759c-2.00246,-0.43963 -37.67707,23.2657 -56.66913,41.8454l56.99997,-13.33331z"
+        opacity="NaN"/>
+</svg>

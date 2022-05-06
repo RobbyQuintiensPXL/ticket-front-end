@@ -1,0 +1,159 @@
+@media screen and (max-width: 800px) {
+  .flex-container{
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+  }
+  .content-info, .content-location{
+    width: 100%;
+    clear: both;
+    padding: 0;
+  }
+}
+
+.container{
+  margin-top: -3rem;
+}
+
+.content{
+  width: 55%;
+  min-width: 400px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.title{
+  padding-top: 2rem;
+}
+
+.title h4{
+  color: #250BCE;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+
+.flex-container{
+  display:flex;
+  justify-content: center;
+  gap: 5%;
+}
+
+.content-info{
+  width: 100%;
+  flex-grow: 2;
+}
+
+.content-location{
+  width: 100%;
+  flex-grow: 1;
+}
+
+
+label{
+  display: inline-block;
+  padding-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+input, textarea{
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.btn-image{
+  background-color: #efeeee;
+  text-align: center;
+  padding: 0.15rem 0.25rem 0.15rem 0.25rem;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px #EF991B solid;
+  font-size: 10pt;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+select{
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  display: inline-block;
+}
+
+.or-text{
+  width: 100%;
+  text-align: center;
+  margin: 0.25rem 0 0.25rem 0;
+}
+
+.form-buttons{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+}
+
+.form-buttons input{
+  width: 40%;
+  cursor: pointer;
+}
+
+.button-next{
+  background-color: #250BCE;
+  width: 10rem;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  min-height: 35px;
+}
+
+.button-back{
+  background-color: #cecece;
+  width: 10rem;
+  color: #000;
+  border-radius: 10px;
+  border: none;
+  min-height: 35px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.optional{
+  display: block;
+  font-style: italic;
+  color: #949494;
+  border-bottom: 1px #949494 solid;
+  margin-top: 2rem;
+  padding-bottom: -1rem;
+}
+
+.banner-preview{
+  display: block;
+  height: 10rem;
+  image-resolution: initial;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+.modal-header{
+  background-color: #EF991B;
+  color: #fff;
+}
+
+.small-input{
+  width: 30%;
+  float: left;
+}
+
+.city-input{
+  width: 60%;
+  float: right;
+  right: 0;
+}

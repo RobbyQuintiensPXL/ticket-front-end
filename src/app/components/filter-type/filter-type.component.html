@@ -1,0 +1,11 @@
+<div class="filterByType">
+  <ul [ngModel]="eventTypes">
+    <div class="test">
+      <li [routerLink]="['../search']" [queryParams]="{type: 'all'}">
+        <input type="checkbox" id="cb">
+        <label for="cb">All</label>
+      </li>
+    </div>
+    <li *ngFor="let eventType of eventTypes" [routerLink]="['../search']" [queryParams]="{type: eventType}">{{eventType}}</li>
+  </ul>
+</div>

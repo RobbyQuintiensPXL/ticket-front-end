@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
+svg{
+  width: 100%;
+  margin-top: -0.7rem;
+  margin-bottom: -2rem;
+}
+
+mat-toolbar{
+  background-color: #EF991B;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-toolbar input{
+  width: 25%;
+  min-width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #AAA;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  bottom: -1.5rem;
+  position: relative;
+  left: 4rem;
+}
+
+.user-links{
+  display: flex;
+}
+
+mat-toolbar h1{
+  margin-left: 3rem;
+  font-family: "Annie Use Your Telescope", sans-serif;
+}
+
+mat-toolbar h2{
+  margin-right: 3rem;
+  font-size: 12pt;
+  font-family: "Annie Use Your Telescope", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+input{
+  padding-left: 2rem;
+}
