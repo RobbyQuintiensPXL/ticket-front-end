@@ -4,6 +4,7 @@ import {EventDetailComponent} from './components/event-detail/event-detail.compo
 import {ProfileComponent} from './components/profile/profile.component';
 import {AddEventComponent} from './components/add-event/add-event.component';
 import {AuthGuard} from './auth/auth.guard';
+import {OfficeEventsComponent} from './components/office-events/office-events.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,14 @@ const routes: Routes = [
   {
     path: 'add-event',
     component: AddEventComponent,
+    data: {
+      roles: ['jevents-office']
+    },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'office-events',
+    component: OfficeEventsComponent,
     data: {
       roles: ['jevents-office']
     },

@@ -3,6 +3,7 @@ import {EventService} from '../../services/event-service/event.service';
 import {Event} from '../../entities/event/event';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
+import {ImageService} from '../../services/image-service/image.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -14,7 +15,8 @@ export class EventDetailComponent implements OnInit {
   id: any;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private eventService: EventService) {
+              private eventService: EventService,
+              private imageService: ImageService) {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });

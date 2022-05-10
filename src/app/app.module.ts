@@ -28,6 +28,7 @@ import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
 import {KeycloakInitService} from './services/keycloak-service/keycloak-init.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule} from '@angular/flex-layout';
+import { OfficeEventsComponent } from './components/office-events/office-events.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FlexLayoutModule} from '@angular/flex-layout';
     EventDetailComponent,
     ProfileComponent,
     AddEventComponent,
+    OfficeEventsComponent,
   ],
   imports: [
     BrowserModule,
