@@ -18,6 +18,7 @@ export class AddEventComponent implements OnInit {
   filePathBanner: string;
   filePathThumb: string;
   event: Event;
+  eventFormData: any;
   locations: Location[];
   location: Location;
   newLocation: Location;
@@ -29,6 +30,8 @@ export class AddEventComponent implements OnInit {
   eventTicketGroup: FormGroup;
   locationModalForm: FormGroup;
   closeModal: string;
+  bannerFile: any;
+  thumbFile: any;
 
   constructor(private formBuilder: FormBuilder,
               private eventTypeService: EventTypeService,
@@ -43,23 +46,24 @@ export class AddEventComponent implements OnInit {
 
     if (group.includes('bannergroup')) {
       this.eventInfoGroup.patchValue({
-        img: file
+        img: file,
       });
       reader.onload = () => {
         this.filePathBanner = reader.result as string;
       };
       this.eventInfoGroup.get('img').updateValueAndValidity();
+      this.bannerFile = file;
     } else {
       this.eventInfoGroup.patchValue({
-        img: file
+        img: file,
       });
       reader.onload = () => {
         this.filePathThumb = reader.result as string;
       };
       this.eventInfoGroup.get('img').updateValueAndValidity();
+      this.thumbFile = file;
     }
     reader.readAsDataURL(file);
-    console.log(file);
   }
 
   listEventTypes(): void {
@@ -75,17 +79,17 @@ export class AddEventComponent implements OnInit {
   }
 
   createEvent(): void {
-    this.event = new Event();
-    this.event.eventName = this.eventInfoGroup.value.nameEvent;
-    this.event.eventType = this.eventType;
-    this.event.banner = this.eventInfoGroup.value.bannerImage;
-    this.event.thumb = this.eventInfoGroup.value.thumbImage;
-    this.event.location = this.location;
-    this.event.shortDescription = this.eventDescriptionGroup.value.shortDescription;
-    this.event.description = this.eventDescriptionGroup.value.fullDescription;
-    this.event.price = this.eventTicketGroup.value.price;
-    this.event.eventDate = this.eventTicketGroup.value.date;
-    this.event.eventTime = this.eventTicketGroup.value.time;
+    this.eventFormData = {
+      eventName: this.eventInfoGroup.value.nameEvent,
+      eventType: this.eventInfoGroup.value.eventType,
+      location: this.eventInfoGroup.value.eventLocation,
+      eventTime: this.eventTicketGroup.value.time,
+      eventDate: this.eventTicketGroup.value.date,
+      shortDescription: this.eventDescriptionGroup.value.shortDescription,
+      description: this.eventDescriptionGroup.value.fullDescription,
+      price: this.eventTicketGroup.value.price,
+      ticketsLeft: this.eventTicketGroup.value.amountOfTickets,
+    };
   }
 
   ngOnInit() {
@@ -98,8 +102,10 @@ export class AddEventComponent implements OnInit {
     }),
       this.eventInfoGroup = this.formBuilder.group({
         nameEvent: [null, Validators.required],
+        eventType: [null, Validators.required],
         bannerImage: [null],
         thumbImage: [null],
+        eventLocation: [null, Validators.required],
         img: [null],
       });
     this.eventDescriptionGroup = this.formBuilder.group({
@@ -120,7 +126,6 @@ export class AddEventComponent implements OnInit {
   }
 
   addLocation() {
-    this.newLocation = new Location();
     this.newLocation.buildingName = this.locationModalForm.value.buildingName;
     this.newLocation.address = this.locationModalForm.value.locationStreet;
     this.newLocation.zipCode = this.locationModalForm.value.locationZip;
@@ -134,8 +139,8 @@ export class AddEventComponent implements OnInit {
 
   submit() {
     this.createEvent();
-    console.log(this.event);
-    this.eventService.createEvent(this.event);
+    console.log(this.eventFormData);
+    this.eventService.createEvent(this.eventFormData, this.bannerFile, this.thumbFile);
   }
 
   openModalAddLocation(addContent) {

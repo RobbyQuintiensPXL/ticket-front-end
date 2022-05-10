@@ -49,6 +49,4 @@ export class LocationService {
   public getLocationsByTicketOffice(): Observable<Location[]> {
     return this.http.get<Location[]>(this.locationUrl + '/office');
   }
-
-
 }
