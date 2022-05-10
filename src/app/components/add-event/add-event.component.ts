@@ -112,8 +112,10 @@ export class AddEventComponent implements OnInit {
       img: [null],
     });
     this.eventDescriptionGroup = this.formBuilder.group({
-      shortDescription: [null, Validators.required],
-      fullDescription: [null, Validators.required],
+      shortDescription: [null, [Validators.required, Validators.minLength(50),
+        Validators.maxLength(400)]],
+      fullDescription: [null, [Validators.required, Validators.minLength(100),
+        Validators.maxLength(1450)]],
     });
     this.eventTicketGroup = this.formBuilder.group({
       amountOfTickets: [null, Validators.required],
@@ -157,6 +159,34 @@ export class AddEventComponent implements OnInit {
 
   // Getters
 
+  get shortDescription() {
+    return this.eventDescriptionGroup.get('shortDescription');
+  }
+
+  get fullDescription() {
+    return this.eventDescriptionGroup.get('fullDescription');
+  }
+
+  get amountOfTickets() {
+    return this.eventTicketGroup.get('amountOfTickets');
+  }
+
+  get maxOrderTickets() {
+    return this.eventTicketGroup.get('maxOrderTickets');
+  }
+
+  get price() {
+    return this.eventTicketGroup.get('price');
+  }
+
+  get date() {
+    return this.eventTicketGroup.get('date');
+  }
+
+  get time() {
+    return this.eventTicketGroup.get('time');
+  }
+
   get buildingName() {
     return this.locationModalForm.get('buildingName');
   }
@@ -187,6 +217,14 @@ export class AddEventComponent implements OnInit {
 
   get thumbImage() {
     return this.eventInfoGroup.get('thumbImage');
+  }
+
+  get eventTypeValue() {
+    return this.eventInfoGroup.get('eventType');
+  }
+
+  get eventLocation() {
+    return this.eventInfoGroup.get('eventLocation');
   }
 
 

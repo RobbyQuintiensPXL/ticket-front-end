@@ -11,10 +11,10 @@
             <!--Validation-->
             <div *ngIf="eventName.invalid && (eventName.dirty || eventName.touched)"
                  class="alert alert-danger">
-              <div *ngIf="eventName.errors?.['required']">
+              <div *ngIf="eventName.errors.required">
                 Event name is required.
               </div>
-              <div *ngIf="eventName.errors?.['minlength']">
+              <div *ngIf="eventName.errors.minlength">
                 Event name must be at least 4 characters long.
               </div>
             </div>
@@ -33,7 +33,7 @@
             <!--Validation-->
             <div *ngIf="bannerImage.invalid && (bannerImage.dirty || bannerImage.touched)"
                  class="alert alert-danger">
-              <div *ngIf="bannerImage.errors?.['required']">
+              <div *ngIf="bannerImage.errors.required">
                 Banner image is required.
               </div>
             </div>
@@ -52,7 +52,7 @@
             <!--Validation-->
             <div *ngIf="thumbImage.invalid && (thumbImage.dirty || thumbImage.touched)"
                  class="alert alert-danger">
-              <div *ngIf="thumbImage.errors?.['required']">
+              <div *ngIf="thumbImage.errors.required">
                 Thumbnail image is required.
               </div>
             </div>
@@ -63,12 +63,29 @@
               <option *ngFor="let eventType of eventTypes" [value]="eventType">{{eventType}}</option>
             </select>
 
+            <!--Validation-->
+            <div *ngIf="eventTypeValue.invalid && (eventTypeValue.dirty || eventTypeValue.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="eventTypeValue.errors.required">
+                Event type is required.
+              </div>
+            </div>
+
             <label for="full-description">Location: </label>
             <select id="location" formControlName="eventLocation">
               <option value="" disabled selected>Location..</option>
               <option *ngFor="let location of locations"
                       [value]="location.id">{{location.buildingName}} {{location.city}}</option>
             </select>
+
+
+            <!--Validation-->
+            <div *ngIf="eventLocation.invalid && (eventLocation.dirty || eventLocation.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="eventLocation.errors.required">
+                Event location is required.
+              </div>
+            </div>
 
             <div class="or-text">OR</div>
 
@@ -90,12 +107,41 @@
             <label for="short-description">Short description: </label>
             <textarea rows="7" id="short-description" type="text" formControlName="shortDescription"></textarea>
 
+            <!--Validation-->
+            <div *ngIf="shortDescription.invalid && (shortDescription.dirty || shortDescription.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="shortDescription.errors.required">
+                Short description is required.
+              </div>
+              <div *ngIf="shortDescription.errors.minlength">
+                Short description must be at least 50 characters long.
+              </div>
+              <div *ngIf="shortDescription.errors.maxlength">
+                Short description must be maximum 400 characters long.
+              </div>
+            </div>
+
             <label for="full-description">Full description: </label>
             <textarea rows="15" id="full-description" type="text" formControlName="fullDescription"></textarea>
+
+            <!--Validation-->
+            <div *ngIf="fullDescription.invalid && (fullDescription.dirty || fullDescription.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="fullDescription.errors.required">
+                Full description is required.
+              </div>
+              <div *ngIf="fullDescription.errors.minlength">
+                Full description must be at least 100 characters long.
+              </div>
+              <div *ngIf="fullDescription.errors.maxlength">
+                Full description must be maximum 1450 characters long.
+              </div>
+            </div>
+
           </div>
           <div class="form-buttons">
             <button class="button-back" mat-button matStepperPrevious>Back</button>
-            <button class="button-next" mat-button matStepperNext>Next</button>
+            <button class="button-next" [disabled]="eventDescriptionGroup.invalid" mat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -106,17 +152,57 @@
             <label for="total-tickets">Total # of Tickets: </label>
             <input id="total-tickets" type="text" formControlName="amountOfTickets">
 
+            <!--Validation-->
+            <div *ngIf="amountOfTickets.invalid && (amountOfTickets.dirty || amountOfTickets.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="amountOfTickets.errors.required">
+                Amount of available tickets is required.
+              </div>
+            </div>
+
             <label for="max-tickets">Max Order: </label>
             <input id="max-tickets" type="text" formControlName="maxOrderTickets">
+
+            <!--Validation-->
+            <div *ngIf="maxOrderTickets.invalid && (maxOrderTickets.dirty || maxOrderTickets.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="maxOrderTickets.errors.required">
+                Max orderable tickets is required.
+              </div>
+            </div>
 
             <label for="price-event">Price: </label>
             <input id="price-event" type="number" formControlName="price">
 
+            <!--Validation-->
+            <div *ngIf="price.invalid && (price.dirty || price.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="price.errors.required">
+                Price is required.
+              </div>
+            </div>
+
             <label for="date-event">Date Event: </label>
             <input id="date-event" type="date" formControlName="date">
 
+            <!--Validation-->
+            <div *ngIf="date.invalid && (date.dirty || date.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="date.errors.required">
+                Date is required.
+              </div>
+            </div>
+
             <label for="time-event">Time Event: </label>
             <input id="time-event" type="time" formControlName="time">
+
+            <!--Validation-->
+            <div *ngIf="time.invalid && (time.dirty || time.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="time.errors.required">
+                Time is required.
+              </div>
+            </div>
 
             <label class="optional">Optional</label>
 
@@ -128,7 +214,7 @@
           </div>
           <div class="form-buttons">
             <button class="button-back" mat-button matStepperPrevious>Back</button>
-            <button class="button-next" mat-button matStepperNext>Next</button>
+            <button class="button-next" [disabled]="eventTicketGroup.invalid" mat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -172,7 +258,7 @@
         <!--Validation-->
         <div *ngIf="buildingName.invalid && (buildingName.dirty || buildingName.touched)"
              class="alert alert-danger">
-          <div *ngIf="buildingName.errors?.['required']">
+          <div *ngIf="buildingName.errors.required">
             Building name is required.
           </div>
         </div>
@@ -183,47 +269,47 @@
         <!--Validation-->
         <div *ngIf="locationStreet.invalid && (locationStreet.dirty || locationStreet.touched)"
              class="alert alert-danger">
-          <div *ngIf="locationStreet.errors?.['required']">
+          <div *ngIf="locationStreet.errors.required">
             Street and number are required.
           </div>
-          <div *ngIf="locationStreet.errors?.['minlength']">
+          <div *ngIf="locationStreet.errors.minlength">
             Street and number must be at least 4 characters long.
           </div>
         </div>
 
-          <div class="small-input">
-            <label for="location-zip">ZIP code: </label>
-            <input id="location-zip" type="number" formControlName="locationZip" required>
+        <div class="small-input">
+          <label for="location-zip">ZIP code: </label>
+          <input id="location-zip" type="number" formControlName="locationZip" required>
 
-            <!--Validation-->
-            <div *ngIf="locationZip.invalid && (locationZip.dirty || locationZip.touched)"
-                 class="alert alert-danger">
-              <div *ngIf="locationZip.errors?.['required']">
-                ZIP code is required.
-              </div>
-              <div *ngIf="locationZip.errors?.['minlength']">
-                ZIP code must must be at least 4 characters long.
-              </div>
+          <!--Validation-->
+          <div *ngIf="locationZip.invalid && (locationZip.dirty || locationZip.touched)"
+               class="alert alert-danger">
+            <div *ngIf="locationZip.errors.required">
+              ZIP code is required.
+            </div>
+            <div *ngIf="locationZip.errors.minlength">
+              ZIP code must must be at least 4 characters long.
             </div>
           </div>
-          <div class="city-input">
-            <label for="location-city">City: </label>
-            <input id="location-city" type="text" formControlName="locationCity" required>
+        </div>
+        <div class="city-input">
+          <label for="location-city">City: </label>
+          <input id="location-city" type="text" formControlName="locationCity" required>
 
-            <!--Validation-->
-            <div *ngIf="locationCity.invalid && (locationCity.dirty || locationCity.touched)"
-                 class="alert alert-danger">
-              <div *ngIf="locationCity.errors?.['required']">
-                City is required.
-              </div>
-              <div *ngIf="locationCity.errors?.['minlength']">
-                City must must be at least 3 characters long.
-              </div>
-              <div *ngIf="locationCity.errors?.['pattern']">
-                City cannot contain numbers or special characters.
-              </div>
+          <!--Validation-->
+          <div *ngIf="locationCity.invalid && (locationCity.dirty || locationCity.touched)"
+               class="alert alert-danger">
+            <div *ngIf="locationCity.errors.required">
+              City is required.
+            </div>
+            <div *ngIf="locationCity.errors.minlength">
+              City must must be at least 3 characters long.
+            </div>
+            <div *ngIf="locationCity.errors.pattern">
+              City cannot contain numbers or special characters.
             </div>
           </div>
+        </div>
 
         <label for="location-country">Country: </label>
         <input id="location-country" type="text" formControlName="locationCountry" required>
@@ -231,20 +317,21 @@
         <!--Validation-->
         <div *ngIf="locationCountry.invalid && (locationCountry.dirty || locationCountry.touched)"
              class="alert alert-danger">
-          <div *ngIf="locationCountry.errors?.['required']">
+          <div *ngIf="locationCountry.errors.required">
             Country is required.
           </div>
-          <div *ngIf="locationCountry.errors?.['minlength']">
+          <div *ngIf="locationCountry.errors.minlength">
             Country must must be at least 4 characters long.
           </div>
-          <div *ngIf="locationCountry.errors?.['pattern']">
+          <div *ngIf="locationCountry.errors.pattern">
             Country cannot contain numbers or special characters.
           </div>
         </div>
       </div>
       <div class="form-buttons">
         <button class="button-back" (click)="modal.close('Save click')">Cancel</button>
-        <button class="button-next" mat-button [disabled]="locationModalForm.invalid" (click)="addLocation()">Save</button>
+        <button class="button-next" mat-button [disabled]="locationModalForm.invalid" (click)="addLocation()">Save
+        </button>
       </div>
     </form>
   </div>

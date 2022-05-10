@@ -8,7 +8,7 @@ svg{
 
 mat-toolbar{
   background-color: #EF991B;
-  height: 70px;
+  height: 7rem;
   display: flex;
   justify-content: space-between;
 }
