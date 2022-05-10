@@ -95,20 +95,22 @@ export class AddEventComponent implements OnInit {
 
   ngOnInit() {
     this.locationModalForm = this.formBuilder.group({
-      buildingName: [null],
-      locationStreet: [null],
-      locationZip: [null],
-      locationCity: [null],
-      locationCountry: [null],
-    }),
-      this.eventInfoGroup = this.formBuilder.group({
-        nameEvent: [null, Validators.required],
-        eventType: [null, Validators.required],
-        bannerImage: [null],
-        thumbImage: [null],
-        eventLocation: [null, Validators.required],
-        img: [null],
-      });
+      buildingName: [null, Validators.required],
+      locationStreet: [null, [Validators.required, Validators.minLength(4)]],
+      locationZip: [null, [Validators.required, Validators.minLength(4)]],
+      locationCity: [null, [Validators.required, Validators.minLength(3),
+        Validators.pattern('^[a-zA-Z -]*$')]],
+      locationCountry: [null, [Validators.required, Validators.minLength(4),
+        Validators.pattern('^[a-zA-Z -]*$')]],
+    });
+    this.eventInfoGroup = this.formBuilder.group({
+      nameEvent: [null, [Validators.required, Validators.minLength(4)]],
+      eventType: [null, Validators.required],
+      bannerImage: [null, Validators.required],
+      thumbImage: [null, Validators.required],
+      eventLocation: [null, Validators.required],
+      img: [null],
+    });
     this.eventDescriptionGroup = this.formBuilder.group({
       shortDescription: [null, Validators.required],
       fullDescription: [null, Validators.required],
@@ -127,6 +129,7 @@ export class AddEventComponent implements OnInit {
   }
 
   addLocation() {
+    this.newLocation = new Location();
     this.newLocation.buildingName = this.locationModalForm.value.buildingName;
     this.newLocation.address = this.locationModalForm.value.locationStreet;
     this.newLocation.zipCode = this.locationModalForm.value.locationZip;
@@ -151,4 +154,40 @@ export class AddEventComponent implements OnInit {
       this.closeModal = `Dismissed`;
     });
   }
+
+  // Getters
+
+  get buildingName() {
+    return this.locationModalForm.get('buildingName');
+  }
+
+  get locationStreet() {
+    return this.locationModalForm.get('locationStreet');
+  }
+
+  get locationZip() {
+    return this.locationModalForm.get('locationZip');
+  }
+
+  get locationCity() {
+    return this.locationModalForm.get('locationCity');
+  }
+
+  get locationCountry() {
+    return this.locationModalForm.get('locationCountry');
+  }
+
+  get eventName() {
+    return this.eventInfoGroup.get('nameEvent');
+  }
+
+  get bannerImage() {
+    return this.eventInfoGroup.get('bannerImage');
+  }
+
+  get thumbImage() {
+    return this.eventInfoGroup.get('thumbImage');
+  }
+
+
 }

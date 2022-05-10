@@ -6,27 +6,56 @@
           <ng-template matStepLabel>Event Info</ng-template>
           <div class="content-info">
             <label for="event-name">Event name: </label>
-            <input id="event-name" type="text" formControlName="nameEvent">
+            <input id="event-name" type="text" formControlName="nameEvent" required>
+
+            <!--Validation-->
+            <div *ngIf="eventName.invalid && (eventName.dirty || eventName.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="eventName.errors?.['required']">
+                Event name is required.
+              </div>
+              <div *ngIf="eventName.errors?.['minlength']">
+                Event name must be at least 4 characters long.
+              </div>
+            </div>
 
             <label for="banner-image">Banner: </label>
             <label class="btn-image">
               <i class="fa fa-image"></i>Add Banner Image
               <input id="banner-image" type="file" accept="image/*" style="display: none;"
-                     name="banner" formControlName="bannerImage" (change)="imagePreview($event, 'bannergroup')">
+                     name="banner" formControlName="bannerImage" (change)="imagePreview($event, 'bannergroup')"
+                     required>
               <div *ngIf="filePathBanner && filePathBanner !== ''">
                 <img class="banner-preview" [src]="filePathBanner" [alt]="eventInfoGroup.value.name">
               </div>
             </label>
 
+            <!--Validation-->
+            <div *ngIf="bannerImage.invalid && (bannerImage.dirty || bannerImage.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="bannerImage.errors?.['required']">
+                Banner image is required.
+              </div>
+            </div>
+
             <label for="thumb-image">Thumbnail: </label>
             <label class="btn-image" for="thumb-image">
               <i class="fa fa-image"></i>Add Thumbnail Image
               <input id="thumb-image" type="file" accept="image/*" style="display: none;"
-                     name="thumbnail" formControlName="thumbImage" (change)="imagePreview($event, 'thumbgroup')">
+                     name="thumbnail" formControlName="thumbImage" (change)="imagePreview($event, 'thumbgroup')"
+                     required>
               <div *ngIf="filePathThumb && filePathThumb !== ''">
                 <img class="banner-preview" [src]="filePathThumb" [alt]="eventInfoGroup.value.name">
               </div>
             </label>
+
+            <!--Validation-->
+            <div *ngIf="thumbImage.invalid && (thumbImage.dirty || thumbImage.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="thumbImage.errors?.['required']">
+                Thumbnail image is required.
+              </div>
+            </div>
 
             <label for="event-type">Event Type: </label>
             <select id="event-type" formControlName="eventType">
@@ -50,7 +79,7 @@
             </label>
           </div>
           <div class="form-buttons">
-            <button class="button-next" mat-button matStepperNext>Next</button>
+            <button class="button-next" [disabled]="eventInfoGroup.invalid" mat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -138,26 +167,84 @@
     <form [formGroup]="locationModalForm">
       <div class="content-info">
         <label for="building-name">Building: </label>
-        <input id="building-name" type="text" formControlName="buildingName">
+        <input id="building-name" type="text" formControlName="buildingName" required>
+
+        <!--Validation-->
+        <div *ngIf="buildingName.invalid && (buildingName.dirty || buildingName.touched)"
+             class="alert alert-danger">
+          <div *ngIf="buildingName.errors?.['required']">
+            Building name is required.
+          </div>
+        </div>
 
         <label for="location-street">Street and Number: </label>
-        <input id="location-street" type="text" formControlName="locationStreet">
+        <input id="location-street" type="text" formControlName="locationStreet" required>
 
-        <div class="small-input">
-          <label for="location-zip">ZIP code: </label>
-          <input id="location-zip" type="number" formControlName="locationZip">
+        <!--Validation-->
+        <div *ngIf="locationStreet.invalid && (locationStreet.dirty || locationStreet.touched)"
+             class="alert alert-danger">
+          <div *ngIf="locationStreet.errors?.['required']">
+            Street and number are required.
+          </div>
+          <div *ngIf="locationStreet.errors?.['minlength']">
+            Street and number must be at least 4 characters long.
+          </div>
         </div>
-        <div class="city-input">
-          <label for="location-city">City: </label>
-          <input id="location-city" type="text" formControlName="locationCity">
-        </div>
+
+          <div class="small-input">
+            <label for="location-zip">ZIP code: </label>
+            <input id="location-zip" type="number" formControlName="locationZip" required>
+
+            <!--Validation-->
+            <div *ngIf="locationZip.invalid && (locationZip.dirty || locationZip.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="locationZip.errors?.['required']">
+                ZIP code is required.
+              </div>
+              <div *ngIf="locationZip.errors?.['minlength']">
+                ZIP code must must be at least 4 characters long.
+              </div>
+            </div>
+          </div>
+          <div class="city-input">
+            <label for="location-city">City: </label>
+            <input id="location-city" type="text" formControlName="locationCity" required>
+
+            <!--Validation-->
+            <div *ngIf="locationCity.invalid && (locationCity.dirty || locationCity.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="locationCity.errors?.['required']">
+                City is required.
+              </div>
+              <div *ngIf="locationCity.errors?.['minlength']">
+                City must must be at least 3 characters long.
+              </div>
+              <div *ngIf="locationCity.errors?.['pattern']">
+                City cannot contain numbers or special characters.
+              </div>
+            </div>
+          </div>
 
         <label for="location-country">Country: </label>
-        <input id="location-country" type="text" formControlName="locationCountry">
+        <input id="location-country" type="text" formControlName="locationCountry" required>
+
+        <!--Validation-->
+        <div *ngIf="locationCountry.invalid && (locationCountry.dirty || locationCountry.touched)"
+             class="alert alert-danger">
+          <div *ngIf="locationCountry.errors?.['required']">
+            Country is required.
+          </div>
+          <div *ngIf="locationCountry.errors?.['minlength']">
+            Country must must be at least 4 characters long.
+          </div>
+          <div *ngIf="locationCountry.errors?.['pattern']">
+            Country cannot contain numbers or special characters.
+          </div>
+        </div>
       </div>
       <div class="form-buttons">
         <button class="button-back" (click)="modal.close('Save click')">Cancel</button>
-        <button class="button-next" (click)="addLocation()">Save</button>
+        <button class="button-next" mat-button [disabled]="locationModalForm.invalid" (click)="addLocation()">Save</button>
       </div>
     </form>
   </div>

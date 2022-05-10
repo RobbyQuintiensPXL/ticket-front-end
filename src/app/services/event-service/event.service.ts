@@ -11,6 +11,7 @@ export class EventService {
 
   private readonly eventUrl: string;
   private readonly eventPost: string;
+  private readonly eventOfficeUrl: string;
   events: Event[];
   event: Event;
 
@@ -23,6 +24,7 @@ export class EventService {
   constructor(private http: HttpClient) {
     this.eventUrl = '/event/events';
     this.eventPost = '/event/office/event/post';
+    this.eventOfficeUrl = 'event/office/events';
   }
 
   public getEventById(id: number): Observable<Event> {
@@ -44,7 +46,7 @@ export class EventService {
   }
 
   public getEventsByOffice(): Observable<Event[]>{
-    return this.http.get<Event[]>(this.eventUrl).pipe(
+    return this.http.get<Event[]>(this.eventOfficeUrl).pipe(
       catchError(error => {
         return throwError('No Events Found');
       })

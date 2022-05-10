@@ -15,13 +15,11 @@ export class EventDetailComponent implements OnInit {
   id: any;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private eventService: EventService,
-              private imageService: ImageService) {
+              private eventService: EventService) {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
   }
-
 
   getEventById(id: number): Subscription{
     return this.eventService.getEventById(id).subscribe(event => {

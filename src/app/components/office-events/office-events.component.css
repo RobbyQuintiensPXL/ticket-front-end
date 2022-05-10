@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
+#cardViews{
+  padding-top: 20px;
+}
+
+fa-icon{
+  float: left;
+  margin-right: 0.7rem;
+}
+
+mat-grid-tile{
+  min-width: 170px;
+  overflow: visible;
+}
+
+mat-grid-list{
+  column-rule-style: inherit;
+}
+
+
+.example-card {
+  min-width: 170px;
+  max-width: 170px;
+  min-height: 200px;
+  box-shadow: none;
+  border-radius: 20px;
+}
+
+.content {
+  margin-top: -10px;
+  margin-left: -10px;
+  color: #5E5E5E;
+}
+
+.content h2{
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  color: #000;
+}
+
+.content p{
+  font-family: "Poppins", sans-serif;
+  margin: 0.1rem 0 0 0 ;
+}
+
+.location{
+  height: 5px;
+}
+
+.tag{
+  background-color: #EF991B;
+  border-radius: 10px;
+  position: absolute;
+  margin-top: -170px;
+  width: 75px;
+  text-align: center;
+  padding: 0.15rem 0 0.15rem 0 ;
+  color: #fff;
+}
+
+.eventThumb{
+  border-radius: 20px 20px;
+  overflow: hidden;
+  height: 170px;
+}
+
