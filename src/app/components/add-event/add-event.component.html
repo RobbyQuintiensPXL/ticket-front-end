@@ -29,13 +29,13 @@
             </label>
 
             <label for="event-type">Event Type: </label>
-            <select id="event-type" formControlName="eventType">
+            <select id="event-type" [ngModel]="eventType" [ngModelOptions]="{standalone: true}">
               <option value="" disabled selected>Event Type..</option>
               <option *ngFor="let eventType of eventTypes" [value]="eventType">{{eventType}}</option>
             </select>
 
             <label for="full-description">Location: </label>
-            <select id="location" formControlName="eventLocation">
+            <select id="location" [ngModel]="location" [ngModelOptions]="{standalone: true}">
               <option value="" disabled selected>Location..</option>
               <option *ngFor="let location of locations"
                       [value]="location.id">{{location.buildingName}} {{location.city}}</option>

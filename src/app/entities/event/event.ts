@@ -14,7 +14,7 @@ export class Event {
   price?: number;
   ticketsLeft: number;
   banner: string;
-  thumbnail: string;
+  thumb: string;
 
 
   constructor(args?: Event) {
@@ -29,6 +29,6 @@ export class Event {
     this.price = args?.price;
     this.ticketsLeft = args?.ticketsLeft;
     this.banner = args?.banner;
-    this.thumbnail = args?.thumbnail;
+    this.thumb = args?.thumb;
   }
 }

@@ -43,16 +43,9 @@ export class EventService {
     );
   }
 
-  public createEvent(eventFormData: any, bannerImage: File, thumbImage: File){
+  public createEvent(event: Event): Observable<Event>{
     const endpoint = this.eventPost;
-    const body = JSON.stringify(eventFormData);
-    const formData = new FormData();
-    formData.append('banner', bannerImage);
-    formData.append('thumb', thumbImage);
-    formData.append('eventResource', new Blob([body], { type: 'application/json'}));
-    return this.http.post<Event>(endpoint, formData).subscribe(
-      (res) => console.log(res),
-      (error) => console.log(error)
-    );
+    const body = JSON.stringify(event);
+    return this.http.post<Event>(endpoint, body, this.httpOptions);
   }
 }

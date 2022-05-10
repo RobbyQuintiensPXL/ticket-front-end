@@ -3,9 +3,6 @@ import {EventService} from '../../services/event-service/event.service';
 import {Event} from '../../entities/event/event';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
-import {LocationService} from '../../services/location-service/location.service';
-import {Location} from '../../entities/location/location';
-import {ImageService} from '../../services/image-service/image.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -15,15 +12,14 @@ import {ImageService} from '../../services/image-service/image.service';
 export class EventDetailComponent implements OnInit {
   event: Event;
   id: any;
-  image: string;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private eventService: EventService,
-              private imageService: ImageService) {
+              private eventService: EventService) {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
   }
+
 
   getEventById(id: number): Subscription{
     return this.eventService.getEventById(id).subscribe(event => {
