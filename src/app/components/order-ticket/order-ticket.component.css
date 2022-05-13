@@ -1,0 +1,20 @@
+.small-input{
+  width: 30%;
+  float: left;
+  padding-bottom: 0.5rem;
+}
+
+.city-input{
+  width: 60%;
+  float: right;
+  right: 0;
+  padding-bottom: 0.5rem;
+}
+
+.ticket-info{
+
+}
+
+.ticket-payment{
+
+}

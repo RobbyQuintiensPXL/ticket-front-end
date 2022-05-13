@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="content">
+    <form [formGroup]="orderTicketGroup">
+      <div class="ticket-info">
+        <label for="name">Name: </label>
+        <input id="name" type="text" formControlName="name" required>
+
+        <label for="first-name">First Name: </label>
+        <input id="first-name" type="text" formControlName="firstName" required>
+
+        <label for="address">Address: </label>
+        <input id="address" type="text" formControlName="address" required>
+
+        <div class="small-input">
+          <label for="location-zip">ZIP code: </label>
+          <input id="location-zip" type="number" formControlName="locationZip" required>
+
+          <!--Validation-->
+<!--          <div *ngIf="locationZip.invalid && (locationZip.dirty || locationZip.touched)"
+               class="alert alert-danger">
+            <div *ngIf="locationZip.errors.required">
+              ZIP code is required.
+            </div>
+            <div *ngIf="locationZip.errors.minlength">
+              ZIP code must must be at least 4 characters long.
+            </div>
+          </div>-->
+        </div>
+        <div class="city-input">
+          <label for="location-city">City: </label>
+          <input id="location-city" type="text" formControlName="locationCity" required>
+
+          <!--Validation-->
+          <!--<div *ngIf="locationCity.invalid && (locationCity.dirty || locationCity.touched)"
+               class="alert alert-danger">
+            <div *ngIf="locationCity.errors.required">
+              City is required.
+            </div>
+            <div *ngIf="locationCity.errors.minlength">
+              City must must be at least 3 characters long.
+            </div>
+            <div *ngIf="locationCity.errors.pattern">
+              City cannot contain numbers or special characters.
+            </div>
+          </div>-->
+        </div>
+
+        <label for="email">Email: </label>
+        <input id="email" type="text" formControlName="email" required>
+
+        <label for="conf-email">Confirm Email: </label>
+        <input id="conf-email" type="text" formControlName="confEmail" required>
+
+        <label for="amount-ticket"># Tickets: </label>
+        <input id="amount-ticket" type="text" formControlName="amountTicket" required>
+
+      </div>
+      <div class="ticket-payment">
+
+      </div>
+    </form>
+  </div>
+</div>

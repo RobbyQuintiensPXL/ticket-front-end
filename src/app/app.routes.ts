@@ -5,6 +5,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {AddEventComponent} from './components/add-event/add-event.component';
 import {AuthGuard} from './auth/auth.guard';
 import {OfficeHomeComponent} from './components/office-home/office-home.component';
+import {EventDetailPageComponent} from './components/event-detail-page/event-detail-page.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'events/:id',
-    component: EventDetailComponent,
+    component: EventDetailPageComponent,
   },
   {
     path: 'search',

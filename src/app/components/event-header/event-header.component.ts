@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {EventService} from '../../services/event-service/event.service';
+import { Component, OnInit } from '@angular/core';
 import {Event} from '../../entities/event/event';
-import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
+import {EventService} from '../../services/event-service/event.service';
+import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-event-detail',
-  templateUrl: './event-detail.component.html',
-  styleUrls: ['./event-detail.component.css']
+  selector: 'app-event-header',
+  templateUrl: './event-header.component.html',
+  styleUrls: ['./event-header.component.css']
 })
-export class EventDetailComponent implements OnInit {
+export class EventHeaderComponent implements OnInit {
   event: Event;
   id: any;
 

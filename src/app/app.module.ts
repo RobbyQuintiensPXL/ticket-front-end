@@ -30,6 +30,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {OfficeEventsComponent} from './components/office-events/office-events.component';
 import {OfficeHomeComponent} from './components/office-home/office-home.component';
+import { OrderTicketComponent } from './components/order-ticket/order-ticket.component';
+import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page.component';
+import { EventHeaderComponent } from './components/event-header/event-header.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,10 @@ import {OfficeHomeComponent} from './components/office-home/office-home.componen
     AddEventComponent,
     OfficeEventsComponent,
     OfficeHomeComponent,
+    OrderTicketComponent,
+    EventDetailPageComponent,
+    EventHeaderComponent,
+    EventDetailComponent,
   ],
   imports: [
     BrowserModule,
