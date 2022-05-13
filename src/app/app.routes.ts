@@ -4,7 +4,6 @@ import {EventDetailComponent} from './components/event-detail/event-detail.compo
 import {ProfileComponent} from './components/profile/profile.component';
 import {AddEventComponent} from './components/add-event/add-event.component';
 import {AuthGuard} from './auth/auth.guard';
-import {OfficeEventsComponent} from './components/office-events/office-events.component';
 import {OfficeHomeComponent} from './components/office-home/office-home.component';
 
 
@@ -40,8 +39,8 @@ const routes: Routes = [
     },
     canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'search', pathMatch: 'full' },
-      { path: 'search', component: OfficeHomeComponent },
+      {path: '', redirectTo: 'search', pathMatch: 'full'},
+      {path: 'search', component: OfficeHomeComponent},
     ]
   },
 ];
