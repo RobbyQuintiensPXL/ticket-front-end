@@ -220,15 +220,11 @@
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
         <mat-list>
           <mat-list-item><strong>Event: </strong> {{ this.eventInfoGroup.value.nameEvent }}</mat-list-item>
           <mat-list-item><strong>Event Type: </strong> {{ this.eventInfoGroup.value.eventType }}</mat-list-item>
           <mat-list-item><strong>Banner Name: </strong> {{ this.eventInfoGroup.value.bannerImage }}</mat-list-item>
-          <mat-list-item><strong>Full Description: </strong> {{ this.eventDescriptionGroup.value.fullDescription }}
-          </mat-list-item>
-          <mat-list-item><strong>Short Description: </strong> {{ this.eventDescriptionGroup.value.shortDescription }}
-          </mat-list-item>
+          <mat-list-item><strong>Thumbnail Name: </strong> {{ this.eventInfoGroup.value.thumbnail }}</mat-list-item>
         </mat-list>
         <div>
           <button mat-button matStepperPrevious>Back</button>

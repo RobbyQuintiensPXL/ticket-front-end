@@ -1,20 +1,131 @@
+@media screen and (max-width: 800px) {
+  .flex-container{
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+  }
+  .ticket-info, .content-location{
+    width: 100%;
+    clear: both;
+    padding: 0;
+  }
+}
+
+.container{
+  margin-top: -3rem;
+}
+
+.content{
+  width: 45%;
+  min-width: 400px;
+  margin: 0 auto;
+  overflow: auto;
+  left: 0;
+}
+
+.title{
+  padding-top: 2rem;
+}
+
+.title h4{
+  color: #250BCE;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+
+.flex-container{
+  display:flex;
+  justify-content: center;
+  gap: 5%;
+}
+
+.ticket-info{
+  width: 100%;
+  flex-grow: 2;
+}
+
+.content-location{
+  width: 100%;
+  flex-grow: 1;
+}
+
+label{
+  display: inline-block;
+  padding-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+input{
+  width: 100%;
+  padding: 0.2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+select{
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  display: inline-block;
+}
+
+.form-buttons{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+}
+
+.form-buttons input{
+  width: 40%;
+  cursor: pointer;
+}
+
+.button-next{
+  background-color: #250BCE;
+  width: 10rem;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  min-height: 35px;
+}
+
+.button-back{
+  background-color: #cecece;
+  width: 10rem;
+  color: #000;
+  border-radius: 5px;
+  border: none;
+  min-height: 35px;
+}
+
+.optional{
+  display: block;
+  font-style: italic;
+  color: #949494;
+  border-bottom: 1px #949494 solid;
+  margin-top: 2rem;
+  padding-bottom: -1rem;
+}
+
 .small-input{
   width: 30%;
   float: left;
   padding-bottom: 0.5rem;
 }
 
-.city-input{
+.right-input{
   width: 60%;
   float: right;
   right: 0;
   padding-bottom: 0.5rem;
 }
 
-.ticket-info{
-
+button:disabled{
+  background-color: #cecece;
 }
 
-.ticket-payment{
-
-}

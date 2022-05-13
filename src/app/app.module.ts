@@ -33,6 +33,7 @@ import {OfficeHomeComponent} from './components/office-home/office-home.componen
 import { OrderTicketComponent } from './components/order-ticket/order-ticket.component';
 import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page.component';
 import { EventHeaderComponent } from './components/event-header/event-header.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { EventHeaderComponent } from './components/event-header/event-header.com
     EventDetailPageComponent,
     EventHeaderComponent,
     EventDetailComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

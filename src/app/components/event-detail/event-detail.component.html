@@ -1,34 +1,42 @@
 <div id="content">
-  <div class="content-container">
-    <div id="content-description">
-      <h4>Description</h4>
-      <p>{{event.description}}</p>
+  <container-element [ngSwitch]="orderTrueOutput">
+    <div *ngSwitchCase="false">
+      <div class="content-container">
+        <div id="content-description">
+          <h4>Description</h4>
+          <p>{{event.description}}</p>
+        </div>
+        <div id="content-date">
+          <h4>Date</h4>
+          <p>{{event.eventDate}}</p>
+          <p>{{event.eventTime}}</p>
+        </div>
+      </div>
+      <div id="content-tickets">
+        <h4>Tickets</h4>
+        <div class="tickets-buy" (click)="setValue(true)">
+          <p>TICKETS</p>
+        </div>
+        <div class="tickets-price">
+          <p>Starting from <span class="price">{{event.price}}</span> EUR</p>
+        </div>
+        <div class="tickets-left">
+          <p>Only {{event.ticketsLeft}} Tickets Left</p>
+        </div>
+      </div>
+      <div id="content-location">
+        <h4>Location</h4>
+        <p>{{event.location.buildingName}}</p>
+        <p>{{event.location.address}}</p>
+        <p>{{event.location.zipCode}} {{event.location.city}}</p>
+        <p>{{event.location.country}}</p>
+      </div>
     </div>
-    <div id="content-date">
-      <h4>Date</h4>
-      <p>{{event.eventDate}}</p>
-      <p>{{event.eventTime}}</p>
+    <div *ngSwitchCase="true">
+      <app-order-ticket *ngIf="isLoggedIn"></app-order-ticket>
+      <app-login *ngIf="!isLoggedIn"></app-login>
     </div>
-  </div>
-  <div id="content-tickets">
-    <h4>Tickets</h4>
-    <div class="tickets-buy">
-      <p>TICKETS</p>
-    </div>
-    <div class="tickets-price">
-      <p>Starting from <span class="price">{{event.price}}</span> EUR</p>
-    </div>
-    <div class="tickets-left">
-      <p>Only {{event.ticketsLeft}} Tickets Left</p>
-    </div>
-  </div>
-  <div id="content-location">
-    <h4>Location</h4>
-    <p>{{event.location.buildingName}}</p>
-    <p>{{event.location.address}}</p>
-    <p>{{event.location.zipCode}} {{event.location.city}}</p>
-    <p>{{event.location.country}}</p>
-  </div>
+  </container-element>
 </div>
 
 <!--Recommended Events-->

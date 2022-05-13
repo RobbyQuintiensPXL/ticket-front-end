@@ -60,7 +60,7 @@ input, textarea{
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
   display: inline-block;
   box-sizing: border-box;
 }
@@ -70,7 +70,7 @@ input, textarea{
   text-align: center;
   padding: 0.15rem 0.25rem 0.15rem 0.25rem;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px #EF991B solid;
   font-size: 10pt;
   box-sizing: border-box;
@@ -80,7 +80,7 @@ input, textarea{
 select{
   padding: 0.5rem;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #ccc;
   resize: vertical;
   display: inline-block;

@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {EventService} from '../../services/event-service/event.service';
+import {Component, Input, OnInit} from '@angular/core';
 import {Event} from '../../entities/event/event';
-import {Subscription} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import {KeycloakProfile} from 'keycloak-js';
+import {KeycloakService} from 'keycloak-angular';
 
 @Component({
   selector: 'app-event-detail',
@@ -10,24 +9,25 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./event-detail.component.css']
 })
 export class EventDetailComponent implements OnInit {
-  event: Event;
-  id: any;
+  @Input() event: Event;
+  orderTrueOutput = false;
+  detail: any;
+  public isLoggedIn = false;
+  public userProfile: KeycloakProfile | null = null;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private eventService: EventService) {
-    this.activatedRoute.paramMap.subscribe(params => {
-      this.id = params.get('id');
-    });
+  constructor(private readonly keycloak: KeycloakService) {
   }
 
-  getEventById(id: number): Subscription {
-    return this.eventService.getEventById(id).subscribe(event => {
-      this.event = event;
-    });
+  setValue(order: boolean) {
+    this.orderTrueOutput = order;
   }
 
-  ngOnInit(): void {
-    this.getEventById(this.id);
+  public async ngOnInit() {
+    this.isLoggedIn = await this.keycloak.isLoggedIn();
+
+    if (this.isLoggedIn) {
+      this.userProfile = await this.keycloak.loadUserProfile();
+    }
   }
 
 }

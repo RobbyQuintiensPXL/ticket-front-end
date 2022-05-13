@@ -6,6 +6,7 @@ import {AddEventComponent} from './components/add-event/add-event.component';
 import {AuthGuard} from './auth/auth.guard';
 import {OfficeHomeComponent} from './components/office-home/office-home.component';
 import {EventDetailPageComponent} from './components/event-detail-page/event-detail-page.component';
+import {OrderTicketComponent} from './components/order-ticket/order-ticket.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'events/:id',
+    pathMatch: 'full',
     component: EventDetailPageComponent,
   },
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
     component: AddEventComponent,
     data: {
       roles: ['jevents-office']
+    },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'order',
+    component: OrderTicketComponent,
+    data: {
+      roles: ['jevents-user']
     },
     canActivate: [AuthGuard],
   },
