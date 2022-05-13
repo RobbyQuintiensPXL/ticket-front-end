@@ -35,19 +35,14 @@ const routes: Routes = [
   },
   {
     path: 'office-home',
-    component: OfficeHomeComponent,
     data: {
       roles: ['jevents-office']
     },
     canActivate: [AuthGuard],
-  },
-  {
-    path: 'office-home/search',
-    component: OfficeHomeComponent,
-    data: {
-      roles: ['jevents-office']
-    },
-    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: 'search', pathMatch: 'full' },
+      { path: 'search', component: OfficeHomeComponent },
+    ]
   },
 ];
 

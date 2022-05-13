@@ -24,17 +24,25 @@ export class EventService {
   constructor(private http: HttpClient) {
     this.eventUrl = '/event/events';
     this.eventPost = '/event/office/event/post';
-    this.eventOfficeUrl = 'event/office/events';
+    this.eventOfficeUrl = 'event/office';
   }
 
   public getEventById(id: number): Observable<Event> {
     const endpoint =  this.eventUrl + '/' + id;
-    return this.http.get<Event>(endpoint);
+    return this.http.get<Event>(endpoint).pipe(
+      catchError(error => {
+        return throwError('No Events Found');
+      })
+    );
   }
 
   public getEventsByType(type: string): Observable<Event[]> {
     const endpoint = this.eventUrl + '/search?type=' + type;
-    return this.http.get<Event[]>(endpoint);
+    return this.http.get<Event[]>(endpoint).pipe(
+      catchError(error => {
+        return throwError('No Events Found');
+      })
+    );
   }
 
   public getEvents(): Observable<Event[]> {
@@ -46,7 +54,15 @@ export class EventService {
   }
 
   public getEventsByOffice(): Observable<Event[]>{
-    return this.http.get<Event[]>(this.eventOfficeUrl).pipe(
+    return this.http.get<Event[]>(this.eventOfficeUrl + '/events').pipe(
+      catchError(error => {
+        return throwError('No Events Found');
+      })
+    );
+  }
+
+  public getEventsByOfficeAndType(type: string): Observable<Event[]>{
+    return this.http.get<Event[]>(this.eventOfficeUrl + '/search?type=' + type).pipe(
       catchError(error => {
         return throwError('No Events Found');
       })

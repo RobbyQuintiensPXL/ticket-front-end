@@ -20,10 +20,6 @@ export class FilterTypeComponent implements OnInit {
     });
   }
 
-  msgType(type: string) {
-    this.typeOutput.emit(type = this.eventType);
-  }
-
   ngOnInit(): void {
     this.listAllEventTypes();
   }

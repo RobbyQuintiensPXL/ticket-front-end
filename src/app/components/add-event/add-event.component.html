@@ -21,7 +21,7 @@
 
             <label for="banner-image">Banner: </label>
             <label class="btn-image">
-              <i class="fa fa-image"></i>Add Banner Image
+              <em class="fa fa-image"></em>Add Banner Image
               <input id="banner-image" type="file" accept="image/*" style="display: none;"
                      name="banner" formControlName="bannerImage" (change)="imagePreview($event, 'bannergroup')"
                      required>
@@ -40,7 +40,7 @@
 
             <label for="thumb-image">Thumbnail: </label>
             <label class="btn-image" for="thumb-image">
-              <i class="fa fa-image"></i>Add Thumbnail Image
+              <em class="fa fa-image"></em>Add Thumbnail Image
               <input id="thumb-image" type="file" accept="image/*" style="display: none;"
                      name="thumbnail" formControlName="thumbImage" (change)="imagePreview($event, 'thumbgroup')"
                      required>
@@ -90,7 +90,7 @@
             <div class="or-text">OR</div>
 
             <label class="btn-image">
-              <i class="fa fa-image"></i>Add New Location
+              <em class="fa fa-image"></em>Add New Location
               <input id="new-location" (click)="openModalAddLocation(modalForm)" style="display: none;"
                      name="locationsModal">
             </label>

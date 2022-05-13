@@ -30,7 +30,7 @@ input{
   display: none;
 }
 
-input:checked  test{
+input:checked{
   background-color: rgba(37, 11, 206, 0.7);
   border-radius: 20px;
   width: auto;

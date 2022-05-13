@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Event} from '../../entities/event/event';
 import {faCalendarAlt} from '@fortawesome/free-regular-svg-icons';
 import {faSearchLocation} from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +10,7 @@ import {EventService} from '../../services/event-service/event.service';
   templateUrl: './office-events.component.html',
   styleUrls: ['./office-events.component.css']
 })
-export class OfficeEventsComponent implements OnInit {
+export class OfficeEventsComponent implements OnChanges {
   event: Event;
   events: Event[];
   faSearchLocation = faSearchLocation;
@@ -33,8 +33,19 @@ export class OfficeEventsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.getEventsByOffice();
+  getEventsByOfficeAndType(type: string): void {
+    this.eventService.getEventsByOfficeAndType(type).subscribe(event => {
+      this.events = event;
+    });
+  }
+
+  ngOnChanges(): void {
+    this.typeString = this.activatedRoute.snapshot.queryParamMap.get('type');
+    if (this.typeString === 'all') {
+      this.getEventsByOffice();
+    } else {
+      this.getEventsByOfficeAndType(this.typeString);
+    }
   }
 
 }
