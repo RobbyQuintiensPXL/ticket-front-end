@@ -35,7 +35,7 @@
     "get-google-fonts": "^1.2.2",
     "jquery": "^3.6.0",
     "keycloak-angular": "^9.1.0",
-    "keycloak-js": "^16.1.1",
+    "keycloak-js": "^18.0.0",
     "node-fetch": "^2.6.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

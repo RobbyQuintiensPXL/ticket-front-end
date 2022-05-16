@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public logout() {
-    this.keycloak.logout().then(() => this.keycloak.clearToken());
+    this.keycloak.logout(window.location.origin).then(() => this.keycloak.clearToken());
   }
 
 }
