@@ -1,67 +1,114 @@
 <div class="container">
-  <div class="content">
-    <form [formGroup]="orderTicketGroup">
+  <form [formGroup]="orderTicketGroup">
+    <div class="content">
       <div class="ticket-info">
+        <h4>Order</h4>
         <label for="name">Name: </label>
         <input id="name" type="text" formControlName="name" required>
+
+        <!--Validation-->
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+             class="alert alert-danger">
+          <div *ngIf="name.errors.required">
+            Name is required.
+          </div>
+        </div>
 
         <label for="first-name">First Name: </label>
         <input id="first-name" type="text" formControlName="firstName" required>
 
+        <!--Validation-->
+        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+             class="alert alert-danger">
+          <div *ngIf="firstName.errors.required">
+            First name is required.
+          </div>
+        </div>
+
         <label for="address">Address: </label>
         <input id="address" type="text" formControlName="address" required>
 
-        <div class="small-input">
-          <label for="location-zip">ZIP code: </label>
-          <input id="location-zip" type="number" formControlName="locationZip" required>
-
-          <!--Validation-->
-          <!--          <div *ngIf="locationZip.invalid && (locationZip.dirty || locationZip.touched)"
-                         class="alert alert-danger">
-                      <div *ngIf="locationZip.errors.required">
-                        ZIP code is required.
-                      </div>
-                      <div *ngIf="locationZip.errors.minlength">
-                        ZIP code must must be at least 4 characters long.
-                      </div>
-                    </div>-->
+        <!--Validation-->
+        <div *ngIf="address.invalid && (address.dirty || address.touched)"
+             class="alert alert-danger">
+          <div *ngIf="address.errors.required">
+            Address is required.
+          </div>
         </div>
-        <div class="right-input">
-          <label for="location-city">City: </label>
-          <input id="location-city" type="text" formControlName="locationCity" required>
 
-          <!--Validation-->
-          <!--<div *ngIf="locationCity.invalid && (locationCity.dirty || locationCity.touched)"
-               class="alert alert-danger">
-            <div *ngIf="locationCity.errors.required">
-              City is required.
+        <div class="city-and-zip">
+          <div class="small-input">
+            <label for="location-zip">ZIP code: </label>
+            <input id="location-zip" type="number" formControlName="zipCode" required>
+
+            <!--Validation-->
+            <div *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="zipCode.errors.required">
+                ZIP code is required.
+              </div>
             </div>
-            <div *ngIf="locationCity.errors.minlength">
-              City must must be at least 3 characters long.
+
+          </div>
+          <div class="right-input">
+            <label for="location-city">City: </label>
+            <input id="location-city" type="text" formControlName="city" required>
+
+            <!--Validation-->
+            <div *ngIf="city.invalid && (city.dirty || city.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="city.errors.required">
+                City is required.
+              </div>
+              <div *ngIf="city.errors.minlength">
+                City must must be at least 3 characters long.
+              </div>
+              <div *ngIf="city.errors.pattern">
+                City cannot contain numbers or special characters.
+              </div>
             </div>
-            <div *ngIf="locationCity.errors.pattern">
-              City cannot contain numbers or special characters.
-            </div>
-          </div>-->
+          </div>
         </div>
 
         <label for="email">Email: </label>
         <input id="email" type="text" formControlName="email" required>
 
+        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+             class="alert alert-danger">
+          <div *ngIf="email.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="email.errors.pattern">
+            Email format is wrong.
+          </div>
+        </div>
+
         <label for="conf-email">Confirm Email: </label>
         <input id="conf-email" type="text" formControlName="confEmail" required>
 
+        <div *ngIf="confEmail.invalid && (confEmail.dirty || confEmail.touched)"
+             class="alert alert-danger">
+          <div *ngIf="confEmail.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="confEmail.errors.mustMatch">
+            Confirm email must match email.
+          </div>
+        </div>
+
         <label for="amount-ticket"># Tickets: </label>
-        <input id="amount-ticket" type="text" formControlName="amountTicket" required>
+        <input id="amount-ticket" type="number" formControlName="amountTicket" required>
 
+        <div class="form-buttons">
+          <button class="button-back" mat-button>Back</button>
+          <button class="button-next" [disabled]="orderTicketGroup.invalid" mat-button>Submit</button>
+        </div>
       </div>
+
       <div class="ticket-payment">
+        <h4>Payment methods</h4>
+      </div>
+    </div>
+  </form>
 
-      </div>
-      <div>
-        <button mat-button >Back</button>
-        <button mat-button >Submit</button>
-      </div>
-    </form>
-  </div>
 </div>

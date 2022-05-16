@@ -1,5 +1,4 @@
 #content{
-  padding-left: 5rem;
   padding-top: 2rem;
   margin-top: -7rem;
   background-color: #F3F3F3;
@@ -11,7 +10,6 @@
 #content-description, #content-date{
   margin-bottom: 3rem;
 }
-
 
 #content h4{
   color: #250BCE;
@@ -33,6 +31,12 @@
 .content-container{
   width: 55%;
   float: left;
+  padding-left: 5rem;
+}
+
+.ticket-container{
+  width: 100%;
+  padding-left: -2rem;
 }
 
 .tickets-left{

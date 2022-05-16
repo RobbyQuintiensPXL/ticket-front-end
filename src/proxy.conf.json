@@ -1,5 +1,5 @@
 {
-  "/event/*": {
+  "/event/**": {
     "target": "http://localhost:9080/",
     "secure": true,
     "logLevel": "debug",

@@ -32,7 +32,7 @@
         <p>{{event.location.country}}</p>
       </div>
     </div>
-    <div *ngSwitchCase="true">
+    <div *ngSwitchCase="true" class="ticket-container">
       <app-order-ticket *ngIf="isLoggedIn"></app-order-ticket>
       <app-login *ngIf="!isLoggedIn"></app-login>
     </div>
