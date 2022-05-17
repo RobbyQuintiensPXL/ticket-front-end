@@ -70,6 +70,23 @@
           </div>
         </div>
 
+        <label for="location-country">Country: </label>
+        <input id="location-country" type="text" formControlName="country" required>
+
+        <!--Validation-->
+        <div *ngIf="country.invalid && (country.dirty || country.touched)"
+             class="alert alert-danger">
+          <div *ngIf="country.errors.required">
+            Country is required.
+          </div>
+          <div *ngIf="country.errors.minlength">
+            Country must must be at least 3 characters long.
+          </div>
+          <div *ngIf="country.errors.pattern">
+            Country cannot contain numbers or special characters.
+          </div>
+        </div>
+
         <label for="email">Email: </label>
         <input id="email" type="text" formControlName="email" required>
 
@@ -101,7 +118,7 @@
 
         <div class="form-buttons">
           <button class="button-back" mat-button>Back</button>
-          <button class="button-next" [disabled]="orderTicketGroup.invalid" mat-button>Submit</button>
+          <button class="button-next" [disabled]="orderTicketGroup.invalid" (click)="submit()" mat-button>Submit</button>
         </div>
       </div>
 

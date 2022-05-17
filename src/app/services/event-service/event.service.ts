@@ -15,12 +15,6 @@ export class EventService {
   events: Event[];
   event: Event;
 
-  httpOptions = {
-    headers: new HttpHeaders()
-      .set('Content-Type', 'multipart/form-data')
-      .set('Access-Control-Allow-Origin', '*')
-  };
-
   constructor(private http: HttpClient) {
     this.eventUrl = '/event/events';
     this.eventPost = '/event/office/event/post';
