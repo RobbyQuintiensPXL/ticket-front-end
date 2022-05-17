@@ -32,6 +32,7 @@ export class AddEventComponent implements OnInit {
   eventFormData: any;
   bannerFile: any;
   thumbFile: any;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder,
               private eventTypeService: EventTypeService,
@@ -147,6 +148,7 @@ export class AddEventComponent implements OnInit {
     this.createEvent();
     console.log(this.eventFormData);
     this.eventService.createEvent(this.eventFormData, this.bannerFile, this.thumbFile);
+    this.submitted = true;
   }
 
   openModalAddLocation(addContent) {

@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { KeycloakInitService } from './keycloak-init.service';
 
 describe('KeycloakInitService', () => {
-  let service: KeycloakInitService;
+  let service: typeof KeycloakInitService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
