@@ -1,10 +1,10 @@
-import {Component, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {Event} from '../../entities/event/event';
 import {EventService} from '../../services/event-service/event.service';
 import {faSearchLocation} from '@fortawesome/free-solid-svg-icons';
 import {faCalendarAlt} from '@fortawesome/free-regular-svg-icons';
-import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
+import {MediaObserver} from '@angular/flex-layout';
 
 
 @Component({
@@ -50,5 +50,6 @@ export class EventCardComponent implements OnChanges {
       this.getEventsByType(this.typeString);
     }
   }
+
 
 }

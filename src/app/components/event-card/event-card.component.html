@@ -1,8 +1,8 @@
 <div id="cardViews">
-  <mat-grid-list cols="4" rowHeight="1:1.2">
-    <mat-grid-tile *ngFor="let event of events" class="test">
+  <div fxLayout="row wrap" fxLayoutGap="25px grid" >
+    <div fxFlex.xs="100%" fxFlex.sm="25%" fxFlex.md="30%" fxFlex.lg="25%" fxFlex.xl="25%" *ngFor="let event of events">
       <div class="cardContainer">
-        <mat-card class="example-card">
+        <mat-card class="event-card">
           <img mat-card-image class="eventThumb" src="event/files/{{event.thumbnail}}"
                alt="{{event.thumbnail}}" [routerLink]="['../events',event.id]">
           <div class="tag">{{event.eventType}}</div>
@@ -15,6 +15,6 @@
           </mat-card-content>
         </mat-card>
       </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div>
+  </div>
 </div>

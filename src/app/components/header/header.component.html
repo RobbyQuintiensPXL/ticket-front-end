@@ -1,11 +1,8 @@
 <mat-toolbar>
   <h1><a [routerLink]="['']">JEvents</a></h1>
-  <input type="text" placeholder="Search...">
   <div class="user-links">
-    <h2><a href="#">Customer Service</a></h2>
     <h2><a *ngIf="!isLoggedIn" (click)="login()">Login</a></h2>
     <h2><a *ngIf="isLoggedIn" (click)="logout()">Logout</a></h2>
-
     <h2><a [routerLink]="['/profile']">Account</a></h2>
   </div>
 </mat-toolbar>

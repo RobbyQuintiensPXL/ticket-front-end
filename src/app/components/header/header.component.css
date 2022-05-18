@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 
+@media screen and (max-width: 768px) {
+  .user-links{
+    visibility: hidden;
+  }
+}
+
 svg{
   width: 100%;
   margin-top: -0.7rem;

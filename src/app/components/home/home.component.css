@@ -1,6 +1,19 @@
+@media screen and (max-width: 992px) {
+  .container {
+    grid-template-columns: none !important;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  app-filter-type{
+    height: 100px;
+  }
+}
+
 .container {
   display: grid;
-  grid-template-columns: 0.5fr 2fr;
+  grid-template-columns: 0.2fr 2fr;
   grid-template-rows: 1fr 10fr;
   grid-template-areas:
     ". filter filter"

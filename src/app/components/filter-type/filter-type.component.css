@@ -1,3 +1,42 @@
+@media screen and (max-width: 992px) {
+  .filterByType{
+    visibility: hidden;
+  }
+
+  .filter-mobile{
+    visibility: visible !important;
+    width: 100%;
+  }
+}
+
+.filter{
+  padding-top:2rem;
+}
+
+.filter-mobile{
+  visibility: hidden;
+  position: absolute;
+  width: 90%;
+  top:2rem;
+}
+
+#eventtype, #sort{
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#sort{
+  width: 25%;
+  float: right;
+}
+
+#eventtype{
+  width: 45%;
+  float: left;
+  margin-left: 2rem;
+}
+
 .filterByType{
   position: relative;
 }
