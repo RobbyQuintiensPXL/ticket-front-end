@@ -1,9 +1,38 @@
+@media screen and (max-width: 767px) {
+  #header-image{
+    height: 10rem !important;
+  }
+
+  #tag{
+    margin: 2rem 0 0 1.5rem !important;
+  }
+
+  #header-info{
+    margin-left: 1.5rem !important;
+  }
+
+  #header-date{
+    right: 2rem !important;
+  }
+
+  #header-image img{
+  }
+
+  h2{
+    font-size: 25px !important;
+  }
+
+  h3 {
+    font-size: 15px !important;
+  }
+}
+
 #header-image{
   background-color: black;
   height: 14rem;
   color: #fff;
   position: relative;
-  top: -7rem;
+  top: -8rem;
   z-index: -1;
 }
 

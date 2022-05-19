@@ -13,8 +13,8 @@
   </div>
 </div>
 <div class="filter-mobile">
-  <select id="eventtype">
-    <option value="All">All Events</option>
+  <select id="eventtype" (change)="typeSelected($event)">
+    <option value="all">All Events</option>
     <option *ngFor="let eventType of eventTypes">{{eventType}}</option>
   </select>
   <select id="sort">

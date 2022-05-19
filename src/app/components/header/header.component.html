@@ -11,3 +11,17 @@
         d="m0.33694,21.78266c189.33339,10.66667 302.51291,34.89322 502.13391,35.44673c199.621,0.55351 462.85477,-42.88445 1000.51889,-44.14883c537.66406,-1.26437 9.01086,-17.61203 9.01062,-17.1724c0.00024,-0.43963 -1513.9967,-3.07722 -1511.99426,-2.63759c-2.00246,-0.43963 -37.67707,23.2657 -56.66913,41.8454l56.99997,-13.33331z"
         opacity="NaN"/>
 </svg>
+
+<div class="hamburger-menu">
+  <input id="menu__toggle" type="checkbox" />
+  <label class="menu__btn" for="menu__toggle">
+    <span></span>
+  </label>
+
+  <ul class="menu__box">
+    <li><a class="menu__item" href="#">Home</a></li>
+    <li><a class="menu__item" *ngIf="!isLoggedIn" (click)="login()">Login</a></li>
+    <li><a class="menu__item" *ngIf="isLoggedIn" (click)="logout()">Logout</a></li>
+    <li><a class="menu__item" [routerLink]="['/profile']">Account</a></li>
+  </ul>
+</div>

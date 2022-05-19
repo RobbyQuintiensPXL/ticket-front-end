@@ -5,7 +5,6 @@
 
   .filter-mobile{
     visibility: visible !important;
-    width: 100%;
   }
 }
 
@@ -29,12 +28,13 @@
 #sort{
   width: 25%;
   float: right;
+  margin-right: 2rem;
 }
 
 #eventtype{
   width: 45%;
   float: left;
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 
 .filterByType{

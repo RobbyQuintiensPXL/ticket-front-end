@@ -34,6 +34,7 @@ import { OrderTicketComponent } from './components/order-ticket/order-ticket.com
 import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page.component';
 import { EventHeaderComponent } from './components/event-header/event-header.component';
 import { LoginComponent } from './components/login/login.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -53,30 +54,31 @@ import { LoginComponent } from './components/login/login.component';
     EventDetailComponent,
     LoginComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatToolbarModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatInputModule,
-    MatButtonModule,
-    MatListModule,
-    FontAwesomeModule,
-    MatGridListModule,
-    RouterModule,
-    AppRoutes,
-    ReactiveFormsModule,
-    KeycloakAngularModule,
-    MatFormFieldModule,
-    MatStepperModule,
-    NgbModule,
-    FlexLayoutModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatToolbarModule,
+        FormsModule,
+        HttpClientModule,
+        RouterModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatInputModule,
+        MatButtonModule,
+        MatListModule,
+        FontAwesomeModule,
+        MatGridListModule,
+        RouterModule,
+        AppRoutes,
+        ReactiveFormsModule,
+        KeycloakAngularModule,
+        MatFormFieldModule,
+        MatStepperModule,
+        NgbModule,
+        FlexLayoutModule,
+        MatMenuModule,
+    ],
   providers: [
     {
       provide: APP_INITIALIZER,

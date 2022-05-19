@@ -1,6 +1,40 @@
+@media screen and (max-width: 768px) {
+  .content-container{
+    width: 90% !important;
+    float: none !important;
+    padding-left: 1.5rem !important;
+  }
+
+  #content-description{
+    margin-bottom: 1rem !important;
+  }
+
+  #content-date{
+    display: none !important;
+  }
+
+  #content-tickets, #content-location{
+    width: 90% !important;
+    float: none !important;
+    padding-left: 1.5rem !important;
+  }
+
+  .tickets-price{
+    margin: 0 auto !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .tickets-buy, .tickets-left{
+    margin: 0 auto;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+}
+
 #content{
   padding-top: 2rem;
-  margin-top: -7rem;
+  margin-top: -8rem;
   background-color: #F3F3F3;
   padding-bottom: 2rem;
   height: fit-content;
