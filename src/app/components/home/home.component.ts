@@ -7,11 +7,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  currentMsgFromChild1ToChild2: any;
+  msgEvent: any;
+  msgLocation: any;
 
   constructor() { }
 
-  fwdMsgToSib2($event) { this.currentMsgFromChild1ToChild2 = $event; }
+  fwdEvent($event) { this.msgEvent = $event; }
+  fwdLocation($event) { this.msgLocation = $event; }
 
   ngOnInit(): void {
   }

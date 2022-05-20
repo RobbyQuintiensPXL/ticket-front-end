@@ -1,5 +1,5 @@
 <div class="filter">
-  <div class="filterByType">
+  <div class="filterByLocation">
     <ul [ngModel]="location">
       <div>
         <li [routerLink]="['../search']" [queryParams]="{type: 'all'}">
@@ -11,4 +11,10 @@
           [queryParams]="{city: location.city}">{{location.city}}</li>
     </ul>
   </div>
+</div>
+<div class="filter-mobile">
+  <select id="locationType" (change)="locationSelected($event)" >
+    <option value="all">All Locations</option>
+    <option *ngFor="let location of locations" #locationSelect>{{location.city}}</option>
+  </select>
 </div>

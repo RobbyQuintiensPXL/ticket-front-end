@@ -6,26 +6,26 @@
     margin: 0 auto;
   }
 
-  app-filter-type{
+  app-filter-type {
     height: 100px;
+  }
+
+  .filter{
+    border: none !important;
+    height: auto !important;
+    margin-bottom: -3rem !important;
   }
 }
 
-.container {
-  display: grid;
-  grid-template-columns: 0.2fr 2fr;
-  grid-template-rows: 1fr 10fr;
-  grid-template-areas:
-    ". filter filter"
-    ". cardview cardview";
-  top: -4rem;
-  position: relative;
-}
-
 .filter {
-  grid-area: filter;
+  border: solid 1px rgba(94, 94, 94, 0.26);
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  width: 100%;
+  height: 8rem;
+  overflow: hidden;
 }
 
 .cardview {
-  grid-area: cardview;
+  width: 100%;
 }

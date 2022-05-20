@@ -18,6 +18,7 @@ export class EventCardComponent implements OnChanges {
   faSearchLocation = faSearchLocation;
   faCalenderAlt = faCalendarAlt;
   @Input() type!: string;
+  @Input() location!: string;
   typeString: string;
   cityString: string;
   locationString: string;

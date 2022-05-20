@@ -37,6 +37,7 @@ import { LoginComponent } from './components/login/login.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { FilterLocationComponent } from './components/filter-location/filter-location.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     EventDetailComponent,
     LoginComponent,
     FilterLocationComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,9 @@
 <div class="container">
-  <app-filter-type class="filter" (typeOutput)="fwdMsgToSib2($event)"></app-filter-type>
-<!--  <app-filter-location></app-filter-location>-->
-  <app-event-card class="cardview" [type]="currentMsgFromChild1ToChild2"></app-event-card>
+  <app-search-bar class="search"></app-search-bar>
+  <div class="filter">
+    <app-filter-type (typeOutput)="msgEvent($event)"></app-filter-type>
+    <app-filter-location (locationOutput)="msgLocation($event)"></app-filter-location>
+  </div>
+  <app-event-card class="cardview" [type]="msgEvent" [location]="msgLocation"></app-event-card>
   <router-outlet></router-outlet>
 </div>

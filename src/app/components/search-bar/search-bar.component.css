@@ -1,0 +1,16 @@
+.searchbar{
+  width: 100%;
+  position: relative;
+  margin-top: -3rem;
+}
+
+input{
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #AAA;
+  display: block;
+  padding-left: 2rem;
+  margin: 0 auto 1em auto;
+  width: 100%;
+}
+

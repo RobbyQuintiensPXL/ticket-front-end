@@ -12,6 +12,7 @@ export class FilterLocationComponent implements OnInit {
   @Output() locationOutput = new EventEmitter<any>();
   locations: Location[];
   location: Location;
+  selectedLocation: any;
 
   constructor(private locationService: LocationService,
               private router: Router) {
@@ -22,6 +23,12 @@ export class FilterLocationComponent implements OnInit {
       this.locations = location;
     });
   }
+
+  locationSelected(event: any){
+    this.selectedLocation = event.target.value;
+    this.router.navigate(['../search'], {queryParams: {city: this.selectedLocation}});
+  }
+
 
   ngOnInit(): void {
     this.listAllLocations();
