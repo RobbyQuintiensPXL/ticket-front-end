@@ -1,6 +1,28 @@
-
 @media screen and (max-width: 768px) {
+  .container{
+    width: 75% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
 
+  .ticket-payment{
+    display: none !important;
+  }
+
+  .ticket-info{
+    width: 75% !important;
+    flex: none !important;
+  }
+
+  .button-next{
+    min-width: 30px !important;
+    width: 7rem !important;
+  }
+
+  .button-back{
+    min-width: 30px !important;
+    width: 7rem !important;
+  }
 }
 
 .container{

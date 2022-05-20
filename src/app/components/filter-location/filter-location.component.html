@@ -1,0 +1,14 @@
+<div class="filter">
+  <div class="filterByType">
+    <ul [ngModel]="location">
+      <div>
+        <li [routerLink]="['../search']" [queryParams]="{type: 'all'}">
+          <input type="checkbox" id="cb">
+          <label for="cb">All</label>
+        </li>
+      </div>
+      <li *ngFor="let location of locations" [routerLink]="['../search']"
+          [queryParams]="{city: location.city}">{{location.city}}</li>
+    </ul>
+  </div>
+</div>

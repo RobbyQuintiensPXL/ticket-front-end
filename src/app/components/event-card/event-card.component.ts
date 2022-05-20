@@ -4,7 +4,6 @@ import {EventService} from '../../services/event-service/event.service';
 import {faSearchLocation} from '@fortawesome/free-solid-svg-icons';
 import {faCalendarAlt} from '@fortawesome/free-regular-svg-icons';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MediaObserver} from '@angular/flex-layout';
 
 
 @Component({
@@ -20,14 +19,16 @@ export class EventCardComponent implements OnChanges {
   faCalenderAlt = faCalendarAlt;
   @Input() type!: string;
   typeString: string;
+  cityString: string;
+  locationString: string;
+  private obs$: number;
 
   constructor(private activatedRoute: ActivatedRoute,
               private eventService: EventService,
               public router: Router) {
     this.typeString = this.activatedRoute.snapshot.queryParamMap.get('type');
-    this.router.routeReuseStrategy.shouldReuseRoute = function() {
-      return false;
-    };
+    this.cityString = this.activatedRoute.snapshot.queryParamMap.get('city');
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   getEvents(): void {
@@ -42,12 +43,21 @@ export class EventCardComponent implements OnChanges {
     });
   }
 
+  getEventsByTypeAndCity(type: string, city: string): void {
+    this.eventService.getEventsByTypeAndCity(type, city).subscribe(event => {
+      this.events = event;
+    });
+  }
+
   ngOnChanges(): void {
     this.typeString = this.activatedRoute.snapshot.queryParamMap.get('type');
+    this.cityString = this.activatedRoute.snapshot.queryParamMap.get('city');
+    console.log(this.typeString);
+    console.log(this.cityString);
     if (this.typeString === 'all') {
       this.getEvents();
     } else {
-      this.getEventsByType(this.typeString);
+      this.getEventsByTypeAndCity(this.typeString, this.cityString);
     }
   }
 

@@ -1,4 +1,4 @@
-<div id="content">
+<div id="content" *ngIf="event">
   <container-element [ngSwitch]="orderTrueOutput">
     <div *ngSwitchCase="false">
       <div class="content-container">

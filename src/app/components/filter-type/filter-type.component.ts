@@ -27,7 +27,7 @@ export class FilterTypeComponent implements OnInit {
   typeSelected(event: any){
     this.selectedType = event.target.value;
     this.router.navigate(['../search'], {queryParams: {type: this.selectedType}});
-    this.el.nativeElement.value = this.selectedType;
+    this.el.nativeElement.value = this.selectedType.value;
   }
 
   ngOnInit(): void {

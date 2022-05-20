@@ -42,7 +42,7 @@
   right: 0 !important;
 }
 .menu__btn {
-  position: fixed;
+  position: absolute;
   top: 2.5rem;
   right: 3rem;
   width: 26px;

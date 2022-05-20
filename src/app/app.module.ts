@@ -35,6 +35,8 @@ import { EventDetailPageComponent } from './components/event-detail-page/event-d
 import { EventHeaderComponent } from './components/event-header/event-header.component';
 import { LoginComponent } from './components/login/login.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { FilterLocationComponent } from './components/filter-location/filter-location.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -53,32 +55,34 @@ import {MatMenuModule} from '@angular/material/menu';
     EventHeaderComponent,
     EventDetailComponent,
     LoginComponent,
+    FilterLocationComponent,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatCardModule,
-        MatToolbarModule,
-        FormsModule,
-        HttpClientModule,
-        RouterModule,
-        ReactiveFormsModule,
-        MatIconModule,
-        MatInputModule,
-        MatButtonModule,
-        MatListModule,
-        FontAwesomeModule,
-        MatGridListModule,
-        RouterModule,
-        AppRoutes,
-        ReactiveFormsModule,
-        KeycloakAngularModule,
-        MatFormFieldModule,
-        MatStepperModule,
-        NgbModule,
-        FlexLayoutModule,
-        MatMenuModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatToolbarModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatListModule,
+    FontAwesomeModule,
+    MatGridListModule,
+    RouterModule,
+    AppRoutes,
+    ReactiveFormsModule,
+    KeycloakAngularModule,
+    MatFormFieldModule,
+    MatStepperModule,
+    NgbModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    MatPaginatorModule,
+  ],
   providers: [
     {
       provide: APP_INITIALIZER,

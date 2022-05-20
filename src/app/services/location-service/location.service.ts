@@ -29,7 +29,6 @@ export class LocationService {
 
   public getLocations(): Observable<Location[]> {
     return this.http.get<Location[]>(this.locationUrl).pipe(
-      map(locations => locations.map(eventJson => new Location())),
       catchError(error => {
         return throwError('No Locations Found');
       })
@@ -47,7 +46,11 @@ export class LocationService {
   }
 
   public getLocationsByTicketOffice(): Observable<Location[]> {
-    return this.http.get<Location[]>(this.locationUrl + '/office');
+    return this.http.get<Location[]>(this.locationUrl + '/office').pipe(
+      catchError(error => {
+        return throwError('No Locations Found');
+      })
+    );
   }
 
 
