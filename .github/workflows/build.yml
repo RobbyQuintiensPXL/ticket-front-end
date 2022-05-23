@@ -14,9 +14,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install dependencies
-        run: yarn
+        run: npm install -g sonarqube-scanner
       - name: Test and coverage
-        run: yarn test --code-coverage
+        run: sonar-scanner
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
