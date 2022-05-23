@@ -5,6 +5,8 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {Event} from '../../entities/event/event';
 import {Location} from '../../entities/location/location';
 import {HttpResponse} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {subscribeTo} from 'rxjs/internal-compatibility';
 
 describe('EventServiceService', () => {
   let service: EventService;
@@ -87,7 +89,7 @@ describe('EventServiceService', () => {
         expect(events[0]).toEqual(mockEvent);
 
         const request = httpTestingController.expectOne('/event/events/search?type=' + mockEvent.eventType +
-        '&city=' + mockLocation.city);
+          '&city=' + mockLocation.city);
         expect(request.request.method).toEqual('GET');
         expect(request.request.body).toEqual(JSON.stringify(mockEvent));
 
@@ -162,6 +164,36 @@ describe('EventServiceService', () => {
         httpTestingController.verify();
       });
     });*/
+
+    it('should throw an error if no event by id found', () => {
+      const errorResponse = new Error('No Events Found');
+      spyOn(service, 'getEventById').and.returnValue(throwError(errorResponse));
+    });
+
+    it('should throw an error if no event by type found', () => {
+      const errorResponse = new Error('No Events Found');
+      spyOn(service, 'getEventsByType').and.returnValue(throwError(errorResponse));
+    });
+
+    it('should throw an error if no event by type and city found', () => {
+      const errorResponse = new Error('No Events Found');
+      spyOn(service, 'getEventsByTypeAndCity').and.returnValue(throwError(errorResponse));
+    });
+
+    it('should throw an error if no events found', () => {
+      const errorResponse = new Error('No Events Found');
+      spyOn(service, 'getEvents').and.returnValue(throwError(errorResponse));
+    });
+
+    it('should throw an error if no events by office found', () => {
+      const errorResponse = new Error('No Events Found');
+      spyOn(service, 'getEventsByOffice').and.returnValue(throwError(errorResponse));
+    });
+
+    it('should throw an error if no events by office and type found', () => {
+      const errorResponse = new Error('No Events Found');
+      spyOn(service, 'getEventsByOfficeAndType').and.returnValue(throwError(errorResponse));
+    });
 
   });
 });

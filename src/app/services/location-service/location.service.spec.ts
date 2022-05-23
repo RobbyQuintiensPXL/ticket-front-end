@@ -3,6 +3,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {LocationService} from './location.service';
 import {Location} from '../../entities/location/location';
 import {HttpResponse} from '@angular/common/http';
+import {throwError} from 'rxjs';
 
 describe('LocationService', () => {
   let service: LocationService;
@@ -71,6 +72,21 @@ describe('LocationService', () => {
       request.event(expectedResponse);
 
       httpTestingController.verify();
+    });
+
+    it('should throw an error if no locations found', () => {
+      const errorResponse = new Error('No Locations Found');
+      spyOn(service, 'getLocations').and.returnValue(throwError(errorResponse));
+    });
+
+    it('should throw an error if no locations by office found', () => {
+      const errorResponse = new Error('No Locations Found');
+      spyOn(service, 'getLocationsByTicketOffice').and.returnValue(throwError(errorResponse));
+    });
+
+    it('should throw an error if no location created', () => {
+      const errorResponse = new Error('Something wrong');
+      spyOn(service, 'addLocation').and.returnValue(throwError(errorResponse));
     });
   });
 });

@@ -3,6 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {EventTypeService} from './event-type.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {LocationService} from '../location-service/location.service';
+import {throwError} from 'rxjs';
 
 describe('EventTypeService', () => {
   let service: EventTypeService;
@@ -43,6 +44,11 @@ describe('EventTypeService', () => {
 
         httpTestingController.verify();
       });
+    });
+
+    it('should throw an error if no eventtypes found', () => {
+      const errorResponse = new Error('No EventTypes Found');
+      spyOn(service, 'getEventTypes').and.returnValue(throwError(errorResponse));
     });
   });
 });
