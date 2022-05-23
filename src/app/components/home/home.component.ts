@@ -11,11 +11,8 @@ export class HomeComponent implements OnInit {
   msgLocation: any;
 
   constructor() { }
-
-  fwdEvent($event) { this.msgEvent = $event; }
-  fwdLocation($event) { this.msgLocation = $event; }
-
   ngOnInit(): void {
   }
 
 }
+

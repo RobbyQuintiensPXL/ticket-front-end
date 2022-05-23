@@ -37,7 +37,6 @@ export class LocationService {
 
   public addLocation(location: Location): Observable<Location> {
     const body = JSON.stringify(location);
-    console.log(body);
     return this.http.post<Location>(this.locationPost, body, this.httpOptions).pipe(
       catchError(error => {
         return throwError('Something wrong');

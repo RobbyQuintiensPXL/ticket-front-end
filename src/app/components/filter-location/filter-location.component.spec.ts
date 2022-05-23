@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterLocationComponent } from './filter-location.component';
+import {LocationService} from '../../services/location-service/location.service';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 describe('FilterLocationComponent', () => {
   let component: FilterLocationComponent;

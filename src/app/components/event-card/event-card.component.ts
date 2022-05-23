@@ -53,9 +53,7 @@ export class EventCardComponent implements OnChanges {
   ngOnChanges(): void {
     this.typeString = this.activatedRoute.snapshot.queryParamMap.get('type');
     this.cityString = this.activatedRoute.snapshot.queryParamMap.get('city');
-    console.log(this.typeString);
-    console.log(this.cityString);
-    if (this.typeString === 'all') {
+    if (this.typeString === 'all' || this.cityString === 'all') {
       this.getEvents();
     } else {
       this.getEventsByTypeAndCity(this.typeString, this.cityString);
