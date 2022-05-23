@@ -16,7 +16,7 @@ describe('LocationService', () => {
     });
   });
 
-  describe('getAllLocations', () => {
+  describe('LocationService Tests', () => {
     beforeEach(() => {
       service = TestBed.inject(LocationService);
       httpTestingController = TestBed.inject(HttpTestingController);

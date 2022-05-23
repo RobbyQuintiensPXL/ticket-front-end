@@ -18,11 +18,11 @@ describe('EventTypeService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [LocationService]
+      providers: [EventTypeService]
     });
   });
 
-  describe('getAllEventTypes', () => {
+  describe('EventTypeService Tests', () => {
     beforeEach(() => {
       service = TestBed.inject(EventTypeService);
       httpTestingController = TestBed.inject(HttpTestingController);
