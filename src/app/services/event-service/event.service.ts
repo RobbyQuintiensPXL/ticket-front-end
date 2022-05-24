@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Event} from '../../entities/event/event';
-import {catchError} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -60,8 +60,9 @@ export class EventService {
     );
   }
 
-  public getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.eventUrl).pipe(
+  public getEvents(param: any): Observable<any> {
+    return this.http.get<any>(this.eventUrl, {params: param}).pipe(
+      tap(_ => console.log(param)),
       catchError(error => {
         return throwError('No Events Found');
       })

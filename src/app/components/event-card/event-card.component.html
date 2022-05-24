@@ -1,5 +1,5 @@
 <div id="cardViews">
-  <div fxLayout="row wrap" fxLayoutGap="25px grid" >
+  <div fxLayout="row wrap" fxLayoutGap="25px grid">
     <div fxFlex.xs="100%" fxFlex.sm="25%" fxFlex.md="20%" fxFlex.lg="20%" fxFlex.xl="20%"
          *ngFor="let event of events">
       <div class="cardContainer">
@@ -19,9 +19,11 @@
     </div>
   </div>
 </div>
-<mat-paginator *ngIf="events" [length]="events.length"
-               [pageSize]="10"
-               [pageSizeOptions]="[3, 10, 25]"
-               aria-label="Select page">
-<!--  Add datasource-->
+<mat-paginator
+               *ngIf="events" [length]="events.length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               [pageIndex]="currentPage"
+               aria-label="Select page"
+               (page)="handlePage($event)">
 </mat-paginator>
