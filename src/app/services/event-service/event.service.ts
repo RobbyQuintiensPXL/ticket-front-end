@@ -55,16 +55,7 @@ export class EventService {
     );
   }
 
-  public getEventsBySearchTerm(search: any): Observable<any> {
-    const endpoint = this.eventUrl + '/searchterm';
-    return this.http.get<any>(endpoint, {params: search}).pipe(
-      catchError(error => {
-        return throwError('No Events Found');
-      })
-    );
-  }
-
-  public getEventsByTypeAndOrCity(param: any): Observable<any> {
+  public getEventsByTypeAndOrCityAndOrEventName(param: any): Observable<any> {
     const endpoint = this.eventUrl + '/search';
     console.log(param);
     return this.http.get<any>(endpoint, {params: param}).pipe(
