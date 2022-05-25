@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Event} from '../../entities/event/event';
 import {catchError, tap} from 'rxjs/operators';
@@ -30,36 +30,6 @@ export class EventService {
     );
   }
 
-  public getEventsByType(type: string): Observable<Event[]> {
-    const endpoint = this.eventUrl + '/search?type=' + type;
-    return this.http.get<Event[]>(endpoint).pipe(
-      catchError(error => {
-        return throwError('No Events Found');
-      })
-    );
-  }
-
-  public getEventsByTypeAndCity(type?: string, city?: string): Observable<Event[]> {
-    let param = new HttpParams();
-    let endpoint = this.eventUrl;
-
-    if (type || city) {
-      endpoint += '/search';
-    }
-
-    if (type) {
-      param = param.append('type', type);
-    }
-    if (city) {
-      param = param.append('city', city);
-    }
-    return this.http.get<Event[]>(endpoint, {params: param}).pipe(
-      catchError(error => {
-        return throwError('No Events Found');
-      })
-    );
-  }
-
   public getEvents(param: any): Observable<any> {
     return this.http.get<any>(this.eventUrl, {params: param}).pipe(
       tap(_ => console.log(param)),
@@ -79,6 +49,25 @@ export class EventService {
 
   public getEventsByOfficeAndType(type: string): Observable<Event[]> {
     return this.http.get<Event[]>(this.eventOfficeUrl + '/search?type=' + type).pipe(
+      catchError(error => {
+        return throwError('No Events Found');
+      })
+    );
+  }
+
+  public getEventsBySearchTerm(search: any): Observable<any> {
+    const endpoint = this.eventUrl + '/searchterm';
+    return this.http.get<any>(endpoint, {params: search}).pipe(
+      catchError(error => {
+        return throwError('No Events Found');
+      })
+    );
+  }
+
+  public getEventsByTypeAndOrCity(param: any): Observable<any> {
+    const endpoint = this.eventUrl + '/search';
+    console.log(param);
+    return this.http.get<any>(endpoint, {params: param}).pipe(
       catchError(error => {
         return throwError('No Events Found');
       })

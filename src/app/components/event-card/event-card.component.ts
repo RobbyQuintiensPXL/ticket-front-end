@@ -20,9 +20,8 @@ export class EventCardComponent implements OnChanges {
   faCalenderAlt = faCalendarAlt;
   @Input() type!: string;
   @Input() location!: string;
-  typeString: string;
-  cityString: string;
-  pageSize = 5;
+  @Input() search!: string;
+  pageSize = 10;
   pageSizeOptions = [3, 5, 10];
   currentPage = 0;
 
@@ -31,8 +30,6 @@ export class EventCardComponent implements OnChanges {
   constructor(private activatedRoute: ActivatedRoute,
               private eventService: EventService,
               public router: Router) {
-    this.typeString = this.activatedRoute.snapshot.queryParamMap.get('type');
-    this.cityString = this.activatedRoute.snapshot.queryParamMap.get('city');
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
@@ -42,8 +39,36 @@ export class EventCardComponent implements OnChanges {
     this.getEvents();
   }
 
-  getParams(page: number, size?: number) {
+  // tslint:disable-next-line:variable-name
+  getParams(page: number, size?: number, search?: string, location_city?: string, eventType?: string) {
     const params: any = {};
+    if (search) {
+      params.search = search;
+    }
+    if (page) {
+      params.page = page;
+    }
+    if (size) {
+      params.size = size;
+    }
+    if (location_city) {
+      params.location_city = location_city;
+    }
+    if (eventType) {
+      params.eventType = eventType;
+    }
+    return params;
+  }
+
+  // tslint:disable-next-line:variable-name
+  getParamsTypeCity(page: number, size?: number, location_city?: string, eventType?: string) {
+    const params: any = {};
+    if (location_city) {
+      params.location_city = location_city;
+    }
+    if (eventType) {
+      params.eventType = eventType.toUpperCase();
+    }
     if (page) {
       params.page = page;
     }
@@ -55,29 +80,29 @@ export class EventCardComponent implements OnChanges {
 
   getEvents(): void {
     const params = this.getParams(this.currentPage, this.pageSize);
-    this.eventService.getEvents(params).subscribe(event =>
+    this.eventService.getEventsBySearchTerm(params).subscribe(event =>
       this.events = event.content);
   }
 
-  getEventsByType(type: string): void {
-    this.eventService.getEventsByType(type).subscribe(event => {
-      this.events = event;
-    });
+  getEventsByTypeAndOrCity(eventType?: string, city?: string): void {
+    const params = this.getParamsTypeCity(this.currentPage, this.pageSize, city, eventType);
+    console.log(params);
+    this.eventService.getEventsByTypeAndOrCity(params).subscribe(event =>
+      this.events = event.content);
   }
 
-  getEventsByTypeAndCity(type: string, city: string): void {
-    this.eventService.getEventsByTypeAndCity(type, city).subscribe(event => {
-      this.events = event;
-    });
+  getEventsBySearchterm(search: string) {
+    const params = this.getParams(this.currentPage, this.pageSize, search);
+    console.log(params);
+    this.eventService.getEventsBySearchTerm(params).subscribe(event =>
+      this.events = event.content);
   }
 
   ngOnChanges(): void {
-    this.typeString = this.activatedRoute.snapshot.queryParamMap.get('type');
-    this.cityString = this.activatedRoute.snapshot.queryParamMap.get('city');
-    if ((this.typeString === 'all' || this.cityString === 'all') || (this.typeString == null || this.cityString == null)) {
-      this.getEvents();
+    if (this.search == null || this.search === ' ') {
+      this.getEventsByTypeAndOrCity(this.type, this.location);
     } else {
-      this.getEventsByTypeAndCity(this.typeString, this.cityString);
+      this.getEventsBySearchterm(this.search);
     }
   }
 }

@@ -5,7 +5,7 @@
       <div class="cardContainer">
         <mat-card class="event-card">
           <img mat-card-image class="eventThumb" src="event/files/{{event.thumbnail}}"
-               alt="{{event.thumbnail}}" [routerLink]="['../events',event.id]">
+               alt="{{event.thumbnail.toString()}}" [routerLink]="['../events',event.id]">
           <div class="tag">{{event.eventType}}</div>
           <mat-card-content class="content">
             <h2>{{event.eventName}}</h2>

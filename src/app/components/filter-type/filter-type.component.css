@@ -1,64 +1,58 @@
 @media screen and (max-width: 992px) {
-  .filterByType{
+  .filterByType {
     visibility: hidden;
+    display: none !important;
   }
 
-  .filter-mobile{
+  .filter-mobile {
     visibility: visible !important;
   }
 }
 
-.filter{
-  padding-top:0.5rem;
-}
-
-.filter-mobile{
+.filter-mobile {
   visibility: hidden;
-  position: absolute;
-  width: 45%;
-  top: 4rem;
 }
 
-#eventtype{
+#eventtype {
   width: 100%;
   padding: 0.5rem;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
-.filterByType{
+.filterByType {
   position: relative;
 }
 
-.filterByType li{
+.filterByType li {
   cursor: default;
   user-select: none;
 }
 
-.filterByType ul li{
+.filterByType ul li {
   font-size: 17px;
   display: inline-block;
   float: left;
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
-.filterByType li:hover{
+.filterByType li:hover {
   background-color: rgba(37, 11, 206, 0.7);
   border-radius: 20px;
   width: auto;
   color: #fff;
 }
 
-a{
+a {
   text-decoration: none;
   color: #000;
 }
 
-input{
+input {
   display: none;
 }
 
-input:checked{
+input:checked {
   background-color: rgba(37, 11, 206, 0.7);
   border-radius: 20px;
   width: auto;

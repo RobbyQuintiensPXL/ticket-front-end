@@ -1,9 +1,15 @@
 <div class="container">
-  <app-search-bar class="search"></app-search-bar>
+  <app-search-bar class="search" (searchOutputEvent)="addSearch($event)"></app-search-bar>
   <div class="filter">
-    <app-filter-type ></app-filter-type>
-    <app-filter-location></app-filter-location>
+    <div class="gridWrapper">
+      <div>
+        <app-filter-type (typeOutputEvent)="addType($event)"></app-filter-type>
+      </div>
+      <div>
+        <app-filter-location (locationOutputEvent)="addLocation($event)"></app-filter-location>
+      </div>
+    </div>
   </div>
-  <app-event-card class="cardview" [type]="msgEvent" [location]="msgLocation"></app-event-card>
+    <app-event-card class="cardview" [type]="msgType" [location]="msgLocation" [search]="msgSearch"></app-event-card>
   <router-outlet></router-outlet>
 </div>

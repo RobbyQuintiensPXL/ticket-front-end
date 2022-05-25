@@ -35,6 +35,14 @@ export class LocationService {
     );
   }
 
+  public getCities(): Observable<string[]> {
+    return this.http.get<string[]>(this.locationUrl + '/city').pipe(
+      catchError(error => {
+        return throwError('No Cities Found');
+      })
+    );
+  }
+
   public addLocation(location: Location): Observable<Location> {
     const body = JSON.stringify(location);
     return this.http.post<Location>(this.locationPost, body, this.httpOptions).pipe(

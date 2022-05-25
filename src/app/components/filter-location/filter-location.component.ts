@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {LocationService} from '../../services/location-service/location.service';
 import {Location} from '../../entities/location/location';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-filter-location',
@@ -9,17 +10,21 @@ import {Location} from '../../entities/location/location';
   styleUrls: ['./filter-location.component.css']
 })
 export class FilterLocationComponent implements OnInit {
-  @Output() locationOutput = new EventEmitter<any>();
-  locations: Location[];
-  location: Location;
+  @Output() locationOutputEvent = new EventEmitter<any>();
+  locations: string[];
+  location: string;
   selectedLocation: any;
 
   constructor(private locationService: LocationService,
               private router: Router) {
   }
 
+  getLocation(event) {
+    this.locationOutputEvent.emit(event.target.value);
+  }
+
   listAllLocations(): void {
-    this.locationService.getLocations().subscribe(location => {
+    this.locationService.getCities().subscribe(location => {
       this.locations = location;
     });
   }

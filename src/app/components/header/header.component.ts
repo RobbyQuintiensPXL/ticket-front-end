@@ -1,7 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {DOCUMENT} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
 import {KeycloakProfile} from 'keycloak-js';
 import {KeycloakService} from 'keycloak-angular';
 
@@ -15,7 +12,8 @@ export class HeaderComponent implements OnInit {
   public isLoggedIn = false;
   public userProfile: KeycloakProfile | null = null;
 
-  constructor(private readonly keycloak: KeycloakService) {}
+  constructor(private readonly keycloak: KeycloakService) {
+  }
 
   public async ngOnInit() {
     this.isLoggedIn = await this.keycloak.isLoggedIn();

@@ -19,7 +19,7 @@
   </label>
 
   <ul class="menu__box">
-    <li><a class="menu__item" href="#">Home</a></li>
+    <li><a class="menu__item" [routerLink]="['/']">Home <span></span></a></li>
     <li><a class="menu__item" *ngIf="!isLoggedIn" (click)="login()">Login</a></li>
     <li><a class="menu__item" *ngIf="isLoggedIn" (click)="logout()">Logout</a></li>
     <li><a class="menu__item" [routerLink]="['/profile']">Account</a></li>

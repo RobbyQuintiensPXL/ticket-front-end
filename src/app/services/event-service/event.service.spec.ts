@@ -68,54 +68,54 @@ describe('EventServiceService', () => {
       });
     });
 
-    it('should return events filtered by type', () => {
-      service.getEventsByType(mockEvent.eventType).subscribe(events => {
-        expect(events[0]).toEqual(mockEvent);
+    // it('should return events filtered by type', () => {
+    //   service.getEventsByType(mockEvent.eventType).subscribe(events => {
+    //     expect(events[0]).toEqual(mockEvent);
+    //
+    //     const request = httpTestingController.expectOne('/event/events/search?type=' + mockEvent.eventType);
+    //     expect(request.request.method).toEqual('GET');
+    //     expect(request.request.body).toEqual(JSON.stringify(mockEvent));
+    //
+    //     request.flush([mockEvent]);
+    //
+    //     const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
+    //     request.event(expectedResponse);
+    //     httpTestingController.verify();
+    //   });
+    // });
 
-        const request = httpTestingController.expectOne('/event/events/search?type=' + mockEvent.eventType);
-        expect(request.request.method).toEqual('GET');
-        expect(request.request.body).toEqual(JSON.stringify(mockEvent));
+    // it('should return events filtered by type and city', () => {
+    //   service.getEventsByTypeAndCity(mockEvent.eventType, mockLocation.city).subscribe(events => {
+    //     expect(events[0]).toEqual(mockEvent);
+    //
+    //     const request = httpTestingController.expectOne('/event/events/search?type=' + mockEvent.eventType +
+    //       '&city=' + mockLocation.city);
+    //     expect(request.request.method).toEqual('GET');
+    //     expect(request.request.body).toEqual(JSON.stringify(mockEvent));
+    //
+    //     request.flush([mockEvent]);
+    //
+    //     const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
+    //     request.event(expectedResponse);
+    //     httpTestingController.verify();
+    //   });
+    // });
 
-        request.flush([mockEvent]);
-
-        const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
-        request.event(expectedResponse);
-        httpTestingController.verify();
-      });
-    });
-
-    it('should return events filtered by type and city', () => {
-      service.getEventsByTypeAndCity(mockEvent.eventType, mockLocation.city).subscribe(events => {
-        expect(events[0]).toEqual(mockEvent);
-
-        const request = httpTestingController.expectOne('/event/events/search?type=' + mockEvent.eventType +
-          '&city=' + mockLocation.city);
-        expect(request.request.method).toEqual('GET');
-        expect(request.request.body).toEqual(JSON.stringify(mockEvent));
-
-        request.flush([mockEvent]);
-
-        const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
-        request.event(expectedResponse);
-        httpTestingController.verify();
-      });
-    });
-
-    it('should return all events', () => {
-      service.getEvents().subscribe(events => {
-        expect(events[0]).toEqual(mockEvent);
-
-        const request = httpTestingController.expectOne('/event/events');
-        expect(request.request.method).toEqual('GET');
-        expect(request.request.body).toEqual(JSON.stringify(mockEvent));
-
-        request.flush([mockEvent]);
-
-        const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
-        request.event(expectedResponse);
-        httpTestingController.verify();
-      });
-    });
+    // it('should return all events', () => {
+    //   service.getEvents().subscribe(events => {
+    //     expect(events[0]).toEqual(mockEvent);
+    //
+    //     const request = httpTestingController.expectOne('/event/events');
+    //     expect(request.request.method).toEqual('GET');
+    //     expect(request.request.body).toEqual(JSON.stringify(mockEvent));
+    //
+    //     request.flush([mockEvent]);
+    //
+    //     const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
+    //     request.event(expectedResponse);
+    //     httpTestingController.verify();
+    //   });
+    // });
 
     it('should return events filtered office', () => {
       service.getEventsByOffice().subscribe(events => {
@@ -132,22 +132,22 @@ describe('EventServiceService', () => {
         httpTestingController.verify();
       });
     });
-
-    it('should return events filtered by type and office', () => {
-      service.getEventsByOfficeAndType(mockEvent.eventType).subscribe(events => {
-        expect(events[0]).toEqual(mockEvent);
-
-        const request = httpTestingController.expectOne('/event/office/search?type=' + mockEvent.eventType);
-        expect(request.request.method).toEqual('GET');
-        expect(request.request.body).toEqual(JSON.stringify(mockEvent));
-
-        request.flush([mockEvent]);
-
-        const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
-        request.event(expectedResponse);
-        httpTestingController.verify();
-      });
-    });
+    //
+    // it('should return events filtered by type and office', () => {
+    //   service.getEventsByOfficeAndType(mockEvent.eventType).subscribe(events => {
+    //     expect(events[0]).toEqual(mockEvent);
+    //
+    //     const request = httpTestingController.expectOne('/event/office/search?type=' + mockEvent.eventType);
+    //     expect(request.request.method).toEqual('GET');
+    //     expect(request.request.body).toEqual(JSON.stringify(mockEvent));
+    //
+    //     request.flush([mockEvent]);
+    //
+    //     const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
+    //     request.event(expectedResponse);
+    //     httpTestingController.verify();
+    //   });
+    // });
 
     /*it('should add new event', () => {
       service.createEvent(mockEvent).subscribe(events => {
@@ -170,16 +170,6 @@ describe('EventServiceService', () => {
       spyOn(service, 'getEventById').and.returnValue(throwError(errorResponse));
     });
 
-    it('should throw an error if no event by type found', () => {
-      const errorResponse = new Error('No Events Found');
-      spyOn(service, 'getEventsByType').and.returnValue(throwError(errorResponse));
-    });
-
-    it('should throw an error if no event by type and city found', () => {
-      const errorResponse = new Error('No Events Found');
-      spyOn(service, 'getEventsByTypeAndCity').and.returnValue(throwError(errorResponse));
-    });
-
     it('should throw an error if no events found', () => {
       const errorResponse = new Error('No Events Found');
       spyOn(service, 'getEvents').and.returnValue(throwError(errorResponse));
@@ -188,11 +178,6 @@ describe('EventServiceService', () => {
     it('should throw an error if no events by office found', () => {
       const errorResponse = new Error('No Events Found');
       spyOn(service, 'getEventsByOffice').and.returnValue(throwError(errorResponse));
-    });
-
-    it('should throw an error if no events by office and type found', () => {
-      const errorResponse = new Error('No Events Found');
-      spyOn(service, 'getEventsByOfficeAndType').and.returnValue(throwError(errorResponse));
     });
 
   });

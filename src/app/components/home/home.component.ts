@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +7,29 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  msgEvent: any;
+  msgType: any;
   msgLocation: any;
+  msgSearch: any;
 
-  constructor() { }
+  constructor() {
+  }
+
   ngOnInit(): void {
+  }
+
+  addSearch(search: string) {
+    this.msgSearch = search;
+    console.log(this.msgType);
+  }
+
+  addType(type: string) {
+    this.msgType = type;
+    console.log(this.msgType);
+  }
+
+  addLocation(location: string) {
+    this.msgLocation = location;
+    console.log(this.msgLocation);
   }
 
 }

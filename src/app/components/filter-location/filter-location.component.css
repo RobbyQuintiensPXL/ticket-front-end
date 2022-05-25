@@ -1,6 +1,7 @@
 @media screen and (max-width: 992px) {
   .filterByLocation {
     visibility: hidden !important;
+    display: none !important;
   }
 
   .filter-mobile {
@@ -8,17 +9,8 @@
   }
 }
 
-.filter {
-  padding-top: 2rem;
-}
-
 .filter-mobile {
   visibility: hidden;
-  right: 0;
-  margin-right: 1rem;
-  position: absolute;
-  width: 45%;
-  top: 4rem;
 }
 
 #locationType {

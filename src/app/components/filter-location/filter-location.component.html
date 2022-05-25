@@ -8,13 +8,13 @@
         </li>
       </div>
       <li *ngFor="let location of locations" [routerLink]="['../search']"
-          [queryParams]="{city: location.city}">{{location.city}}</li>
+          [queryParams]="{city: location}">{{location}}</li>
     </ul>
   </div>
 </div>
 <div class="filter-mobile">
-  <select id="locationType" (change)="locationSelected($event)" >
-    <option value="all">All Locations</option>
-    <option *ngFor="let location of locations" #locationSelect>{{location.city}}</option>
+  <select id="locationType" (change)="getLocation($event)">
+    <option value="">All Locations</option>
+    <option *ngFor="let location of locations">{{location}}</option>
   </select>
 </div>
