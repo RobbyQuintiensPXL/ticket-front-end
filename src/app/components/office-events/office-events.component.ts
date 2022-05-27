@@ -65,20 +65,18 @@ export class OfficeEventsComponent implements OnChanges {
       this.events = event.content);
   }
 
+  deleteEvent(id: number){
+    this.eventService.deleteEvent(id).subscribe(() => {
+      this.getEventsByOffice(this.type, this.location, this.search);
+      this.modalService.dismissAll();
+    });
+  }
+
   openModelConfirmDelete(deleteEvent: any){
     this.modalService.open(deleteEvent, {centered: true}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.closeModal = `Dismissed`;
-    });
-  }
-
-  deleteEvent(id: number){
-    this.eventService.deleteEvent(id).subscribe(() => {
-      this.getEventsByOffice();
-      this.modalService.dismissAll({
-        dismissed: true
-      });
     });
   }
 

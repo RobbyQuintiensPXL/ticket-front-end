@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Event} from '../../entities/event/event';
 import {catchError, tap} from 'rxjs/operators';
@@ -20,6 +20,12 @@ export class EventService {
     this.eventPost = '/event/office/event/post';
     this.eventOfficeUrl = 'event/office';
   }
+
+  httpOptions: any = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    responseType: 'text' as 'text'
+  };
+
 
   public getEventById(id: number): Observable<Event> {
     const endpoint = this.eventUrl + '/' + id;
@@ -73,6 +79,6 @@ export class EventService {
 
   public deleteEvent(id: number): Observable<any>{
     const endpoint = this.eventOfficeUrl + '/event/' + id;
-    return this.http.delete<any>(endpoint);
+    return this.http.delete<any>(endpoint, this.httpOptions);
   }
 }
