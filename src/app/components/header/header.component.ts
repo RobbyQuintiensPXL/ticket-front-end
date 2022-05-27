@@ -11,16 +11,21 @@ export class HeaderComponent implements OnInit {
 
   public isLoggedIn = false;
   public userProfile: KeycloakProfile | null = null;
+  public role: string[];
+  office = false;
 
   constructor(private readonly keycloak: KeycloakService) {
   }
 
   public async ngOnInit() {
+    this.office = this.keycloak.getUserRoles().includes('jevents-office');
     this.isLoggedIn = await this.keycloak.isLoggedIn();
 
     if (this.isLoggedIn) {
       this.userProfile = await this.keycloak.loadUserProfile();
     }
+
+
   }
 
   public login() {

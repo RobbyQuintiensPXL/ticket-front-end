@@ -37,6 +37,13 @@ export class EventCardComponent implements OnChanges {
   handlePage(event: any) {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
+    this.getEventsByTypeAndOrCity();
+  }
+
+  getEvents(): void {
+    const params = this.getParamsTypeCity(this.currentPage, this.pageSize);
+    this.eventService.getEvents(params).subscribe(event =>
+      this.events = event.content);
   }
 
   getParamsTypeCity(page: number, size?: number, locationCity?: string, eventType?: string, eventName?: string) {

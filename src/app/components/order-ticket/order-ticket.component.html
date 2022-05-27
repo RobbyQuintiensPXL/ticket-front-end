@@ -118,12 +118,36 @@
 
         <div class="form-buttons">
           <button class="button-back" mat-button>Back</button>
-          <button class="button-next" [disabled]="orderTicketGroup.invalid" (click)="submit()" mat-button>Submit</button>
+          <button class="button-next" [disabled]="orderTicketGroup.invalid" (click)="submit()" mat-button>Submit
+          </button>
         </div>
       </div>
 
       <div class="ticket-payment">
         <h4>Payment methods</h4>
+
+        <div class="payments">
+
+          <div class="paymentButtonContainer">
+            <label for="paypal" class="paymentButton">PayPal
+              <input type="radio" id="paypal" name="payment_method" value="paypal" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="paymentButtonContainer">
+            <label for="bancontact" class="paymentButton">Bancontact
+              <input type="radio" id="bancontact" name="payment_method" value="bancontact">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="paymentButtonContainer">
+            <label for="visa" class="paymentButton">Visa/Mastercard
+              <input type="radio" id="visa" name="payment_method" value="visa">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+
+        </div>
       </div>
     </div>
   </form>
