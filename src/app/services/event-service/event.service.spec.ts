@@ -116,7 +116,7 @@ describe('EventServiceService', () => {
     //     httpTestingController.verify();
     //   });
     // });
-
+/*
     it('should return events filtered office', () => {
       service.getEventsByOffice().subscribe(events => {
         expect(events[0]).toEqual(mockEvent);
@@ -131,7 +131,7 @@ describe('EventServiceService', () => {
         request.event(expectedResponse);
         httpTestingController.verify();
       });
-    });
+    });*/
     //
     // it('should return events filtered by type and office', () => {
     //   service.getEventsByOfficeAndType(mockEvent.eventType).subscribe(events => {

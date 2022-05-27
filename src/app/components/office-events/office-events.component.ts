@@ -1,9 +1,9 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, ViewChild} from '@angular/core';
 import {Event} from '../../entities/event/event';
-import {faCalendarAlt} from '@fortawesome/free-regular-svg-icons';
-import {faSearchLocation} from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EventService} from '../../services/event-service/event.service';
+import {MatPaginator} from '@angular/material/paginator';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-office-events',
@@ -12,40 +12,78 @@ import {EventService} from '../../services/event-service/event.service';
 })
 export class OfficeEventsComponent implements OnChanges {
   event: Event;
-  events: Event[];
-  faSearchLocation = faSearchLocation;
-  faCalenderAlt = faCalendarAlt;
+  events: any;
+  closeModal: string;
   @Input() type!: string;
-  typeString: string;
+  @Input() location!: string;
+  @Input() search!: string;
+  @Input() eventName!: string;
+  pageSize = 10;
+  pageSizeOptions = [3, 5, 10];
+  currentPage = 0;
+
+  displayedColumns: string[] = ['Event', 'Type', 'Date', 'Time', 'Actions'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private activatedRoute: ActivatedRoute,
               private eventService: EventService,
-              public router: Router) {
-    this.typeString = this.activatedRoute.snapshot.queryParamMap.get('type');
-    this.router.routeReuseStrategy.shouldReuseRoute = function() {
-      return false;
-    };
+              public router: Router,
+              private modalService: NgbModal) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
-  getEventsByOffice(): void {
-    this.eventService.getEventsByOffice().subscribe(event => {
-      this.events = event;
+  handlePage(event: any) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getEventsByOffice();
+  }
+
+  getParamsTypeCity(page: number, size?: number, locationCity?: string, eventType?: string, eventName?: string) {
+    const params: any = {};
+    if (locationCity) {
+      params.location_city = locationCity;
+    }
+    if (eventType) {
+      params.eventType = eventType.toUpperCase();
+    }
+    if (eventName) {
+      params.eventName = eventName;
+    }
+    if (page) {
+      params.page = page;
+    }
+    if (size) {
+      params.size = size;
+    }
+    return params;
+  }
+
+  getEventsByOffice(eventType?: string, city?: string, search?: string): void {
+    const params = this.getParamsTypeCity(this.currentPage, this.pageSize, city, eventType, search);
+    this.eventService.getEventsByOffice(params).subscribe(event =>
+      this.events = event.content);
+  }
+
+  openModelConfirmDelete(deleteEvent: any){
+    this.modalService.open(deleteEvent, {centered: true}).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed`;
     });
   }
 
-  getEventsByOfficeAndType(type: string): void {
-    this.eventService.getEventsByOfficeAndType(type).subscribe(event => {
-      this.events = event;
+  deleteEvent(id: number){
+    this.eventService.deleteEvent(id).subscribe(() => {
+      this.getEventsByOffice();
+      this.modalService.dismissAll({
+        dismissed: true
+      });
     });
   }
 
   ngOnChanges(): void {
-    this.typeString = this.activatedRoute.snapshot.queryParamMap.get('type');
-    if (this.typeString === 'all') {
-      this.getEventsByOffice();
-    } else {
-      this.getEventsByOfficeAndType(this.typeString);
-    }
+    this.getEventsByOffice(this.type, this.location, this.search);
   }
 
 }

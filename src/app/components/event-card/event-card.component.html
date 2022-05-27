@@ -20,10 +20,10 @@
   </div>
 </div>
 <mat-paginator
-               *ngIf="events" [length]="events.length"
-               [pageSize]="pageSize"
-               [pageSizeOptions]="pageSizeOptions"
-               [pageIndex]="currentPage"
-               aria-label="Select page"
-               (page)="handlePage($event)">
+  *ngIf="events" [length]="events.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  [pageIndex]="currentPage"
+  aria-label="Select page"
+  (page)="handlePage($event)">
 </mat-paginator>

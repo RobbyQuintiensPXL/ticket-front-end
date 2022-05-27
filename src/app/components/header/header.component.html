@@ -23,7 +23,7 @@
     <li><a class="menu__item" *ngIf="!isLoggedIn" (click)="login()">Login</a></li>
     <li><a class="menu__item" *ngIf="isLoggedIn" (click)="logout()">Logout</a></li>
     <li><a class="menu__item" *ngIf="office" [routerLink]="['add-event']">Add Event</a></li>
-    <li><a class="menu__item" *ngIf="office">My Events</a></li>
+    <li><a class="menu__item" *ngIf="office" [routerLink]="['office-home']">My Events</a></li>
     <li><a class="menu__item" [routerLink]="['/profile']">Account</a></li>
   </ul>
 </div>

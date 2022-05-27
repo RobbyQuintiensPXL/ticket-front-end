@@ -39,16 +39,9 @@ export class EventService {
     );
   }
 
-  public getEventsByOffice(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.eventOfficeUrl + '/events').pipe(
-      catchError(error => {
-        return throwError('No Events Found');
-      })
-    );
-  }
-
-  public getEventsByOfficeAndType(type: string): Observable<Event[]> {
-    return this.http.get<Event[]>(this.eventOfficeUrl + '/search?type=' + type).pipe(
+  public getEventsByOffice(param: any): Observable<any> {
+    const endpoint = this.eventOfficeUrl + '/events';
+    return this.http.get<any>(endpoint, {params: param}).pipe(
       catchError(error => {
         return throwError('No Events Found');
       })
@@ -76,5 +69,10 @@ export class EventService {
       (res) => console.log(res),
       (error) => console.log(error)
     );
+  }
+
+  public deleteEvent(id: number): Observable<any>{
+    const endpoint = this.eventOfficeUrl + '/event/' + id;
+    return this.http.delete<any>(endpoint);
   }
 }

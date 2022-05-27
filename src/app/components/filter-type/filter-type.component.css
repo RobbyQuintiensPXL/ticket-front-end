@@ -1,4 +1,4 @@
-@media screen and (max-width: 992px) {
+/*@media screen and (max-width: 992px) {
   .filterByType {
     visibility: hidden;
     display: none !important;
@@ -7,10 +7,10 @@
   .filter-mobile {
     visibility: visible !important;
   }
-}
+}*/
 
 .filter-mobile {
-  visibility: hidden;
+
 }
 
 #eventtype {

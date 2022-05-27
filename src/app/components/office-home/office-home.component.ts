@@ -7,17 +7,29 @@ import {Component, OnInit} from '@angular/core';
 })
 export class OfficeHomeComponent implements OnInit {
 
-  currentMsgFromChild1ToChild2: any;
+  msgType: any;
+  msgLocation: any;
+  msgSearch: any;
 
   constructor() {
   }
 
-  fwdMsgToSib2($event) {
-    this.currentMsgFromChild1ToChild2 = $event;
+  ngOnInit(): void {
   }
 
+  addSearch(search: string) {
+    this.msgSearch = search;
+    console.log(this.msgType);
+  }
 
-  ngOnInit(): void {
+  addType(type: string) {
+    this.msgType = type;
+    console.log(this.msgType);
+  }
+
+  addLocation(location: string) {
+    this.msgLocation = location;
+    console.log(this.msgLocation);
   }
 
 }

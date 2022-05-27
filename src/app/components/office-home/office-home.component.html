@@ -1,5 +1,15 @@
 <div class="container">
-  <app-filter-type class="filter" (typeOutput)="fwdMsgToSib2($event)"></app-filter-type>
-  <app-office-events class="cardview" [type]="currentMsgFromChild1ToChild2"></app-office-events>
+  <app-search-bar class="search" (searchOutputEvent)="addSearch($event)"></app-search-bar>
+  <div class="filter">
+    <div class="gridWrapper">
+      <div>
+        <app-filter-type (typeOutputEvent)="addType($event)"></app-filter-type>
+      </div>
+      <div>
+        <app-filter-location (locationOutputEvent)="addLocation($event)"></app-filter-location>
+      </div>
+    </div>
+  </div>
+  <app-office-events class="cardview" [type]="msgType" [location]="msgLocation" [search]="msgSearch"></app-office-events>
   <router-outlet></router-outlet>
 </div>

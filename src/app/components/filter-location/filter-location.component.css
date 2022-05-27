@@ -1,4 +1,4 @@
-@media screen and (max-width: 992px) {
+/*@media screen and (max-width: 992px) {
   .filterByLocation {
     visibility: hidden !important;
     display: none !important;
@@ -7,10 +7,10 @@
   .filter-mobile {
     visibility: visible !important;
   }
-}
+}*/
 
 .filter-mobile {
-  visibility: hidden;
+
 }
 
 #locationType {

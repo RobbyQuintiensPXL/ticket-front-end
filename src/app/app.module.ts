@@ -38,6 +38,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { FilterLocationComponent } from './components/filter-location/filter-location.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     FlexLayoutModule,
     MatMenuModule,
     MatPaginatorModule,
+    MatTableModule,
   ],
   providers: [
     {
