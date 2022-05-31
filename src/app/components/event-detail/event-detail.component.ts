@@ -10,6 +10,7 @@ import {KeycloakService} from 'keycloak-angular';
 })
 export class EventDetailComponent implements OnInit {
   @Input() event: Event;
+  admin = false;
   orderTrueOutput = false;
   detail: any;
   public isLoggedIn = false;
@@ -24,6 +25,7 @@ export class EventDetailComponent implements OnInit {
 
   public async ngOnInit() {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
+    this.admin = this.keycloak.getUserRoles().includes('jevents-admin');
 
     if (this.isLoggedIn) {
       this.userProfile = await this.keycloak.loadUserProfile();

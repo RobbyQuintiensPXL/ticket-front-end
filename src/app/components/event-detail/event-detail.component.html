@@ -1,6 +1,6 @@
 <div id="content" *ngIf="event">
   <container-element [ngSwitch]="orderTrueOutput">
-    <div *ngSwitchCase="false">
+    <div *ngSwitchCase="false" class="containerValue">
       <div class="content-container">
         <div id="content-description">
           <h4>Description</h4>
@@ -14,7 +14,7 @@
       </div>
       <div id="content-tickets">
         <h4>Tickets</h4>
-        <div class="tickets-buy" (click)="setValue(true)">
+        <div class="tickets-buy" *ngIf="!admin" (click)="setValue(true)">
           <p>TICKETS</p>
         </div>
         <div class="tickets-price">

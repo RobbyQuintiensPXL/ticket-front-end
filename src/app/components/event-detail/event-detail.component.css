@@ -1,3 +1,10 @@
+@media screen and (min-width: 1700px) {
+  .containerValue{
+    width: 70% !important;
+    margin: 0 auto !important;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .content-container{
     width: 90% !important;

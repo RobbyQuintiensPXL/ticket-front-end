@@ -70,7 +70,9 @@ export class EventCardComponent implements OnChanges {
     const params = this.getParamsTypeCity(this.currentPage, this.pageSize, city, eventType, search);
     console.log(params);
     this.eventService.getEventsByTypeAndOrCityAndOrEventName(params).subscribe(event =>
-      this.events = event.content);
+      this.events = event.content,
+      err => this.events = null
+    );
   }
 
   ngOnChanges(): void {

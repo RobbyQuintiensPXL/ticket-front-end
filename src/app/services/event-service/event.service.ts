@@ -14,11 +14,13 @@ export class EventService {
   private readonly eventUrl: string;
   private readonly eventPost: string;
   private readonly eventOfficeUrl: string;
+  private readonly eventAdminUrl: string;
 
   constructor(private http: HttpClient) {
     this.eventUrl = '/event/events';
     this.eventPost = '/event/office/event/post';
     this.eventOfficeUrl = 'event/office';
+    this.eventAdminUrl = 'event/admin';
   }
 
   httpOptions: any = {
@@ -59,7 +61,27 @@ export class EventService {
     console.log(param);
     return this.http.get<any>(endpoint, {params: param}).pipe(
       catchError(error => {
+        console.log('no events founds');
         return throwError('No Events Found');
+      })
+    );
+  }
+
+  public getEventsForAdmin(param: any): Observable<any> {
+    const endpoint = this.eventAdminUrl + '/events';
+    return this.http.get<any>(endpoint, {params: param}).pipe(
+      catchError(error => {
+        return throwError('No Events Found');
+      })
+    );
+  }
+
+  public approveEvent(id: number, event: Event): Observable<Event>{
+    const endpoint = this.eventAdminUrl + '/event/' + id + '/approve';
+
+    return this.http.post<Event>(endpoint, event).pipe(
+      catchError(error => {
+        return throwError('Event Not Found');
       })
     );
   }

@@ -1,0 +1,72 @@
+<div id="events-table">
+  <mat-table [dataSource]="events" class="mat-elevation-z5">
+    <ng-container matColumnDef="Event">
+      <mat-header-cell *matHeaderCellDef>Event</mat-header-cell>
+      <mat-cell *matCellDef="let event"> {{event.eventName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Type">
+      <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+      <mat-cell *matCellDef="let event"> {{event.eventType}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Building">
+      <mat-header-cell *matHeaderCellDef>Building</mat-header-cell>
+      <mat-cell *matCellDef="let event"> {{event.location.buildingName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Date">
+      <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+      <mat-cell *matCellDef="let event"> {{event.eventDate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Time">
+      <mat-header-cell *matHeaderCellDef>Time</mat-header-cell>
+      <mat-cell *matCellDef="let event"> {{event.eventTime}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Actions">
+      <mat-header-cell *matHeaderCellDef class="center">Actions</mat-header-cell>
+      <mat-cell *matCellDef="let event" class="actionButtons">
+        <div class="button-container">
+          <button mat-button class="preview" [routerLink]="['../../events',event.id]">Preview</button>
+          <button mat-button class="approve" (click)="openModelConfirmApprove(approveModal)">Approve</button>
+          <ng-template #approveModal let-modal class="modal-form">
+            <div class="modal-header">
+              <h2 class="modal-title" id="modal-addModel-title">Delete Event</h2>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="content-info">
+                <h4 [ngModel]="event">Are you sure you want to approve</h4>
+                <h4>Event name: {{event.eventName}}</h4>
+                <h3>Date: {{event.eventDate}}</h3>
+              </div>
+              <div class="modal-buttons">
+                <button class="button-back" (click)="modal.close('Save click')">Cancel</button>
+                <button class="button-approve" mat-button data-dismiss="modal" (click)="approveEvent(event.id, this.event)">Approve</button>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+<mat-paginator
+  *ngIf="events" [length]="events.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  [pageIndex]="currentPage"
+  aria-label="Select page"
+  (page)="handlePage($event)">
+</mat-paginator>
+
+
+<!--MODAL-->
+

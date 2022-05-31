@@ -7,6 +7,7 @@ import {AuthGuard} from './auth/auth.guard';
 import {OfficeHomeComponent} from './components/office-home/office-home.component';
 import {EventDetailPageComponent} from './components/event-detail-page/event-detail-page.component';
 import {OrderTicketComponent} from './components/order-ticket/order-ticket.component';
+import {AdminHomeComponent} from './components/admin-home/admin-home.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,17 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'search', pathMatch: 'full'},
       {path: 'search', component: OfficeHomeComponent},
+    ]
+  },
+  {
+    path: 'admin-home',
+    data: {
+      roles: ['jevents-admin']
+    },
+    canActivate: [AuthGuard],
+    children: [
+      {path: '', redirectTo: 'search', pathMatch: 'full'},
+      {path: 'search', component: AdminHomeComponent},
     ]
   },
 ];

@@ -39,6 +39,8 @@ import { FilterLocationComponent } from './components/filter-location/filter-loc
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import {MatTableModule} from '@angular/material/table';
+import { AdminEventsComponent } from './components/admin-events/admin-events.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import {MatTableModule} from '@angular/material/table';
     LoginComponent,
     FilterLocationComponent,
     SearchBarComponent,
+    AdminEventsComponent,
+    AdminHomeComponent,
   ],
   imports: [
     BrowserModule,

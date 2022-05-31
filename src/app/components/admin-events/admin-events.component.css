@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
+#events-table {
+  padding-bottom: 2rem;
+}
+
+mat-table{
+  border-radius: 10px;
+}
+
+mat-table button{
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.mat-column-Event{
+  flex: 0 0 25%;
+}
+
+.mat-column-Type{
+  flex: 0 0 13%;
+}
+
+.mat-column-Date{
+  flex: 0 0 14%;
+}
+
+.mat-column-Time{
+  flex: 0 0 10%;
+}
+
+.center {
+  justify-content: center;
+}
+
+.button-container{
+  margin: 0 auto;
+}
+
+.actionButtons button{
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  min-height: 35px;
+  margin: .2rem;
+  padding: 0;
+  text-align: center;
+  font-size: 10pt;
+}
+
+.preview{
+  background: #93b9dc;
+  margin: 0 auto;
+}
+
+.preview:hover{
+  background: #6ea8de;
+}
+
+.approve{
+  background: #bdcc72;
+  margin: 0 auto;
+}
+
+.approve:hover{
+  background: #bece64;
+  margin: 0 auto;
+}
+
+.content-info{
+  width: 100%;
+  flex-grow: 2;
+}
+
+.form-buttons{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+}
+
+.form-buttons input{
+  width: 40%;
+  cursor: pointer;
+}
+
+.modal-header{
+  background-color: #919191;
+  color: #fff;
+}
+
+.modal-buttons{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+}
+
+.modal-buttons input{
+  width: 40%;
+  cursor: pointer;
+}
+
+.button-approve{
+  background-color: #bdcc72;
+  width: 10rem;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  min-height: 35px;
+}
+
+.button-approve:hover{
+  background: #bece64;
+}
+
+.button-back{
+  background-color: #cecece;
+  width: 10rem;
+  color: #000;
+  border-radius: 10px;
+  border: none;
+  min-height: 35px;
+}

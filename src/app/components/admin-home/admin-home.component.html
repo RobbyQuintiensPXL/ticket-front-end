@@ -1,0 +1,15 @@
+<div class="container">
+  <app-search-bar class="search" (searchOutputEvent)="addSearch($event)"></app-search-bar>
+  <div class="filter">
+    <div class="gridWrapper">
+      <div>
+        <app-filter-type (typeOutputEvent)="addType($event)"></app-filter-type>
+      </div>
+      <div>
+        <app-filter-location (locationOutputEvent)="addLocation($event)"></app-filter-location>
+      </div>
+    </div>
+  </div>
+  <app-admin-events class="cardview" [type]="msgType" [location]="msgLocation" [search]="msgSearch"></app-admin-events>
+  <router-outlet></router-outlet>
+</div>
