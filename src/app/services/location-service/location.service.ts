@@ -13,11 +13,13 @@ export class LocationService {
 
   private readonly locationUrl: string;
   private readonly locationPost: string;
+  private readonly locationOfficeUrl: string;
   locations: Location[];
   location: Location;
 
   constructor(private http: HttpClient) {
     this.locationUrl = '/event/locations';
+    this.locationOfficeUrl = '/event/office/locations';
     this.locationPost = '/event/locations/add_location';
   }
 
@@ -53,7 +55,7 @@ export class LocationService {
   }
 
   public getLocationsByTicketOffice(): Observable<Location[]> {
-    return this.http.get<Location[]>(this.locationUrl + '/office').pipe(
+    return this.http.get<Location[]>(this.locationOfficeUrl).pipe(
       catchError(error => {
         return throwError('No Locations Found');
       })

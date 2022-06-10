@@ -16,7 +16,6 @@ const routes: Routes = [
   },
   {
     path: 'events/:id',
-    pathMatch: 'full',
     component: EventDetailPageComponent,
   },
   {

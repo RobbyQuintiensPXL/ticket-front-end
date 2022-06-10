@@ -15,7 +15,8 @@ export function KeycloakInitService(keycloak: KeycloakService): () => Promise<an
               checkLoginIframe: false
             },
             loadUserProfileAtStartUp: true,
-            bearerExcludedUrls: ['/assets', '/location', '/events' , '/events/:id'],
+            enableBearerInterceptor: true,
+            bearerExcludedUrls: ['/assets', '/event/events', '/event/locations', '/events/:id'],
           });
           resolve();
         } catch (error) {
