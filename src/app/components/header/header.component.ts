@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {KeycloakProfile} from 'keycloak-js';
+import {KeycloakInstance, KeycloakProfile} from 'keycloak-js';
 import {KeycloakService} from 'keycloak-angular';
 
 @Component({
@@ -15,7 +15,8 @@ export class HeaderComponent implements OnInit {
   office = false;
   admin = false;
   menuOpen = false;
-  username: any;
+  username: KeycloakProfile;
+  adminName: string;
 
   constructor(private readonly keycloak: KeycloakService) {
   }
@@ -26,8 +27,11 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
 
     if (this.isLoggedIn) {
-      this.username = this.keycloak.getKeycloakInstance().clientSecret;
-      console.log(this.username);
+      if (this.office){
+        this.username = this.keycloak.getKeycloakInstance().idTokenParsed.Organisation;
+      } else {
+        this.username = this.keycloak.getKeycloakInstance().idTokenParsed.name;
+      }
     }
   }
 

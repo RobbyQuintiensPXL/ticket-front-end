@@ -14,7 +14,7 @@ export function KeycloakInitService(keycloak: KeycloakService): () => Promise<an
               onLoad: 'check-sso',
               checkLoginIframe: false
             },
-            loadUserProfileAtStartUp: true,
+            loadUserProfileAtStartUp: false,
             enableBearerInterceptor: true,
             bearerExcludedUrls: ['/assets', '/event/events', '/event/locations', '/events/:id'],
           });

@@ -5,7 +5,7 @@
     <h2><a *ngIf="isLoggedIn" (click)="logout()">Logout</a></h2>
     <h2><a [routerLink]="['/profile']">Account</a></h2>
   </div>
-  <h2><a *ngIf="isLoggedIn">{{username}}</a></h2>
+  <h2><a *ngIf="isLoggedIn">Hi, {{username}}</a></h2>
 </mat-toolbar>
 <svg xmlns="http://www.w3.org/2000/svg">
   <path [ngClass]="office ? 'office' : admin ? 'admin' : 'user'" id="svg_1"
