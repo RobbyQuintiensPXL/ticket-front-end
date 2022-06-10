@@ -22,7 +22,7 @@ export class OfficeEventsComponent implements OnChanges {
   pageSizeOptions = [3, 5, 10];
   currentPage = 0;
 
-  displayedColumns: string[] = ['Event', 'Type', 'Date', 'Time', 'Actions'];
+  displayedColumns: string[] = ['Event', 'Type', 'Date', 'Time', 'Accepted', 'Actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

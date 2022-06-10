@@ -129,3 +129,23 @@ mat-table button{
   border: none;
   min-height: 35px;
 }
+
+
+.accepted {
+  border-radius: 10px;
+  color: #ffffff;
+  border: none;
+  min-height: 35px;
+  width: 5rem;
+  padding-top: 0.5rem;
+  text-align: center;
+  font-size: 10pt;
+}
+
+.true{
+  background: #bece64;
+}
+
+.false{
+  background: #f57084;
+}

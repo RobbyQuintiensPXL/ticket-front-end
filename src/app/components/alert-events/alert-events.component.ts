@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {filter, map, shareReplay, switchMapTo, take} from 'rxjs/operators';
+import {Component, Input} from '@angular/core';
 import {EventService} from '../../services/event-service/event.service';
+import {filter, map, switchMapTo, take} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
 
 @Component({
   selector: 'app-alert-events',

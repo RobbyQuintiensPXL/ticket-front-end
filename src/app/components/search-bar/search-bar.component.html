@@ -1,3 +1,8 @@
 <div class="searchbar">
-  <input type="text" placeholder="Search for event name or building" (keyup.enter)="getSearch($event)">
+  <input type="text" [matAutocomplete]="auto" [formControl]="searchControl" placeholder="Search for event name or building" (keyup.enter)="getSearch($event)">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option.eventName">
+      {{option.eventName}}
+    </mat-option>
+  </mat-autocomplete>
 </div>

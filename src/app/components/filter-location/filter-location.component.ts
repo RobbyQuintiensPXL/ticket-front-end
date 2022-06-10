@@ -1,8 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {LocationService} from '../../services/location-service/location.service';
-import {Location} from '../../entities/location/location';
-import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-filter-location',
@@ -11,12 +9,20 @@ import {FormGroup} from '@angular/forms';
 })
 export class FilterLocationComponent implements OnInit {
   @Output() locationOutputEvent = new EventEmitter<any>();
+  @Input() accepted?: boolean;
   locations: string[];
   location: string;
-  selectedLocation: any;
 
   constructor(private locationService: LocationService,
               private router: Router) {
+  }
+
+  getParamsLocation(accepted?: boolean) {
+    const params: any = {};
+    if (accepted) {
+      params.accepted = this.accepted;
+    }
+    return params;
   }
 
   getLocation(event) {
@@ -24,16 +30,10 @@ export class FilterLocationComponent implements OnInit {
   }
 
   listAllLocations(): void {
-    this.locationService.getCities().subscribe(location => {
+    this.locationService.getCities(this.getParamsLocation(this.accepted)).subscribe(location => {
       this.locations = location;
     });
   }
-
-  locationSelected(event: any){
-    this.selectedLocation = event.target.value;
-    this.router.navigate(['../search'], {queryParams: {city: this.selectedLocation}});
-  }
-
 
   ngOnInit(): void {
     this.listAllLocations();

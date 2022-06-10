@@ -20,13 +20,18 @@
       <mat-cell *matCellDef="let event"> {{event.eventTime}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="Accepted">
+      <mat-header-cell *matHeaderCellDef class="center">Accepted</mat-header-cell>
+      <mat-cell *matCellDef="let event" class="center">
+        <div class="accepted" [ngClass]="event.accepted ? 'true': 'false'">{{event.accepted}}</div>
+      </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="Actions">
       <mat-header-cell *matHeaderCellDef class="center">Actions</mat-header-cell>
       <mat-cell *matCellDef="let event" class="actionButtons">
         <div class="button-container">
           <button mat-button class="preview" [routerLink]="['../../events',event.id]">Preview</button>
-          <button mat-button class="edit">Edit</button>
-          <button mat-button class="delete" (click)="openModelConfirmDelete(deleteModal)">Delete</button>
           <ng-template #deleteModal let-modal class="modal-form">
             <div class="modal-header">
               <h2 class="modal-title" id="modal-addModel-title">Delete Event</h2>

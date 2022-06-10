@@ -6,7 +6,7 @@
         <app-filter-type (typeOutputEvent)="addType($event)"></app-filter-type>
       </div>
       <div>
-        <app-filter-location (locationOutputEvent)="addLocation($event)"></app-filter-location>
+        <app-filter-location (locationOutputEvent)="addLocation($event)" [accepted]="false"></app-filter-location>
       </div>
     </div>
   </div>

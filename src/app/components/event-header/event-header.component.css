@@ -72,10 +72,12 @@
 
 h2{
   font-size: 30px;
+  text-shadow: 1px 2px #727272;
 }
 
 h3 {
   font-size: 20px;
+  text-shadow: 1px 2px #727272;
 }
 
 #header-image h3, h4{

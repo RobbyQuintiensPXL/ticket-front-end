@@ -32,7 +32,7 @@
     text-align: center !important;
   }
 
-  .tickets-buy, .tickets-left{
+  .tickets-buy, .tickets-left, .tickets-buy-admin{
     margin: 0 auto;
     padding: 0 !important;
     text-align: center !important;
@@ -106,8 +106,17 @@
   color: #fff;
   cursor: pointer;
 }
+.tickets-buy-admin{
+  background-color: #ce0b0b;
+  position: relative;
+  border-radius: 15px;
+  max-width: 200px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
 
-.tickets-buy p{
+.tickets-buy p, .tickets-buy-admin p{
   font-weight: bold;
   padding: 0.5rem;
   user-select: none;

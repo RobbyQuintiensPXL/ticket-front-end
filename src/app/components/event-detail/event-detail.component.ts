@@ -25,6 +25,7 @@ export class EventDetailComponent implements OnInit {
 
   public async ngOnInit() {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
+    this.admin = this.keycloak.getUserRoles().includes('jevents-admin');
 
     if (this.isLoggedIn) {
       this.userProfile = await this.keycloak.loadUserProfile();

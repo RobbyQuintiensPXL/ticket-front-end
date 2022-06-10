@@ -30,7 +30,8 @@ export class EventService {
 
 
   public getEventById(id: number): Observable<Event> {
-    const endpoint = this.eventUrl + '/' + id;
+    const endpoint = `${this.eventUrl}/${id}`;
+/*    [this.eventUrl, id].filter((x) => x).join('/');*/
     return this.http.get<Event>(endpoint).pipe(
       catchError(error => {
         return throwError('No Events Found');
@@ -60,7 +61,7 @@ export class EventService {
     const endpoint = this.eventUrl + '/search';
     return this.http.get<any>(endpoint, {params: param}).pipe(
       catchError(error => {
-        console.log('no events founds');
+        console.log(error);
         return throwError('No Events Found');
       })
     );

@@ -10,3 +10,7 @@ select{
   appearance: none !important;
   padding-right: 2rem !important;
 }
+
+:root{
+  --myColor: green;
+}

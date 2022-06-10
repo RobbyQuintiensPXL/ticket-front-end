@@ -41,6 +41,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import {MatTableModule} from '@angular/material/table';
 import { AdminEventsComponent } from './components/admin-events/admin-events.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AlertEventsComponent } from './components/alert-events/alert-events.component';
 
 @NgModule({
@@ -92,6 +93,7 @@ import { AlertEventsComponent } from './components/alert-events/alert-events.com
     MatMenuModule,
     MatPaginatorModule,
     MatTableModule,
+    MatAutocompleteModule,
   ],
   providers: [
     {

@@ -1,6 +1,5 @@
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
-import {EventDetailComponent} from './components/event-detail/event-detail.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {AddEventComponent} from './components/add-event/add-event.component';
 import {AuthGuard} from './auth/auth.guard';
