@@ -41,6 +41,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import {MatTableModule} from '@angular/material/table';
 import { AdminEventsComponent } from './components/admin-events/admin-events.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AlertEventsComponent } from './components/alert-events/alert-events.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     SearchBarComponent,
     AdminEventsComponent,
     AdminHomeComponent,
+    AlertEventsComponent,
   ],
   imports: [
     BrowserModule,

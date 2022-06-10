@@ -58,7 +58,6 @@ export class EventService {
 
   public getEventsByTypeAndOrCityAndOrEventName(param: any): Observable<any> {
     const endpoint = this.eventUrl + '/search';
-    console.log(param);
     return this.http.get<any>(endpoint, {params: param}).pipe(
       catchError(error => {
         console.log('no events founds');
@@ -67,7 +66,7 @@ export class EventService {
     );
   }
 
-  public getEventsForAdmin(param: any): Observable<any> {
+  public getEventsForAdmin(param?: any): Observable<any> {
     const endpoint = this.eventAdminUrl + '/events';
     return this.http.get<any>(endpoint, {params: param}).pipe(
       catchError(error => {
@@ -78,7 +77,6 @@ export class EventService {
 
   public approveEvent(id: number, event: Event): Observable<Event>{
     const endpoint = this.eventAdminUrl + '/event/' + id + '/approve';
-
     return this.http.post<Event>(endpoint, event).pipe(
       catchError(error => {
         return throwError('Event Not Found');

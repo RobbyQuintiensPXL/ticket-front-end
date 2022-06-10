@@ -15,6 +15,7 @@ export class Event {
   ticketsLeft: number;
   banner: string;
   thumbnail: string;
+  accepted: boolean;
 
 
   constructor(args?: Event) {
@@ -30,5 +31,6 @@ export class Event {
     this.ticketsLeft = args?.ticketsLeft;
     this.banner = args?.banner;
     this.thumbnail = args?.thumbnail;
+    this.accepted = args?.accepted;
   }
 }

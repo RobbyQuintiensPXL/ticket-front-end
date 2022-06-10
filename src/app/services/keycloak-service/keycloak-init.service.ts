@@ -10,7 +10,9 @@ export function KeycloakInitService(
       clientId: 'JEvents-public',
     },
     initOptions: {
+      onLoad: 'check-sso',
       checkLoginIframe: false,
     },
+    loadUserProfileAtStartUp: false,
   });
 }

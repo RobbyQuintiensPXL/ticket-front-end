@@ -14,11 +14,17 @@
       </div>
       <div id="content-tickets">
         <h4>Tickets</h4>
-        <div class="tickets-buy" *ngIf="!admin" (click)="setValue(true)">
+        <div class="tickets-buy" *ngIf="!admin && event.accepted" (click)="setValue(true)">
           <p>TICKETS</p>
         </div>
+        <div class="tickets-buy" *ngIf="!event.accepted">
+          <p>NOT ACCEPTED</p>
+        </div>
+        <div class="tickets-buy-admin" *ngIf="admin">
+          <p>ADMIN</p>
+        </div>
         <div class="tickets-price">
-          <p>Starting from <span class="price">{{event.price}}</span> EUR</p>
+          <p><span class="price">{{event.price}}</span> EUR</p>
         </div>
         <div class="tickets-left">
           <p>Only {{event.ticketsLeft}} Tickets Left</p>

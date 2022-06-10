@@ -14,6 +14,8 @@ export class HeaderComponent implements OnInit {
   public role: string[];
   office = false;
   admin = false;
+  menuOpen = false;
+  username: any;
 
   constructor(private readonly keycloak: KeycloakService) {
   }
@@ -24,10 +26,9 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
 
     if (this.isLoggedIn) {
-      this.userProfile = await this.keycloak.loadUserProfile();
+      this.username = this.keycloak.getKeycloakInstance().clientSecret;
+      console.log(this.username);
     }
-
-
   }
 
   public login() {
@@ -38,4 +39,7 @@ export class HeaderComponent implements OnInit {
     this.keycloak.logout(window.location.origin).then(() => this.keycloak.clearToken());
   }
 
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }
