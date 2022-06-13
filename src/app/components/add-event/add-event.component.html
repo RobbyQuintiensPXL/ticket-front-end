@@ -214,23 +214,9 @@
           </div>
           <div class="form-buttons">
             <button class="button-back" mat-button matStepperPrevious>Back</button>
-            <button class="button-next" [disabled]="eventTicketGroup.invalid" mat-button matStepperNext>Next</button>
+            <button class="button-next" [disabled]="eventTicketGroup.invalid" mat-button (click)="submit()">Submit</button>
           </div>
         </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <mat-list>
-          <mat-list-item><strong>Event: </strong> {{ this.eventInfoGroup.value.nameEvent }}</mat-list-item>
-          <mat-list-item><strong>Event Type: </strong> {{ this.eventInfoGroup.value.eventType }}</mat-list-item>
-          <mat-list-item><strong>Banner Name: </strong> {{ this.eventInfoGroup.value.bannerImage }}</mat-list-item>
-          <mat-list-item><strong>Thumbnail Name: </strong> {{ this.eventInfoGroup.value.thumbnail }}</mat-list-item>
-        </mat-list>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button>Preview</button>
-          <button mat-button (click)="submit()">Submit</button>
-        </div>
       </mat-step>
     </mat-horizontal-stepper>
   </div>

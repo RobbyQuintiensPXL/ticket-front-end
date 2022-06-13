@@ -31,6 +31,7 @@
         <div class="button-container">
           <button mat-button class="preview" [routerLink]="['../../events',event.id]">Preview</button>
           <button mat-button class="approve" (click)="openModelConfirmApprove(approveModal)">Approve</button>
+          <button mat-button class="decline" (click)="openModelConfirmDecline(declineModal)">Decline</button>
           <ng-template #approveModal let-modal class="modal-form">
             <div class="modal-header">
               <h2 class="modal-title" id="modal-addModel-title">Delete Event</h2>
@@ -47,6 +48,25 @@
               <div class="modal-buttons">
                 <button class="button-back" (click)="modal.close('Save click')">Cancel</button>
                 <button class="button-approve" mat-button data-dismiss="modal" (click)="approveEvent(event.id, this.event)">Approve</button>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template #declineModal let-modal class="modal-form">
+            <div class="modal-header">
+              <h2 class="modal-title" id="modal-deleteModel-title">Delete Event</h2>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="content-info">
+                <h4 [ngModel]="event">Are you sure you want to delete</h4>
+                <h4>Event name: {{event.eventName}}</h4>
+                <h3>Date: {{event.eventDate}}</h3>
+              </div>
+              <div class="modal-buttons">
+                <button class="button-back" (click)="modal.close('Save click')">Cancel</button>
+                <button class="button-decline" mat-button data-dismiss="modal" (click)="declineEvent(event.id)">Decline</button>
               </div>
             </div>
           </ng-template>

@@ -23,8 +23,9 @@ export class EventCardComponent implements OnChanges {
   @Input() search!: string;
   @Input() eventName!: string;
   pageSize = 10;
-  pageSizeOptions = [3, 5, 10];
+  pageSizeOptions = [5, 10];
   currentPage = 0;
+  length: number;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -40,10 +41,11 @@ export class EventCardComponent implements OnChanges {
     this.getEventsByTypeAndOrCity();
   }
 
-  getEvents(): void {
-    const params = this.getParamsTypeCity(this.currentPage, this.pageSize);
-    this.eventService.getEvents(params).subscribe(event =>
-      this.events = event.content);
+  getEventsTotal(): void {
+    this.eventService.getEvents().subscribe(event => {
+      this.length = event.totalElements;
+      console.log(this.pageSize);
+    });
   }
 
   getParamsTypeCity(page: number, size?: number, locationCity?: string, eventType?: string, eventName?: string) {
@@ -67,15 +69,15 @@ export class EventCardComponent implements OnChanges {
   }
 
   getEventsByTypeAndOrCity(eventType?: string, city?: string, search?: string): void {
-    const params = this.getParamsTypeCity(this.currentPage, this.pageSize, city, eventType, search);
-    console.log(params);
+    const params = this.getParamsTypeCity(this.currentPage, this.pageSize + 1, city, eventType, search);
     this.eventService.getEventsByTypeAndOrCityAndOrEventName(params).subscribe(event =>
-      this.events = event.content,
+        this.events = event.content,
       err => this.events = null
     );
   }
 
   ngOnChanges(): void {
+    this.getEventsTotal();
     this.getEventsByTypeAndOrCity(this.type, this.location, this.search);
   }
 }

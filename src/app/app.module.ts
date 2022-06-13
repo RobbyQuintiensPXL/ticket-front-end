@@ -43,6 +43,8 @@ import { AdminEventsComponent } from './components/admin-events/admin-events.com
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AlertEventsComponent } from './components/alert-events/alert-events.component';
+import {NgFileValidatorLibModule} from 'angular-file-validator';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -94,6 +96,8 @@ import { AlertEventsComponent } from './components/alert-events/alert-events.com
     MatPaginatorModule,
     MatTableModule,
     MatAutocompleteModule,
+    NgFileValidatorLibModule,
+    MatSnackBarModule,
   ],
   providers: [
     {

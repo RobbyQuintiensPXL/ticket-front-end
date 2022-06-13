@@ -6,6 +6,8 @@ import {Location} from '../../entities/location/location';
 import {EventService} from '../../services/event-service/event.service';
 import {Event} from '../../entities/event/event';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-event',
@@ -38,7 +40,9 @@ export class AddEventComponent implements OnInit {
               private eventTypeService: EventTypeService,
               private locationService: LocationService,
               private eventService: EventService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private router: Router,
+              private snackBar: MatSnackBar) {
   }
 
   imagePreview(e, group) {
@@ -107,7 +111,7 @@ export class AddEventComponent implements OnInit {
     this.eventInfoGroup = this.formBuilder.group({
       nameEvent: [null, [Validators.required, Validators.minLength(4)]],
       eventType: [null, Validators.required],
-      bannerImage: [null, Validators.required],
+      bannerImage: [null, [Validators.required]],
       thumbImage: [null, Validators.required],
       eventLocation: [null, Validators.required],
       img: [null],
@@ -149,6 +153,8 @@ export class AddEventComponent implements OnInit {
     console.log(this.eventFormData);
     this.eventService.createEvent(this.eventFormData, this.bannerFile, this.thumbFile);
     this.submitted = true;
+    this.router.navigate(['/']);
+    this.openSnackBar('Event successfully added', 'OK');
   }
 
   openModalAddLocation(addContent) {
@@ -157,6 +163,10 @@ export class AddEventComponent implements OnInit {
     }, (res) => {
       this.closeModal = `Dismissed`;
     });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action);
   }
 
   // Getters

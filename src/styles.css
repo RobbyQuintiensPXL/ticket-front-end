@@ -12,5 +12,6 @@ select{
 }
 
 :root{
-  --myColor: green;
+  --colorAdmin: rgb(165, 173, 189);
+  --colorOffice: #250BCE;
 }

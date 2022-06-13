@@ -93,7 +93,7 @@ mat-table button{
 }
 
 .modal-header{
-  background-color: #250BCE;
+  background-color: var(--colorOffice);
   color: #fff;
 }
 

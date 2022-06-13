@@ -99,7 +99,7 @@
   margin: 0;
   padding: 80px 0;
   list-style: none;
-  background-color: #250BCE;
+  background-color: var(--colorOffice);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
   transition-duration: .25s;
   z-index: 1;
@@ -119,7 +119,7 @@
   margin: 0;
   padding: 80px 0;
   list-style: none;
-  background-color: #919191;
+  background-color: var(--colorAdmin);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
   transition-duration: .25s;
   z-index: 1;
@@ -152,7 +152,7 @@ svg{
 }
 
 .office{
-  fill: #250BCE;;
+  fill: var(--colorOffice);;
 }
 
 .user{
@@ -160,11 +160,11 @@ svg{
 }
 
 .admin{
-  fill: #919191;;
+  fill: var(--colorAdmin);
 }
 
 .mat-toolbar-office{
-  background-color: #250BCE;
+  background-color: var(--colorOffice);
   height: 5rem;
   display: flex;
   justify-content: space-between;
@@ -178,7 +178,7 @@ svg{
 }
 
 .mat-toolbar-admin{
-  background-color: #919191;
+  background-color: var(--colorAdmin);
   height: 5rem;
   display: flex;
   justify-content: space-between;
@@ -221,4 +221,11 @@ a {
 
 input{
   padding-left: 2rem;
+}
+
+.user-info{
+  padding-right: 2rem;
+  font-size: 8pt;
+  padding-top: 0.5rem;
+  color: #ffffff;
 }

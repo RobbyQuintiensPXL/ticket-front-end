@@ -31,7 +31,6 @@ export class EventService {
 
   public getEventById(id: number): Observable<Event> {
     const endpoint = `${this.eventUrl}/${id}`;
-/*    [this.eventUrl, id].filter((x) => x).join('/');*/
     return this.http.get<Event>(endpoint).pipe(
       catchError(error => {
         return throwError('No Events Found');
@@ -39,9 +38,8 @@ export class EventService {
     );
   }
 
-  public getEvents(param: any): Observable<any> {
+  public getEvents(param?: any): Observable<any> {
     return this.http.get<any>(this.eventUrl, {params: param}).pipe(
-      tap(_ => console.log(param)),
       catchError(error => {
         return throwError('No Events Found');
       })
@@ -49,7 +47,7 @@ export class EventService {
   }
 
   public getEventsByOffice(param: any): Observable<any> {
-    const endpoint = this.eventOfficeUrl + '/events';
+    const endpoint = `${this.eventOfficeUrl}/events`;
     return this.http.get<any>(endpoint, {params: param}).pipe(
       catchError(error => {
         return throwError('No Events Found');
@@ -58,7 +56,7 @@ export class EventService {
   }
 
   public getEventsByTypeAndOrCityAndOrEventName(param: any): Observable<any> {
-    const endpoint = this.eventUrl + '/search';
+    const endpoint = `${this.eventUrl}/search`;
     return this.http.get<any>(endpoint, {params: param}).pipe(
       catchError(error => {
         console.log(error);
@@ -68,7 +66,7 @@ export class EventService {
   }
 
   public getEventsForAdmin(param?: any): Observable<any> {
-    const endpoint = this.eventAdminUrl + '/events';
+    const endpoint = `${this.eventAdminUrl}/events`;
     return this.http.get<any>(endpoint, {params: param}).pipe(
       catchError(error => {
         return throwError('No Events Found');
@@ -99,7 +97,7 @@ export class EventService {
   }
 
   public deleteEvent(id: number): Observable<any>{
-    const endpoint = this.eventOfficeUrl + '/event/' + id;
+    const endpoint = this.eventAdminUrl + '/event/' + id;
     return this.http.delete<any>(endpoint, this.httpOptions);
   }
 }

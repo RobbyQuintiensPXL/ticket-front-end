@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
       if (this.office){
         this.username = this.keycloak.getKeycloakInstance().idTokenParsed.Organisation;
       } else {
-        this.username = this.keycloak.getKeycloakInstance().idTokenParsed.name;
+        this.username = this.keycloak.getKeycloakInstance().idTokenParsed.name.split(' ')[0];
       }
     }
   }

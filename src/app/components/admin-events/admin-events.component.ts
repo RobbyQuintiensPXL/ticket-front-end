@@ -69,8 +69,16 @@ export class AdminEventsComponent implements OnChanges {
     );
   }
 
-  openModelConfirmApprove(deleteEvent: any){
-    this.modalService.open(deleteEvent, {centered: true}).result.then((res) => {
+  openModelConfirmApprove(approveEvent: any){
+    this.modalService.open(approveEvent, {centered: true}).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed`;
+    });
+  }
+
+  openModelConfirmDecline(declineEvent: any){
+    this.modalService.open(declineEvent, {centered: true}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.closeModal = `Dismissed`;
@@ -84,9 +92,14 @@ export class AdminEventsComponent implements OnChanges {
     });
   }
 
+  declineEvent(id: number) {
+    this.eventService.deleteEvent(id).subscribe(() => {
+      this.getEvents(this.type, this.location, this.search);
+      this.modalService.dismissAll();
+    });
+  }
+
   ngOnChanges(): void {
     this.getEvents(this.type, this.location, this.search);
   }
-
-
 }

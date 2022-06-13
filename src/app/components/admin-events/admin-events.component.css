@@ -14,7 +14,7 @@ mat-table button{
 }
 
 .mat-column-Event{
-  flex: 0 0 25%;
+  flex: 0 0 22%;
 }
 
 .mat-column-Type{
@@ -22,11 +22,15 @@ mat-table button{
 }
 
 .mat-column-Date{
-  flex: 0 0 14%;
+  flex: 0 0 10%;
 }
 
 .mat-column-Time{
   flex: 0 0 10%;
+}
+
+.mat-column-Building{
+  flex: 0 0 15%;
 }
 
 .center {
@@ -67,6 +71,15 @@ mat-table button{
   margin: 0 auto;
 }
 
+.decline{
+  background-color: #f68fa0;
+  margin: 0 auto;
+}
+
+.decline:hover{
+  background: #f57084;
+}
+
 .content-info{
   width: 100%;
   flex-grow: 2;
@@ -84,7 +97,7 @@ mat-table button{
 }
 
 .modal-header{
-  background-color: #919191;
+  background-color: var(--colorAdmin);
   color: #fff;
 }
 
@@ -110,6 +123,19 @@ mat-table button{
 
 .button-approve:hover{
   background: #bece64;
+}
+
+.button-decline{
+  background-color: #f68fa0;
+  width: 10rem;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  min-height: 35px;
+}
+
+.button-decline:hover{
+  background: #f57084;
 }
 
 .button-back{
