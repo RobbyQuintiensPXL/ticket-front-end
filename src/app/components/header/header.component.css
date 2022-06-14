@@ -11,6 +11,15 @@
 }
 
 @media screen and (max-width: 1180px) {
+  .mat-toolbar{
+    height: 5rem !important;
+  }
+
+  .user-info{
+    padding-right: 2rem !important;
+    padding-top: 0.5rem !important;
+  }
+
   .user-links{
     visibility: hidden;
   }
@@ -163,23 +172,24 @@ svg{
   fill: var(--colorAdmin);
 }
 
+.mat-toolbar{
+  height: 6.5rem;
+}
+
 .mat-toolbar-office{
   background-color: var(--colorOffice);
-  height: 5rem;
   display: flex;
   justify-content: space-between;
 }
 
 .mat-toolbar-user{
   background-color: #EF991B;
-  height: 5rem;
   display: flex;
   justify-content: space-between;
 }
 
 .mat-toolbar-admin{
   background-color: var(--colorAdmin);
-  height: 5rem;
   display: flex;
   justify-content: space-between;
 }
@@ -199,6 +209,8 @@ mat-toolbar input{
 
 .user-links{
   display: flex;
+  right: 4rem;
+  position: absolute;
 }
 
 mat-toolbar h1{
@@ -224,8 +236,24 @@ input{
 }
 
 .user-info{
-  padding-right: 2rem;
-  font-size: 8pt;
-  padding-top: 0.5rem;
+  font-size: 6pt;
+  padding-top: 4rem;
   color: #ffffff;
+  text-align: right;
+}
+
+.user-links ul{
+  display:table-row;
+}
+
+.user-links li {
+  display: table-cell;
+  font-size: 12pt;
+  padding: 0.7rem 0.5rem 0 0.5rem;
+}
+
+.login-logout{
+  font-size: 12pt;
+  color: #ffffff;
+  cursor: pointer;
 }

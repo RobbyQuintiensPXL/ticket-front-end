@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomValidators} from '../../../shared/custom.validator';
 import {TicketService} from '../../services/ticket-service/ticket.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import * as Notiflix from 'notiflix';
 
 @Component({
   selector: 'app-order-ticket',
@@ -83,6 +84,16 @@ export class OrderTicketComponent implements OnInit {
     this.router.navigate(['/search'], {queryParams: {type: 'all'}}).catch(error => {
         console.log(error);
       });
+    Notiflix.Report.success(
+      'Order confirmed',
+      `Successfully ordered ${this.ticketFormData.numberOfTickets} ticket(s)!\n\n
+      You can find your tickets in your mailbox.`,
+      'Close',
+      {
+        width: '360px',
+        svgSize: '120px',
+      },
+    );
   }
 
   // ngOnInit

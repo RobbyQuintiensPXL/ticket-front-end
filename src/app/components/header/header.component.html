@@ -1,9 +1,16 @@
-<mat-toolbar [ngClass]="office ? 'mat-toolbar-office' : admin ? 'mat-toolbar-admin' : 'mat-toolbar-user'">
+<mat-toolbar class="mat-toolbar"
+             [ngClass]="office ? 'mat-toolbar-office' : admin ? 'mat-toolbar-admin' : 'mat-toolbar-user'">
   <h1><a [routerLink]="['']">JEvents</a></h1>
   <div class="user-links">
-    <h2><a *ngIf="!isLoggedIn" (click)="login()">Login</a></h2>
-    <h2><a *ngIf="isLoggedIn" (click)="logout()">Logout</a></h2>
-    <h2><a [routerLink]="['/profile']">Account</a></h2>
+    <ul>
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a *ngIf="office" [routerLink]="['/','add-event']">Add Event</a></li>
+      <li><a *ngIf="office" [routerLink]="['/office-home']">My Events</a></li>
+      <li><a *ngIf="admin" [routerLink]="['/admin-home']">New Events</a></li>
+      <li><a *ngIf="isLoggedIn" [routerLink]="['/profile']">Account</a></li>
+      <li><a *ngIf="!isLoggedIn" class="login-logout" (click)="login()">Login</a></li>
+      <li><a *ngIf="isLoggedIn" class="login-logout" (click)="logout()">Logout</a></li>
+    </ul>
   </div>
   <h2 class="user-info"><a *ngIf="isLoggedIn">Hi, {{username}}</a></h2>
 </mat-toolbar>

@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {EventService} from '../../services/event-service/event.service';
+import {Event} from '../../entities/event/event';
 
 @Component({
   selector: 'app-office-home',
@@ -31,5 +34,4 @@ export class OfficeHomeComponent implements OnInit {
     this.msgLocation = location;
     console.log(this.msgLocation);
   }
-
 }

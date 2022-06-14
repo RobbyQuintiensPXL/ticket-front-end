@@ -4,16 +4,18 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {EventService} from '../../services/event-service/event.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {TicketService} from '../../services/ticket-service/ticket.service';
 
 @Component({
   selector: 'app-office-events',
   templateUrl: './office-events.component.html',
   styleUrls: ['./office-events.component.css']
 })
+
 export class OfficeEventsComponent implements OnChanges {
+
   event: Event;
   events: any;
-  closeModal: string;
   @Input() type!: string;
   @Input() location!: string;
   @Input() search!: string;
@@ -28,6 +30,7 @@ export class OfficeEventsComponent implements OnChanges {
 
   constructor(private activatedRoute: ActivatedRoute,
               private eventService: EventService,
+              private ticketService: TicketService,
               public router: Router,
               private modalService: NgbModal) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -62,28 +65,19 @@ export class OfficeEventsComponent implements OnChanges {
   getEventsByOffice(eventType?: string, city?: string, search?: string): void {
     const params = this.getParamsTypeCity(this.currentPage, this.pageSize, city, eventType, search);
     this.eventService.getEventsByOffice(params).subscribe(event =>
-      this.events = event.content,
+        this.events = event.content,
       err => this.events = null
     );
   }
 
-  deleteEvent(id: number){
+  deleteEvent(id: number) {
     this.eventService.deleteEvent(id).subscribe(() => {
       this.getEventsByOffice(this.type, this.location, this.search);
       this.modalService.dismissAll();
     });
   }
 
-  openModelConfirmDelete(deleteEvent: any){
-    this.modalService.open(deleteEvent, {centered: true}).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
-    }, (res) => {
-      this.closeModal = `Dismissed`;
-    });
-  }
-
   ngOnChanges(): void {
     this.getEventsByOffice(this.type, this.location, this.search);
   }
-
 }

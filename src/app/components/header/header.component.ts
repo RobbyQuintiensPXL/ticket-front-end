@@ -27,8 +27,10 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
 
     if (this.isLoggedIn) {
-      if (this.office){
+      if (this.office) {
         this.username = this.keycloak.getKeycloakInstance().idTokenParsed.Organisation;
+      } else if (this.admin){
+        this.username = this.keycloak.getKeycloakInstance().idTokenParsed.name.split(' ')[0];
       } else {
         this.username = this.keycloak.getKeycloakInstance().idTokenParsed.name.split(' ')[0];
       }
