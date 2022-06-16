@@ -177,7 +177,7 @@ svg {
 }
 
 .mat-toolbar {
-  height: 6.5rem;
+  height: 5rem;
 }
 
 .mat-toolbar-office {
@@ -212,10 +212,10 @@ mat-toolbar input {
 }
 
 mat-toolbar h1 {
-  margin-top: -1.5rem;
   margin-left: 3rem;
   color: #ffffff;
   font-family: "Annie Use Your Telescope", sans-serif;
+  font-size: 25pt;
 }
 
 mat-toolbar h2 {
@@ -261,7 +261,6 @@ input {
 }
 
 .links {
-  margin-top: -1.5rem;
   padding-right:2rem;
   display: flex;
   width: 60%;
