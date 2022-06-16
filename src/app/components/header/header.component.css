@@ -1,16 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 
-@media screen and (max-width: 768px) {
-  mat-toolbar h1 {
-    margin-left: 1rem !important;
-  }
-
-  .menu__btn {
-    right: 1.5rem !important;
-  }
-}
-
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1400px) {
 
   app-alert-events {
     right: 0.7rem !important;
@@ -21,9 +11,8 @@
     height: 5rem !important;
   }
 
-  .user-info {
-    margin-top:  0.5rem !important;
-    margin-right: 1rem;
+  .user-info-resp{
+    visibility: visible !important;
   }
 
   .links {
@@ -246,13 +235,17 @@ input {
 
 .user-info {
   font-size: 9pt;
-  margin-top: 4rem;
   color: #ffffff;
-  position: absolute;
-  right: 0;
-  padding-bottom: 0.5rem;
-  padding-right: 5rem;
   overflow: hidden;
+  margin-top: 1rem;
+}
+
+.user-info-resp{
+  visibility: hidden;
+  font-size: 9pt;
+  position: absolute;
+  right: 7rem;
+
 }
 
 .user-info-office {

@@ -14,6 +14,8 @@
         <li><a *ngIf="isLoggedIn" [routerLink]="['/profile']">Account</a></li>
       </ul>
     </div>
+    <div class="user-info" *ngIf="isLoggedIn"><a
+      [ngClass]="office ? 'user-info-office' : admin ? 'user-info-office' : 'user-info-user'">Hi, {{username}}</a></div>
     <div class="login-links">
       <ul>
         <li><a *ngIf="!isLoggedIn" class="login-logout" (click)="login()">Login</a></li>
@@ -21,7 +23,8 @@
       </ul>
     </div>
   </div>
-  <div class="user-info" *ngIf="isLoggedIn"><a  [ngClass]="office ? 'user-info-office' : admin ? 'user-info-office' : 'user-info-user'">Hi, {{username}}</a></div>
+  <div class="user-info-resp" *ngIf="isLoggedIn"><a
+    [ngClass]="office ? 'user-info-office' : admin ? 'user-info-office' : 'user-info-user'">Hi, {{username}}</a></div>
 </mat-toolbar>
 <svg xmlns="http://www.w3.org/2000/svg">
   <path [ngClass]="office ? 'office' : admin ? 'admin' : 'user'" id="svg_1"
