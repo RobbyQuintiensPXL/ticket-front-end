@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 
 @media screen and (max-width: 768px) {
-  mat-toolbar h1{
+  mat-toolbar h1 {
     margin-left: 1rem !important;
   }
 
@@ -11,45 +11,56 @@
 }
 
 @media screen and (max-width: 1180px) {
-  .mat-toolbar{
+
+  app-alert-events {
+    right: 0.7rem !important;
+    top: 10.5rem !important;
+  }
+
+  .mat-toolbar {
     height: 5rem !important;
   }
 
-  .user-info{
-    padding-right: 2rem !important;
-    padding-top: 0.5rem !important;
+  .user-info {
+    margin-top:  0.5rem !important;
+    margin-right: 1rem;
   }
 
-  .user-links{
+  .links {
     visibility: hidden;
   }
 
-  .hamburger-menu{
+  .hamburger-menu {
     visibility: visible !important;
   }
 }
 
-.hamburger-menu{
+.hamburger-menu {
   visibility: hidden;
 }
 
 #menu__toggle {
   opacity: 0;
 }
+
 #menu__toggle:checked + .menu__btn > span {
   transform: rotate(45deg);
 }
+
 #menu__toggle:checked + .menu__btn > span::before {
   top: 0;
   transform: rotate(0deg);
 }
+
 #menu__toggle:checked + .menu__btn > span::after {
   top: 0;
   transform: rotate(90deg);
 }
+
 #menu__toggle:checked ~ .menu__box {
   right: 0 !important;
 }
+
 .menu__btn {
   position: absolute;
   top: 2.5rem;
@@ -59,6 +70,7 @@
   cursor: pointer;
   z-index: 2;
 }
+
 .menu__btn > span,
 .menu__btn > span::before,
 .menu__btn > span::after {
@@ -69,10 +81,12 @@
   background-color: #f5f5f5;
   transition-duration: .25s;
 }
+
 .menu__btn > span::before {
   content: '';
   top: -8px;
 }
+
 .menu__btn > span::after {
   content: '';
   top: 8px;
@@ -149,52 +163,53 @@
   transition-duration: .25s;
   cursor: pointer;
 }
+
 .menu__item:hover {
   background-color: #CFD8DC;
 }
 
 
-svg{
+svg {
   width: 100%;
   margin-top: -0.7rem;
   margin-bottom: -2rem;
 }
 
-.office{
+.office {
   fill: var(--colorOffice);;
 }
 
-.user{
+.user {
   fill: #ef991b;;
 }
 
-.admin{
+.admin {
   fill: var(--colorAdmin);
 }
 
-.mat-toolbar{
+.mat-toolbar {
   height: 6.5rem;
 }
 
-.mat-toolbar-office{
+.mat-toolbar-office {
   background-color: var(--colorOffice);
   display: flex;
   justify-content: space-between;
 }
 
-.mat-toolbar-user{
+.mat-toolbar-user {
   background-color: #EF991B;
   display: flex;
   justify-content: space-between;
 }
 
-.mat-toolbar-admin{
+.mat-toolbar-admin {
   background-color: var(--colorAdmin);
   display: flex;
   justify-content: space-between;
 }
 
-mat-toolbar input{
+mat-toolbar input {
   width: 25%;
   min-width: 200px;
   height: 30px;
@@ -207,20 +222,14 @@ mat-toolbar input{
   left: 4rem;
 }
 
-.user-links{
-  display: flex;
-  right: 4rem;
-  position: absolute;
-}
-
-mat-toolbar h1{
-  margin-top: 1rem;
+mat-toolbar h1 {
+  margin-top: -1.5rem;
   margin-left: 3rem;
   color: #ffffff;
   font-family: "Annie Use Your Telescope", sans-serif;
 }
 
-mat-toolbar h2{
+mat-toolbar h2 {
   margin-right: 3rem;
   font-size: 12pt;
   font-family: "Annie Use Your Telescope", sans-serif;
@@ -231,29 +240,88 @@ a {
   color: #fff;
 }
 
-input{
+input {
   padding-left: 2rem;
 }
 
-.user-info{
-  font-size: 6pt;
-  padding-top: 4rem;
+.user-info {
+  font-size: 9pt;
+  margin-top: 4rem;
   color: #ffffff;
-  text-align: right;
+  position: absolute;
+  right: 0;
+  padding-bottom: 0.5rem;
+  padding-right: 5rem;
+  overflow: hidden;
 }
 
-.user-links ul{
-  display:table-row;
+.user-info-office {
+  background: #EF991B;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.user-info-user {
+  background: var(--colorOffice);
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.links {
+  margin-top: -1.5rem;
+  padding-right:2rem;
+  display: flex;
+  width: 60%;
+}
+
+.login-links {
+  padding-right: 1.5rem;
+  align-items: flex-end;
+}
+
+
+.user-links {
+  flex: 1;
+  align-items: flex-end;
+  float: right;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 4rem;
+}
+
+.user-links ul, .login-links ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .user-links li {
-  display: table-cell;
-  font-size: 12pt;
-  padding: 0.7rem 0.5rem 0 0.5rem;
+  float: left;
 }
 
-.login-logout{
+li a {
+  font-size: 12pt;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.login-logout {
   font-size: 12pt;
   color: #ffffff;
   cursor: pointer;
+}
+
+app-alert-events {
+  background: red;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  position: absolute;
+  right: 19.5rem;
+  top: 1rem;
 }

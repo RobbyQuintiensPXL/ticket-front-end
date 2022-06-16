@@ -1,10 +1,9 @@
-import {Component, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, ViewChild} from '@angular/core';
 import {Event} from '../../entities/event/event';
 import {MatPaginator} from '@angular/material/paginator';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EventService} from '../../services/event-service/event.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {numbers} from '@material/banner/constants';
 
 @Component({
   selector: 'app-admin-events',
@@ -69,7 +68,7 @@ export class AdminEventsComponent implements OnChanges {
     );
   }
 
-  openModelConfirmApprove(approveEvent: any){
+  openModelConfirmApprove(approveEvent: any) {
     this.modalService.open(approveEvent, {centered: true}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
@@ -77,7 +76,7 @@ export class AdminEventsComponent implements OnChanges {
     });
   }
 
-  openModelConfirmDecline(declineEvent: any){
+  openModelConfirmDecline(declineEvent: any) {
     this.modalService.open(declineEvent, {centered: true}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
@@ -85,7 +84,7 @@ export class AdminEventsComponent implements OnChanges {
     });
   }
 
-  approveEvent(id: number, event: Event){
+  approveEvent(id: number, event: Event) {
     this.eventService.approveEvent(id, event).subscribe(() => {
       this.getEvents(this.type, this.location, this.search);
       this.modalService.dismissAll();

@@ -10,11 +10,14 @@ import {Observable, Subject} from 'rxjs';
 })
 export class AlertEventsComponent {
   private readonly menuOpen$: Subject<boolean> = new Subject<boolean>();
-  private readonly events$: Observable<any> = this.menuOpen$.asObservable().pipe(
-    filter((isOpen) => isOpen),
-    switchMapTo(this.eventService.getEventsForAdmin().pipe(take(1)))
-  );
+  // private readonly events$: Observable<any> = this.menuOpen$.asObservable().pipe(
+  //   filter((isOpen) => isOpen),
+  //   switchMapTo(this.eventService.getEventsForAdmin().pipe(take(1)))
+  // );
+  private readonly events$: Observable<any> = this.eventService.getEventsForAdmin().pipe(take(1));
   readonly eventsContent$: Observable<any> = this.events$.pipe(map(({content}) => content));
+  // readonly newEvents$: Observable<number> = this.eventsContent$.pipe(map((content) => content.length));
+
   readonly newEvents$: Observable<number> = this.eventsContent$.pipe(map((content) => content.length));
 
   constructor(private eventService: EventService) {
