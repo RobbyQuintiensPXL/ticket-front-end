@@ -20,7 +20,7 @@ export class AdminEventsComponent implements OnChanges {
   @Input() search!: string;
   @Input() eventName!: string;
   pageSize = 10;
-  pageSizeOptions = [3, 5, 10];
+  pageSizeOptions = [5, 10];
   currentPage = 0;
 
   displayedColumns: string[] = ['Event', 'Type', 'Building', 'Date', 'Time', 'Actions'];

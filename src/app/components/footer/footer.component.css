@@ -1,0 +1,24 @@
+.footer{
+  height: 4rem;
+  background: #f6f6f6;
+}
+
+.footer-content{
+  width: 80%;
+  padding-top: 1rem;
+  margin: 0 auto;
+  border-top: #dcdcdc 1px solid;
+  color: #9d9d9d;
+}
+
+ul{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;;
+}
+
+li{
+  font-size: 14pt;
+  list-style: none;
+  margin: 0 auto;
+}

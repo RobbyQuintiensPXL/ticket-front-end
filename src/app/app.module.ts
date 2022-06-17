@@ -45,6 +45,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AlertEventsComponent } from './components/alert-events/alert-events.component';
 import {NgFileValidatorLibModule} from 'angular-file-validator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AdminEventsComponent,
     AdminHomeComponent,
     AlertEventsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

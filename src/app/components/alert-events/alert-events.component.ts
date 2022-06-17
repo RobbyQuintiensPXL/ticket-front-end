@@ -18,9 +18,10 @@ export class AlertEventsComponent {
   readonly eventsContent$: Observable<any> = this.events$.pipe(map(({content}) => content));
   // readonly newEvents$: Observable<number> = this.eventsContent$.pipe(map((content) => content.length));
 
-  readonly newEvents$: Observable<number> = this.eventsContent$.pipe(map((content) => content.length));
-
+  readonly newEvents$: Observable<number> = this.eventsContent$.pipe(map((content) => this.testN = content.length));
+  testN: number;
   constructor(private eventService: EventService) {
+
   }
 
   @Input() set isMenuOpen(toggled: boolean) {

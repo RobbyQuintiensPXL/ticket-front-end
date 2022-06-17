@@ -36,37 +36,31 @@
           </div>
         </div>
 
-        <div class="city-and-zip">
-          <div class="small-input">
-            <label for="location-zip">ZIP code: </label>
-            <input id="location-zip" type="number" formControlName="zipCode" required>
+        <label for="location-zip">ZIP code: </label>
+        <input id="location-zip" type="number" formControlName="zipCode" required>
 
-            <!--Validation-->
-            <div *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)"
-                 class="alert alert-danger">
-              <div *ngIf="zipCode.errors.required">
-                ZIP code is required.
-              </div>
-            </div>
-
+        <!--Validation-->
+        <div *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)"
+             class="alert alert-danger">
+          <div *ngIf="zipCode.errors.required">
+            ZIP code is required.
           </div>
-          <div class="right-input">
-            <label for="location-city">City: </label>
-            <input id="location-city" type="text" formControlName="city" required>
+        </div>
 
-            <!--Validation-->
-            <div *ngIf="city.invalid && (city.dirty || city.touched)"
-                 class="alert alert-danger">
-              <div *ngIf="city.errors.required">
-                City is required.
-              </div>
-              <div *ngIf="city.errors.minlength">
-                City must must be at least 3 characters long.
-              </div>
-              <div *ngIf="city.errors.pattern">
-                City cannot contain numbers or special characters.
-              </div>
-            </div>
+        <label for="location-city">City: </label>
+        <input id="location-city" type="text" formControlName="city" required>
+
+        <!--Validation-->
+        <div *ngIf="city.invalid && (city.dirty || city.touched)"
+             class="alert alert-danger">
+          <div *ngIf="city.errors.required">
+            City is required.
+          </div>
+          <div *ngIf="city.errors.minlength">
+            City must must be at least 3 characters long.
+          </div>
+          <div *ngIf="city.errors.pattern">
+            City cannot contain numbers or special characters.
           </div>
         </div>
 

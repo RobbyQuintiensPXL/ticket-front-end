@@ -310,10 +310,9 @@ li a {
 app-alert-events {
   background: red;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  text-align: center;
+  width: 25px;
+  height: 25px;
   position: absolute;
-  right: 19.5rem;
+  right: 23.5rem;
   top: 1rem;
 }

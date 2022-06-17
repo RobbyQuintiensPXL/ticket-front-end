@@ -23,6 +23,7 @@ export class EventCardComponent implements OnChanges {
   @Input() search!: string;
   @Input() eventName!: string;
   pageSize = 10;
+  pageSizefix: number = this.pageSize;
   pageSizeOptions = [5, 10];
   currentPage = 0;
   length: number;
@@ -37,7 +38,7 @@ export class EventCardComponent implements OnChanges {
 
   handlePage(event: any) {
     this.currentPage = event.pageIndex;
-    this.pageSize = event.pageSize+1;
+    this.pageSizefix = event.pageSize;
     this.getEventsByTypeAndOrCity();
   }
 
@@ -69,7 +70,7 @@ export class EventCardComponent implements OnChanges {
   }
 
   getEventsByTypeAndOrCity(eventType?: string, city?: string, search?: string): void {
-    const params = this.getParamsTypeCity(this.currentPage, this.pageSize + 1, city, eventType, search);
+    const params = this.getParamsTypeCity(this.currentPage, this.pageSizefix, city, eventType, search);
     this.eventService.getEventsByTypeAndOrCityAndOrEventName(params).subscribe(event =>
         this.events = event.content,
       err => this.events = null

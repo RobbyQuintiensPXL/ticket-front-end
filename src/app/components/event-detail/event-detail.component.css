@@ -43,7 +43,11 @@
   padding-top: 2rem;
   margin-top: -8rem;
   background-color: #F3F3F3;
-  height: calc(100% - 5rem);
+  position: relative;
+  padding-bottom: 5rem;
+  display: block;
+  overflow: auto;
+  min-height: 500px;
 }
 
 #content-description, #content-date {

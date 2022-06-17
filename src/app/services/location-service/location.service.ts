@@ -14,12 +14,14 @@ export class LocationService {
   private readonly locationUrl: string;
   private readonly locationPost: string;
   private readonly locationOfficeUrl: string;
+  private readonly locationOfficeAddUrl: string;
   locations: Location[];
   location: Location;
 
   constructor(private http: HttpClient) {
     this.locationUrl = '/event/locations';
     this.locationOfficeUrl = '/event/office/locations';
+    this.locationOfficeAddUrl = '/event/office/add_location';
     this.locationPost = '/event/locations/add_location';
   }
 
@@ -47,7 +49,7 @@ export class LocationService {
 
   public addLocation(location: Location): Observable<Location> {
     const body = JSON.stringify(location);
-    return this.http.post<Location>(this.locationPost, body, this.httpOptions).pipe(
+    return this.http.post<Location>(this.locationOfficeAddUrl, body, this.httpOptions).pipe(
       catchError(error => {
         return throwError('Something wrong');
       })

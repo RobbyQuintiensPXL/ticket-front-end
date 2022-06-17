@@ -59,18 +59,24 @@
   padding-left: 3rem;
 }
 
+.alert, .alert-danger{
+  width: 70% !important;
+  margin-left: 115px;
+}
+
 label{
   display: inline-block;
   padding-top: 0.5rem;
   margin-bottom: 0.5rem;
+  width: 110px;
 }
 
 input{
-  width: 100%;
+  width: 70%;
   padding: 0.2rem;
+  margin: 0.35rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  display: inline-block;
   box-sizing: border-box;
 }
 
@@ -80,7 +86,6 @@ select{
   border-radius: 5px;
   border: 1px solid #ccc;
   resize: vertical;
-  display: inline-block;
 }
 
 .form-buttons{
@@ -145,7 +150,6 @@ button:disabled{
 }
 
 .payments {
-  padding-top: 0.5rem;
 }
 
 .paymentButtonContainer {
