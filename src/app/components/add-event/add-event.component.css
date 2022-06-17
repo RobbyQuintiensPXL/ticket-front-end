@@ -129,6 +129,7 @@ textarea {
   image-resolution: initial;
   margin: 0 auto;
   padding-bottom: 1rem;
+  max-width: 90%;
 }
 
 .modal-header{
