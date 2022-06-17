@@ -1,17 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { TicketService } from './ticket.service';
-import {HttpTestingController} from '@angular/common/http/testing';
+import {TicketService} from './ticket.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {EventService} from '../event-service/event.service';
 
 describe('TicketServiceService', () => {
   let service: TicketService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(TicketService);
-  });
+  describe('TicketService Tests', () => {
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [HttpClientTestingModule],
+        providers: [TicketService]
+      }).compileComponents();
+      service = TestBed.inject(TicketService);
+    });
+
+    it('should be created', () => {
+      expect(service).toBeTruthy();
+    });
   });
 });

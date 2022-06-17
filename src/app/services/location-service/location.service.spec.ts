@@ -33,22 +33,29 @@ describe('LocationService', () => {
 
     it('should return all locations', () => {
       service.getLocations().subscribe((locations) => {
-        expect(locations[0]).toEqual(mockLocation);
+        expect(locations[0].city).toEqual(mockLocation.city);
       });
 
       const request = httpTestingController.expectOne('/event/locations');
+      expect(request.request.method).toEqual('GET');
+
+      const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: [mockLocation]});
+      request.event(expectedResponse);
 
       request.flush([mockLocation]);
-
       httpTestingController.verify();
     });
 
     it('should return locations for a ticketoffice', () => {
       service.getLocationsByTicketOffice().subscribe(locations => {
-        expect(locations[0]).toEqual(mockLocation);
+        expect(locations[0].buildingName).toEqual(mockLocation.buildingName);
       });
 
-      const request = httpTestingController.expectOne('/event/locations/office');
+      const request = httpTestingController.expectOne('/event/office/locations');
+      expect(request.request.method).toEqual('GET');
+
+      const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: [mockLocation]});
+      request.event(expectedResponse);
 
       request.flush([mockLocation]);
 

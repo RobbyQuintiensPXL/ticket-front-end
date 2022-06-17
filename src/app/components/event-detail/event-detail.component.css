@@ -1,63 +1,63 @@
 @media screen and (min-width: 1700px) {
-  .containerValue{
+  .containerValue {
     width: 70% !important;
     margin: 0 auto !important;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .content-container{
+  .content-container {
     width: 90% !important;
     float: none !important;
     padding-left: 1.5rem !important;
   }
 
-  #content-description{
+  #content-description {
     margin-bottom: 1rem !important;
   }
 
-  #content-date{
+  #content-date {
     display: none !important;
   }
 
-  #content-tickets, #content-location{
+  #content-tickets, #content-location {
     width: 90% !important;
     float: none !important;
     padding-left: 1.5rem !important;
   }
 
-  .tickets-price{
+  .tickets-price {
     margin: 0 auto !important;
     width: 100% !important;
     text-align: center !important;
   }
 
-  .tickets-buy, .tickets-left, .tickets-buy-admin{
+  .tickets-buy, .tickets-left, .tickets-buy-admin {
     margin: 0 auto;
     padding: 0 !important;
     text-align: center !important;
   }
 }
 
-#content{
+#content {
   padding-top: 2rem;
   margin-top: -8rem;
   background-color: #F3F3F3;
   height: calc(100% - 5rem);
 }
 
-#content-description, #content-date{
+#content-description, #content-date {
   margin-bottom: 3rem;
 }
 
-#content h4{
+#content h4 {
   color: #250BCE;
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 1rem;
 }
 
-#content-tickets, #content-location{
+#content-tickets, #content-location {
   float: right;
   width: 35%;
   margin-right: 1rem;
@@ -67,18 +67,18 @@
   line-height: 10px;
 }
 
-.content-container{
+.content-container {
   width: 55%;
   float: left;
   padding-left: 5rem;
 }
 
-.ticket-container{
+.ticket-container {
   width: 100%;
   padding-left: -2rem;
 }
 
-.tickets-left{
+.tickets-left {
   background-color: #EF991B;
   position: relative;
   border-radius: 15px;
@@ -87,7 +87,7 @@
   color: #fff;
 }
 
-.tickets-left p{
+.tickets-left p {
   font-size: 10pt;
   font-weight: bold;
   padding: 0.25rem;
@@ -95,7 +95,7 @@
   -webkit-user-select: none;
 }
 
-.tickets-buy{
+.tickets-buy {
   background-color: #250BCE;
   position: relative;
   border-radius: 15px;
@@ -104,7 +104,8 @@
   color: #fff;
   cursor: pointer;
 }
-.tickets-buy-admin{
+
+.tickets-buy-admin {
   background-color: #ce0b0b;
   position: relative;
   border-radius: 15px;
@@ -114,22 +115,31 @@
   cursor: pointer;
 }
 
-.tickets-buy p, .tickets-buy-admin p{
+.tickets-buy p, .tickets-buy-admin p, .sold-out p {
   font-weight: bold;
   padding: 0.5rem;
   user-select: none;
   -webkit-user-select: none;
 }
 
-.tickets-price{
+.tickets-price {
   max-width: 200px;
   text-align: right;
   margin: -0.1rem;
   padding: 0;
 }
 
-.tickets-price .price{
+.tickets-price .price {
   font-weight: bold;
   font-size: 15pt;
+}
+
+.sold-out {
+  background-color: #ce0b0b;
+  position: relative;
+  border-radius: 15px;
+  max-width: 200px;
+  text-align: center;
+  color: #fff;
 }
 

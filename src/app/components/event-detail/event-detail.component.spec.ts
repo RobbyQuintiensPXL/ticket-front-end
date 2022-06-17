@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventDetailComponent } from './event-detail.component';
+import {KeycloakService} from 'keycloak-angular';
+import {MockedKeycloakService} from '../../services/keycloak-service/mocked-keycloak.service';
 
 describe('EventDetailComponent', () => {
   let component: EventDetailComponent;
@@ -8,7 +10,11 @@ describe('EventDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventDetailComponent ]
+      declarations: [ EventDetailComponent ],
+      providers: [ {
+        provide: KeycloakService,
+        useClass: MockedKeycloakService
+      } ]
     })
     .compileComponents();
   }));

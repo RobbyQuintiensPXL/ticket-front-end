@@ -37,7 +37,7 @@ export class EventCardComponent implements OnChanges {
 
   handlePage(event: any) {
     this.currentPage = event.pageIndex;
-    this.pageSize = event.pageSize;
+    this.pageSize = event.pageSize+1;
     this.getEventsByTypeAndOrCity();
   }
 

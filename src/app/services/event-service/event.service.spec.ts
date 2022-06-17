@@ -26,10 +26,6 @@ describe('EventServiceService', () => {
       httpTestingController = TestBed.inject(HttpTestingController);
       const now = new Date();
       const time: Time = {hours: 20, minutes: 0};
-      mockParams = {
-        location_city: 'testCity',
-        eventType: 'type1',
-      };
       mockLocation = {
         address: 'testAddress', buildingName: 'TestBuilding', city: 'testCity',
         country: 'testCountry', id: 1, zipCode: 3600
@@ -49,6 +45,14 @@ describe('EventServiceService', () => {
         ticketsLeft: 100,
         accepted: true
       };
+      mockParams = {
+        location_city: mockEvent.location.city,
+        eventType: mockEvent.eventType,
+      };
+    });
+
+    afterEach(() => {
+      httpTestingController.verify();
     });
 
     it('should be created', () => {
@@ -65,9 +69,7 @@ describe('EventServiceService', () => {
 
       const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
       request.event(expectedResponse);
-
       request.flush(mockEvent);
-      httpTestingController.verify();
     });
 
     // it('should return events filtered by type', () => {
@@ -88,80 +90,67 @@ describe('EventServiceService', () => {
 
     it('should return events filtered by type and city', () => {
       service.getEventsByTypeAndOrCityAndOrEventName(mockParams).subscribe(events => {
-        expect(events[0]).toEqual(mockEvent);
+        expect(events[0].eventType).toEqual(mockEvent.eventType);
       });
-      const request = httpTestingController.expectOne('/event/events/search');
-      expect(request.request.params).toEqual(mockParams);
+      const request = httpTestingController.expectOne(
+        `/event/events/search?location_city=${mockEvent.location.city}&eventType=${mockEvent.eventType}`);
       expect(request.request.method).toEqual('GET');
-      expect(request.request.body).toEqual(JSON.stringify(mockEvent));
 
-      const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
+      const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: [mockEvent]});
       request.event(expectedResponse);
-
-      request.flush(mockEvent);
-      httpTestingController.verify();
+      request.flush([mockEvent]);
     });
 
     it('should return all events', () => {
       service.getEvents().subscribe(events => {
-        expect(events[0]).toEqual(mockEvent);
-
-        const request = httpTestingController.expectOne('/event/events');
-        expect(request.request.method).toEqual('GET');
-        expect(request.request.body).toEqual(JSON.stringify(mockEvent));
-
-        request.flush([mockEvent]);
-
-        const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
-        request.event(expectedResponse);
-        httpTestingController.verify();
+        expect(events[0].banner).toEqual(mockEvent.banner);
       });
+
+      const request = httpTestingController.expectOne('/event/events');
+      expect(request.request.method).toEqual('GET');
+
+      const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: [mockEvent]});
+      request.event(expectedResponse);
+      request.flush([mockEvent]);
     });
     it('should return events filtered office', () => {
       service.getEventsByOffice(mockParams).subscribe(events => {
-        expect(events[0]).toEqual(mockEvent);
-
-        const request = httpTestingController.expectOne('/event/office/events');
-        expect(request.request.method).toEqual('GET');
-        expect(request.request.body).toEqual(JSON.stringify(mockEvent));
-
-        request.flush([mockEvent]);
-
-        const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
-        request.event(expectedResponse);
-        httpTestingController.verify();
+        expect(events[0].thumbnail).toEqual(mockEvent.thumbnail);
       });
+
+      const request = httpTestingController.expectOne(
+        `event/office/events?location_city=${mockEvent.location.city}&eventType=${mockEvent.eventType}`);
+      expect(request.request.method).toEqual('GET');
+
+      const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: [mockEvent]});
+      request.event(expectedResponse);
+      request.flush([mockEvent]);
     });
     it('should return events for admin', () => {
       service.getEventsForAdmin(mockParams).subscribe(events => {
-        expect(events[0]).toEqual(mockEvent);
-
-        const request = httpTestingController.expectOne('/event/admin/events');
-        expect(request.request.method).toEqual('GET');
-        expect(request.request.body).toEqual(JSON.stringify(mockEvent));
-
-        request.flush([mockEvent]);
-
-        const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: mockEvent});
-        request.event(expectedResponse);
-        httpTestingController.verify();
+        expect(events[0].location.buildingName).toEqual(mockEvent.location.buildingName);
       });
+
+      const request = httpTestingController.expectOne(
+        `event/admin/events?location_city=${mockEvent.location.city}&eventType=${mockEvent.eventType}`);
+      expect(request.request.method).toEqual('GET');
+
+      const expectedResponse = new HttpResponse({status: 200, statusText: 'OK', body: [mockEvent]});
+      request.event(expectedResponse);
+      request.flush([mockEvent]);
     });
 
     it('should approve an event', () => {
       service.approveEvent(mockEvent.id, mockEvent).subscribe(events => {
-        expect(events[0]).toEqual(mockEvent);
-
-        const request = httpTestingController.expectOne('/event/admin/event/' + mockEvent.id + '/approve');
-        expect(request.request.method).toEqual('POST');
-        expect(request.request.body).toEqual(JSON.stringify(mockEvent));
-
-        request.flush([mockEvent]);
-
-        const expectedResponse = new HttpResponse({status: 201, statusText: 'CREATED', body: mockEvent});
-        request.event(expectedResponse);
-        httpTestingController.verify();
+        expect(events[0].accepted).toEqual(mockEvent.accepted);
       });
+
+      const request = httpTestingController.expectOne(
+        `event/admin/event/${mockEvent.id}/approve`);
+      expect(request.request.method).toEqual('POST');
+
+      const expectedResponse = new HttpResponse({status: 201, statusText: 'CREATED'});
+      request.event(expectedResponse);
     });
 
     it('should throw an error if no event by id found', () => {
@@ -178,6 +167,5 @@ describe('EventServiceService', () => {
       const errorResponse = new Error('No Events Found');
       spyOn(service, 'getEventsByOffice').and.returnValue(throwError(errorResponse));
     });
-
   });
 });
