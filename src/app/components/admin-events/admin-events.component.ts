@@ -88,6 +88,7 @@ export class AdminEventsComponent implements OnChanges {
     this.eventService.approveEvent(id, event).subscribe(() => {
       this.getEvents(this.type, this.location, this.search);
       this.modalService.dismissAll();
+      window.location.reload();
     });
   }
 
@@ -95,6 +96,7 @@ export class AdminEventsComponent implements OnChanges {
     this.eventService.deleteEvent(id).subscribe(() => {
       this.getEvents(this.type, this.location, this.search);
       this.modalService.dismissAll();
+      window.location.reload();
     });
   }
 
