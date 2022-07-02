@@ -32,7 +32,7 @@
     text-align: center !important;
   }
 
-  .tickets-buy, .tickets-left, .tickets-buy-admin {
+  .tickets-buy, .tickets-left, .tickets-buy-admin, .tickets-not-accepted {
     margin: 0 auto;
     padding: 0 !important;
     text-align: center !important;
@@ -116,6 +116,16 @@ p {
   cursor: pointer;
 }
 
+.tickets-not-accepted {
+  background-color: #250BCE;
+  position: relative;
+  border-radius: 15px;
+  max-width: 200px;
+  text-align: center;
+  color: #fff;
+  cursor: default;
+}
+
 .tickets-buy-admin {
   background-color: #ce0b0b;
   position: relative;
@@ -123,7 +133,7 @@ p {
   max-width: 200px;
   text-align: center;
   color: #fff;
-  cursor: pointer;
+  cursor: default;
 }
 
 .tickets-buy p, .tickets-buy-admin p, .sold-out p {
@@ -152,5 +162,6 @@ p {
   max-width: 200px;
   text-align: center;
   color: #fff;
+  cursor: default;
 }
 

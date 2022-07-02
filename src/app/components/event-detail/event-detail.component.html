@@ -20,7 +20,7 @@
         <div class="sold-out" *ngIf="event.ticketsLeft == 0" (click)="setValue(true)">
           <p>SOLD OUT</p>
         </div>
-        <div class="tickets-buy" *ngIf="!event.accepted">
+        <div class="tickets-not-accepted" *ngIf="!event.accepted">
           <p>NOT ACCEPTED</p>
         </div>
         <div class="tickets-buy-admin" *ngIf="admin">

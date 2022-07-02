@@ -46,6 +46,8 @@ import { AlertEventsComponent } from './components/alert-events/alert-events.com
 import {NgFileValidatorLibModule} from 'angular-file-validator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FooterComponent } from './components/footer/footer.component';
+import { OfficeDashboardComponent } from './components/office-dashboard/office-dashboard.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AdminHomeComponent,
     AlertEventsComponent,
     FooterComponent,
+    OfficeDashboardComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

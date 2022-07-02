@@ -4,6 +4,7 @@
   <div class="links">
     <div class="user-links">
       <ul>
+        <li><a *ngIf="office" [routerLink]="['/','office-dashboard']">Dash</a></li>
         <li><a [routerLink]="['/']">Home</a></li>
         <li><a [routerLink]="['/']">Contact</a></li>
         <li><a *ngIf="office" [routerLink]="['/','add-event']">Add Event</a></li>

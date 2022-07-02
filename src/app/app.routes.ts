@@ -7,6 +7,7 @@ import {OfficeHomeComponent} from './components/office-home/office-home.componen
 import {EventDetailPageComponent} from './components/event-detail-page/event-detail-page.component';
 import {OrderTicketComponent} from './components/order-ticket/order-ticket.component';
 import {AdminHomeComponent} from './components/admin-home/admin-home.component';
+import {OfficeDashboardComponent} from './components/office-dashboard/office-dashboard.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,14 @@ const routes: Routes = [
       {path: '', redirectTo: 'search', pathMatch: 'full'},
       {path: 'search', component: OfficeHomeComponent},
     ]
+  },
+  {
+    path: 'office-dashboard',
+    component: OfficeDashboardComponent,
+    data: {
+      roles: ['jevents-office']
+    },
+    canActivate: [AuthGuard],
   },
   {
     path: 'admin-home',

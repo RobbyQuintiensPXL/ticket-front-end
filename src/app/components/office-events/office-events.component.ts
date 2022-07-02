@@ -21,8 +21,9 @@ export class OfficeEventsComponent implements OnChanges {
   @Input() search!: string;
   @Input() eventName!: string;
   pageSize = 10;
-  pageSizeOptions = [3, 5, 10];
+  pageSizeOptions = [5, 10];
   currentPage = 0;
+  length: number;
 
   displayedColumns: string[] = ['Event', 'Type', 'Date', 'Time', 'Accepted', 'Actions'];
 
@@ -40,6 +41,13 @@ export class OfficeEventsComponent implements OnChanges {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getEventsByOffice();
+  }
+
+  getEventsTotal(): void {
+    this.eventService.getEvents().subscribe(event => {
+      this.length = event.totalElements;
+      console.log(this.pageSize);
+    });
   }
 
   getParamsTypeCity(page: number, size?: number, locationCity?: string, eventType?: string, eventName?: string) {
@@ -78,6 +86,7 @@ export class OfficeEventsComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
+    this.getEventsTotal();
     this.getEventsByOffice(this.type, this.location, this.search);
   }
 }

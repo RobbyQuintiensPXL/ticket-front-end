@@ -87,7 +87,7 @@ export class OrderTicketComponent implements OnInit {
     Notiflix.Report.success(
       'Order confirmed',
       `Successfully ordered ${this.ticketFormData.numberOfTickets} ticket(s)!\n\n
-      Your tickets are send to ${this.ticketFormData.email}.`,
+      Your tickets are sent to ${this.ticketFormData.email}.`,
       'Close',
       {
         width: '360px',
